@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "@interfaces": "./src/interfaces",
+        "@components": "./src/components",
+        "@atoms": "./src/components/atoms",
+        "@molecules": "./src/components/molecules",
+        "@organisms": "./src/components/organisms",
+        "@colors": "./src/colors",
+        "@assets": "./src/assets",
+        "@css": "./src/css",
+        // Add more aliases as needed
+      }
+    }]
+  ]
+}

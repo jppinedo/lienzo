@@ -1,0 +1,25 @@
+diff --git a/node_modules/ip/lib/ip.js b/node_modules/ip/lib/ip.js
+index 9022443..a4a6c35 100644
+--- a/node_modules/ip/lib/ip.js
++++ b/node_modules/ip/lib/ip.js
+@@ -381,13 +381,18 @@ ip.loopback = function (family) {
+ //   * undefined: First address with `ipv4` or loopback address `127.0.0.1`.
+ //
+ ip.address = function (name, family) {
+-  const interfaces = os.networkInterfaces();
+-
+   //
+   // Default to `ipv4`
+   //
+   family = _normalizeFamily(family);
+ 
++  let interfaces;
++  try {
++    interfaces = os.networkInterfaces();
++  } catch (err) {
++    return ip.loopback(family);
++  }
++
+   //
+   // If a specific network interface has been named,
+   // return the address.

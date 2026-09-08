@@ -1,0 +1,18 @@
+diff --git a/node_modules/address/lib/address.js b/node_modules/address/lib/address.js
+index d4e5ebc..458313a 100644
+--- a/node_modules/address/lib/address.js
++++ b/node_modules/address/lib/address.js
+@@ -68,7 +68,12 @@ function address(interfaceName, callback) {
+ }
+ 
+ address.interface = function (family, name) {
+-  var interfaces = os.networkInterfaces();
++  var interfaces;
++  try {
++    interfaces = os.networkInterfaces();
++  } catch (err) {
++    return undefined;
++  }
+   var noName = !name;
+   name = name || getInterfaceName();
+   family = family || 'IPv4';
