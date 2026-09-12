@@ -17,7 +17,10 @@ export default {
     color5: { control: 'color' },
     isHexColors: { control: 'boolean' },
     rounded: { control: 'boolean' },
-  } as unknown, // Change the type of argTypes to unknown
+    className: { control: false, table: { disable: true } },
+    colors: { control: false, table: { disable: true } },
+    children: { control: false, table: { disable: true } },
+  } as unknown,
 } as Meta;
 
 type ExtendedBackgroundProps = BackgroundProps & {
@@ -56,6 +59,7 @@ Default.args = {
   isHexColors: true,
   rounded: true,
 };
+Default.tags = ['!dev'];
 
 export const ExampleBackgroundOne = () => {
   const colors = ['#c9ffe9', '#5cbeff', '#9f75ff', '#d498ff', '#ffffff'];
@@ -74,6 +78,7 @@ export const ExampleBackgroundOne = () => {
     </div>
   )
 };
+ExampleBackgroundOne.parameters = { controls: { disable: true } };
 
 export const ExampleBackgroundTwo = () => {
   const colors = ['#e1ffb5', '#b7d669', '#77cd8f', '#67ff9f', '#e1ffb5'];
@@ -92,3 +97,4 @@ export const ExampleBackgroundTwo = () => {
     </div>
   )
 };
+ExampleBackgroundTwo.parameters = { controls: { disable: true } };

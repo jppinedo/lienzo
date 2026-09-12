@@ -5,18 +5,26 @@ import Label from '@components/atoms/Label/Label';
 import Box from '@atoms/Box/Box';
 
 const meta: Meta<typeof Checkbox> = {
+  title: 'Atoms/Checkbox',
   component: Checkbox,
+  argTypes: {
+    size: { control: 'select', options: ['sm', 'md', 'lg'] },
+    isChecked: { control: 'boolean' },
+    className: { control: false, table: { disable: true } },
+    onChange: { control: false, table: { disable: true } },
+  },
 };
 
 export default meta;
 
 const Template: StoryFn<CheckboxProps> = (args) => <Checkbox {...args}/>;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Default = Template.bind({});
+Default.args = {
   size: 'md',
   isChecked: false,
 };
+Default.tags = ['!dev'];
 
 const SizesTemplate: StoryFn = () => {
   const [activeChecks, setActiveChecks] = useState([false, false, false]);
@@ -51,3 +59,4 @@ const SizesTemplate: StoryFn = () => {
 }
 
 export const Sizes = SizesTemplate.bind({});
+Sizes.parameters = { controls: { disable: true } };

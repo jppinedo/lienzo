@@ -1,15 +1,7 @@
-// import type { StorybookConfig } from "@storybook/react-webpack5";
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
+const path = require('path');
 
-import type { StorybookConfig } from '@storybook/react-webpack5';
-import path from 'path';
-import { createRequire } from 'module';
-import { fileURLToPath } from 'url';
-
-const require = createRequire(import.meta.url);
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const config: StorybookConfig = {
-  
+const config = {
   stories: [
     '../src/docs/index.mdx',
     '../src/**/*.stories.tsx',
@@ -25,35 +17,34 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     '@storybook/addon-docs',
     '@storybook/addon-docs/blocks',
-    ({
-      name: "@storybook/addon-styling-webpack",
-
+    {
+      name: '@storybook/addon-styling-webpack',
       options: {
         rules: [{
-      test: /\.css$/,
-      sideEffects: true,
-      use: [
-          require.resolve("style-loader"),
-          {
-              loader: require.resolve("css-loader"),
+          test: /\.css$/,
+          sideEffects: true,
+          use: [
+            require.resolve('style-loader'),
+            {
+              loader: require.resolve('css-loader'),
               options: {
-                  
-                  importLoaders: 1,
+                importLoaders: 1,
               },
-          },{
-    loader: require.resolve("postcss-loader"),
-    options: {
-    implementation: require.resolve("postcss"),
+            },
+            {
+              loader: require.resolve('postcss-loader'),
+              options: {
+                implementation: require.resolve('postcss'),
+              },
+            },
+          ],
+        }],
+      },
     },
-    },
-      ],
-    },],
-      }
-    })
   ],
-  webpackFinal: async (config) => {
-    if(config.module && config.module.rules) {
-      config.module.rules.push({
+  webpackFinal: async (webpackConfig) => {
+    if (webpackConfig.module && webpackConfig.module.rules) {
+      webpackConfig.module.rules.push({
         test: /\.tsx?$/,
         use: [
           {
@@ -62,12 +53,11 @@ const config: StorybookConfig = {
               presets: [['react-app', { flow: false, typescript: true }]],
             },
           },
-          //require.resolve('react-docgen-typescript-loader'),
         ],
       });
     }
-    if(config.module && config.module.rules) {
-      config.module.rules.push({
+    if (webpackConfig.module && webpackConfig.module.rules) {
+      webpackConfig.module.rules.push({
         test: /\.css$/,
         use: [
           {
@@ -85,10 +75,10 @@ const config: StorybookConfig = {
         include: path.resolve(__dirname, '../'),
       });
     }
-    if(config.resolve && config.resolve.extensions) {
-      config.resolve.extensions.push('.ts', '.tsx');
+    if (webpackConfig.resolve && webpackConfig.resolve.extensions) {
+      webpackConfig.resolve.extensions.push('.ts', '.tsx');
     }
-    return config;
+    return webpackConfig;
   },
   framework: {
     name: '@storybook/react-webpack5',
@@ -99,6 +89,4 @@ const config: StorybookConfig = {
   },
 };
 
-
-
-export default config;
+module.exports = config;

@@ -1,17 +1,11 @@
-import { Meta, Story, Controls, Canvas } from '@storybook/blocks';
+import { Meta, Canvas, Controls } from '@storybook/blocks';
 import * as Stories from './Checkbox.stories';
 
 # Checkbox
 
-<Meta of={Stories} title="Atoms/Checkbox"/>
+<Meta of={Stories} />
 
 A simple checkbox component with basic customization. 3 sizes to choose from: `sm`, `md`, `lg`.
 
-
-## All Sizes
-<Canvas of={Stories.Sizes} />
-
-## Single
-<Canvas of={Stories.Primary} />
-
-<Controls />
+<Canvas of={Stories.Default} />
+<Controls of={Stories.Default} />

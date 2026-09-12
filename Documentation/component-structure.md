@@ -44,8 +44,8 @@ Each component lives in its own folder under `atoms/` or `molecules/`. Typical f
 | `ComponentName.tsx` | React component and its props interface |
 | `ComponentNameStyles.ts` | (Optional) Tailwind class strings exported as objects (e.g. [BoxStyles.ts](../src/components/atoms/Box/BoxStyles.ts), [ButtonStyles.ts](../src/components/atoms/Button/ButtonStyles.ts)) |
 | `ComponentName.css` | (Optional) Component-specific CSS when Tailwind is not enough (e.g. [Button.css](../src/components/atoms/Button/Button.css)) |
-| `ComponentName.stories.tsx` | Storybook stories for the component |
-| `ComponentName.mdx` | (Optional) Extra Storybook docs in MDX |
+| `ComponentName.stories.tsx` | Storybook CSF stories: a hidden `Default` story for Docs (not listed in the sidebar), plus visible variant galleries |
+| `ComponentName.mdx` | Storybook Docs page: description, one live instance, and style-only Controls |
 
 **Pattern**: Prefer Tailwind for styling. Use `*Styles.ts` to keep class names in one place. Use `.css` only when Tailwind cannot handle the case (e.g. keyframes, complex selectors). Many components use shared types from `@interfaces/sizes` (e.g. `RoundedSizes`).
 
@@ -56,7 +56,7 @@ Each component lives in its own folder under `atoms/` or `molecules/`. Typical f
 1. Create a folder under `src/components/atoms/` or `src/components/molecules/` (e.g. `src/components/atoms/MyAtom/`).
 2. Add `ComponentName.tsx` with the React component and its props interface.
 3. Add optional `ComponentNameStyles.ts` for Tailwind class strings and optional `ComponentName.css` if needed.
-4. Add `ComponentName.stories.tsx` so the component appears in Storybook.
+4. Add `ComponentName.stories.tsx` and `ComponentName.mdx` so the component appears in Storybook (see [Storybook](storybook.md) for the Docs page pattern). Set `title` to `Atoms/ComponentName`, `Molecules/ComponentName`, or `Organisms/ComponentName`.
 5. Use path aliases for imports (e.g. `@atoms/MyAtom/MyAtom`, `@interfaces/sizes`).
 6. Use design tokens from the Tailwind theme where possible (see [Design tokens & colors](design-tokens-colors.md)).
 

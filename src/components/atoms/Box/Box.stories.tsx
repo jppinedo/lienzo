@@ -8,6 +8,13 @@ import Button from '../Button/Button';
 export default {
   title: 'Atoms/Box',
   component: Box,
+  argTypes: {
+    type: { control: 'select', options: ['default', 'glass'] },
+    className: { control: false, table: { disable: true } },
+    children: { control: false, table: { disable: true } },
+    header: { control: false, table: { disable: true } },
+    footer: { control: false, table: { disable: true } },
+  },
 } as Meta;
 
 const Template: StoryFn<BoxProps> = (args) => (
@@ -24,7 +31,9 @@ Default.args = {
     </p>
   ),
   className: 'w-5/12',
+  type: 'default',
 };
+Default.tags = ['!dev'];
 
 export const GlassBox = () => (
   <div className='p-3 h-full'>
@@ -47,3 +56,4 @@ export const GlassBox = () => (
   </div>
   </div>
 );
+GlassBox.parameters = { controls: { disable: true } };

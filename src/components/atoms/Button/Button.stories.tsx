@@ -9,6 +9,16 @@ import { Copy, Crop, Codepen, Codesandbox, Command, Trash2, Bold, Italic, Share2
 export default {
   title: 'Atoms/Button',
   component: Button,
+  argTypes: {
+    label: { control: 'text' },
+    mode: { control: 'select', options: ['default', 'tool'] },
+    type: { control: 'select', options: ['default', 'red', 'green', 'yellow'] },
+    fill: { control: 'select', options: ['solid', 'outline', 'ghost'] },
+    iconPosition: { control: 'select', options: ['left', 'right', 'top', 'bottom'] },
+    onClick: { control: false, table: { disable: true } },
+    ariaLabel: { control: false, table: { disable: true } },
+    icon: { control: false, table: { disable: true } },
+  },
 } as Meta;
 
 export const DefaultButtons = () => (
@@ -377,14 +387,15 @@ const Template: StoryFn<ButtonProps> = (args) => (
   <div className='p-3'><Button {...args} /></div>
 );
 
-export const SingleButton = Template.bind({});
-SingleButton.args = {
+export const Default = Template.bind({});
+Default.args = {
   label: 'Red Solid',
   onClick: () => action('Red Solid Button clicked!'),
   ariaLabel: 'Red Solid Button',
   type: 'red',
-  fill: 'solid'
+  fill: 'solid',
 };
+Default.tags = ['!dev'];
 
 const emptyControls = { controls: { disable: true }}
 DefaultButtons.parameters = emptyControls;

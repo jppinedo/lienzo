@@ -6,7 +6,19 @@ export default {
   title: 'Atoms/Spinner',
   component: Spinner,
   argTypes: {
-    colorClass: { control: 'text' },
+    colorClass: {
+      control: {
+        type: 'select',
+        labels: {
+          'border-red': 'Red',
+          'border-green': 'Green',
+          'border-yellow': 'Yellow',
+          'border-gray-700': 'Gray',
+          'border-black': 'Black',
+        },
+      },
+      options: ['border-red', 'border-green', 'border-yellow', 'border-gray-700', 'border-black'],
+    },
     size: { control: 'text' },
     thickness: { control: 'text' },
   },
@@ -20,6 +32,7 @@ Default.args = {
   size: '1rem',
   thickness: '0.2rem',
 };
+Default.tags = ['!dev'];
 
 export const RedLarge = Template.bind({});
 RedLarge.args = {
@@ -27,3 +40,4 @@ RedLarge.args = {
   size: '2rem',
   thickness: '0.4rem',
 };
+RedLarge.parameters = { controls: { disable: true } };

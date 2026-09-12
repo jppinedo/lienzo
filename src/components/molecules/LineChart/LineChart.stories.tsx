@@ -21,6 +21,16 @@ const PIO_COLORS = {
 export default {
   title: 'Molecules/LineChart',
   component: LineChart,
+  argTypes: {
+    height: { control: 'number' },
+    showGrid: { control: 'boolean' },
+    showTooltip: { control: 'boolean' },
+    data: { control: false, table: { disable: true } },
+    series: { control: false, table: { disable: true } },
+    xAxisKey: { control: false, table: { disable: true } },
+    width: { control: false, table: { disable: true } },
+    yAxisDomain: { control: false, table: { disable: true } },
+  },
 } as Meta;
 
 const sampleData: LineChartDataItem[] = [
@@ -54,7 +64,18 @@ const Template: StoryFn<LineChartProps> = (args) => (
   <LineChart {...args} />
 );
 
-/** Chart only (for development / layout). */
+export const Default = Template.bind({});
+Default.args = {
+  data: sampleData,
+  series: defaultSeries,
+  xAxisKey: 'day',
+  height: 280,
+  showGrid: false,
+  showTooltip: true,
+  yAxisDomain: [0, 4],
+};
+Default.tags = ['!dev'];
+
 export const ChartOnly = Template.bind({});
 ChartOnly.args = {
   data: sampleData,
@@ -65,9 +86,9 @@ ChartOnly.args = {
   showTooltip: true,
   yAxisDomain: [0, 4],
 };
+ChartOnly.parameters = { controls: { disable: true } };
 
-/** Chart inside Box with Title and footer Button, using pio colors (matches design). */
-export const Default = () => (
+export const WithBox = () => (
   <div className="p-6 max-w-xl">
     <Box
       header={<Title size="lg">Weekly trend</Title>}
@@ -92,6 +113,7 @@ export const Default = () => (
     </Box>
   </div>
 );
+WithBox.parameters = { controls: { disable: true } };
 
 /** Same composition with alternating pio dot colors (stone/coral). */
 export const WithAlternatingDotColors = () => {
@@ -137,3 +159,4 @@ export const WithAlternatingDotColors = () => {
     </div>
   );
 };
+WithAlternatingDotColors.parameters = { controls: { disable: true } };

@@ -17,6 +17,9 @@ export default {
         options: ['top', 'bottom'],
       },
     },
+    type: { control: 'select', options: ['button', 'label'] },
+    rounded: { control: 'select', options: ['none', 'default', 'sm', 'md', 'lg', 'full'] },
+    items: { control: false, table: { disable: true } },
   },
 } as Meta;
 
@@ -97,10 +100,9 @@ const buttonItems = [
   />,
 ];
 
-export const Default = Template.bind({});
-Default.args = {
-  menuPosition: 'bottom',
-  rounded: 'xl',
+const defaultToolbarArgs = {
+  menuPosition: 'bottom' as const,
+  rounded: 'xl' as const,
   items: [
     { id: '1', item: buttonItems[0], onClick: () => {} },
     { id: '2', item: buttonItems[1], onClick: () => {} },
@@ -120,6 +122,14 @@ Default.args = {
     { id: '6', item: buttonItems[5], onClick: () => {} },
   ],
 };
+
+export const Default = Template.bind({});
+Default.args = defaultToolbarArgs;
+Default.tags = ['!dev'];
+
+export const Basic = Template.bind({});
+Basic.args = defaultToolbarArgs;
+Basic.parameters = { controls: { disable: true } };
 
 export const buttonToolbar = () => {
   const toolbarItems = [
@@ -207,4 +217,5 @@ export const buttonToolbar = () => {
       />
     </div>
   );
-}
+};
+buttonToolbar.parameters = { controls: { disable: true } };

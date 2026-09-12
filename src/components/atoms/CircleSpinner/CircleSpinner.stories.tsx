@@ -8,29 +8,38 @@ export default {
   argTypes: {
     colorClass: {
       options: ['bg-red', 'bg-yellow', 'bg-green', 'bg-gray-700', 'bg-black'],
-      control: { type: 'select' } 
+      control: {
+        type: 'select',
+        labels: {
+          'bg-red': 'Red',
+          'bg-yellow': 'Yellow',
+          'bg-green': 'Green',
+          'bg-gray-700': 'Gray',
+          'bg-black': 'Black',
+        },
+      },
     },
     thickness: {
       control: { type: 'range', min: 0, max: 2.6, step: 0.1 }
     },
-    size: { 
+    size: {
       control: { type: 'number' },
     },
   },
 } as Meta;
-
 
 const Template: StoryFn<typeof CircleSpinner> = (args) => {
   const sizeInRem = `${args.size}rem`;
   return <CircleSpinner {...args} size={sizeInRem} />;
 };
 
-export const SingleSpinner = Template.bind({});
-SingleSpinner.args = {
+export const Default = Template.bind({});
+Default.args = {
   colorClass: 'bg-green',
   thickness: 1,
   size: 6,
 };
+Default.tags = ['!dev'];
 
 export const MultipleSpinners = () => (
   <div className='flex p-5 gap-3'>
@@ -39,10 +48,6 @@ export const MultipleSpinners = () => (
     <CircleSpinner colorClass='bg-yellow-dark dark:bg-yellow' thickness={0.5} size='4rem' />
     <CircleSpinner colorClass='bg-gray-900 dark:bg-white' thickness={0.5} size='4rem' />
   </div>
-)
+);
 
-MultipleSpinners.parameters = {
-  controls: {
-    disable: true
-  }
-};
+MultipleSpinners.parameters = { controls: { disable: true } };

@@ -1,43 +1,29 @@
-// Label.stories.tsx
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 import Label, { LabelProps } from './Label';
 import { Archive, Camera, Clock, Gift } from 'react-feather';
 
-const icons = {
-  Archive: <Archive />,
-  Camera: <Camera />,
-  Clock: <Clock />,
-  Gift: <Gift />,
-};
-
 export default {
   title: 'Atoms/Label',
   component: Label,
   argTypes: {
-    className: { control: 'text' },
+    className: { control: false, table: { disable: true } },
     items: { control: 'number' },
-    icon: { control: { type: 'select', options: Object.keys(icons) } },
-    type: { control: { type: 'select', options: ['default', 'red', 'yellow', 'green'] } },
+    type: { control: 'select', options: ['default', 'red', 'yellow', 'green'] },
     text: { control: 'text' },
+    icon: { control: false, table: { disable: true } },
   },
 } as Meta;
 
-type LabelPropsString = Omit<LabelProps, 'icon'> & { icon: keyof typeof icons };
+const Template: StoryFn<LabelProps> = (args) => <Label {...args} />;
 
-const Template: StoryFn<LabelPropsString> = (args) => {
-  const icon: React.ReactElement = icons[args.icon];
-  return <Label {...args} icon={icon} />;
-};
-
-export const CustomizableLabel = Template.bind({});
-CustomizableLabel.args = {
-  className: '',
+export const Default = Template.bind({});
+Default.args = {
   items: 1,
-  icon: 'Archive',
   type: 'default',
   text: 'Label',
 };
+Default.tags = ['!dev'];
 
 export const AllColors = () => (
   <>
@@ -68,8 +54,4 @@ export const AllColors = () => (
   </>
 );
 
-AllColors.parameters = {
-  controls: {
-    disable: true
-  }
-};
+AllColors.parameters = { controls: { disable: true } };

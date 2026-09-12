@@ -15,10 +15,38 @@ const preview: Preview = {
     },
     options: {
       storySort: (a, b) => {
+        const PINNED = ['Welcome', 'Colors', 'Intro'];
+        const TIERS = ['Atoms', 'Molecules', 'Organisms'];
+
+        const aRoot = a.title?.split('/')[0] ?? '';
+        const bRoot = b.title?.split('/')[0] ?? '';
+
+        const aPinned = PINNED.indexOf(aRoot);
+        const bPinned = PINNED.indexOf(bRoot);
+        if (aPinned !== -1 || bPinned !== -1) {
+          if (aPinned === -1) return 1;
+          if (bPinned === -1) return -1;
+          return aPinned - bPinned;
+        }
+
+        const aTier = TIERS.indexOf(aRoot);
+        const bTier = TIERS.indexOf(bRoot);
+        if (aTier !== bTier) {
+          if (aTier === -1) return 1;
+          if (bTier === -1) return -1;
+          return aTier - bTier;
+        }
+
         const aTitle = a.title ?? '';
         const bTitle = b.title ?? '';
-        if (aTitle === 'Welcome') return -1;
-        if (bTitle === 'Welcome') return 1;
+        if (aTitle === bTitle) {
+          const aIsDocs = a.type === 'docs' || a.name === 'Docs';
+          const bIsDocs = b.type === 'docs' || b.name === 'Docs';
+          if (aIsDocs && !bIsDocs) return -1;
+          if (bIsDocs && !aIsDocs) return 1;
+          return (a.name ?? '').localeCompare(b.name ?? '', undefined, { numeric: true });
+        }
+
         return aTitle.localeCompare(bTitle, undefined, { numeric: true });
       },
     },

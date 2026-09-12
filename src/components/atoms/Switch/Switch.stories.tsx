@@ -14,11 +14,9 @@ export default {
         options: ['sm', 'md', 'lg'],
       },
     },
-    isActive: {
-      control: {
-        type: 'boolean',
-      },
-    },
+    isActive: { control: 'boolean' },
+    className: { control: false, table: { disable: true } },
+    onChange: { control: false, table: { disable: true } },
   },
 } as Meta;
 
@@ -29,6 +27,7 @@ Default.args = {
   size: 'md',
   isActive: false,
 };
+Default.tags = ['!dev'];
 
 export const Sizes = () => {
   const [activeSwitches, setActiveSwitches] = useState([false, false, false]);
@@ -63,3 +62,4 @@ export const Sizes = () => {
   </>
   );
 };
+Sizes.parameters = { controls: { disable: true } };

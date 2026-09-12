@@ -7,11 +7,14 @@ import { Download } from 'react-feather';
 export default {
   title: 'Molecules/Tabs',
   component: Tabs,
+  argTypes: {
+    activeTab: { control: 'text' },
+    tabs: { control: false, table: { disable: true } },
+  },
 } as Meta;
 
 const Template: StoryFn<typeof Tabs> = (args) => <Tabs {...args} />;
 const containerClass = 'flex justify-center items-center h-64 border border-blue-200 bg-gray-100 dark:border-none dark:bg-gray-900 dark:text-blue-200';
-const containerStyles = {backgroundColor: '#d6dad7', border: '1px solid #cbcaca'}
 
 export const Default = Template.bind({});
 Default.args = {
@@ -63,3 +66,4 @@ Default.args = {
     },
   ],
 };
+Default.tags = ['!dev'];

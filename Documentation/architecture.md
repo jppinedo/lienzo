@@ -17,7 +17,6 @@
 | `css/` | Global styles: [lienzo.css](../src/css/lienzo.css), `fullHeightCanvas.css` |
 | `docs/` | Storybook intro and welcome content (MDX) |
 | `interfaces/` | Shared TypeScript types (e.g. [sizes.ts](../src/interfaces/sizes.ts)) |
-| `stories/` | Legacy/example Storybook stories |
 
 ## TypeScript path aliases
 

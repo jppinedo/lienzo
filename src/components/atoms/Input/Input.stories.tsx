@@ -1,7 +1,6 @@
-// Input.stories.tsx
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
-import { DownloadCloud, CheckCircle, GitHub, AlertCircle } from 'react-feather';
+import { DownloadCloud, CheckCircle, AlertCircle } from 'react-feather';
 import Input, { InputProps } from './Input';
 
 export default {
@@ -11,39 +10,29 @@ export default {
     type: {
       control: { type: 'select', options: ['default', 'red', 'green'] },
     },
-    label: {
-      control: 'text',
-    },
-    placeholder: {
-      control: 'text',
-    },
-    icon: {
-      control: { type: 'object' }, // Updated control type for icon
-    },
+    label: { control: 'text' },
+    placeholder: { control: 'text' },
     iconPosition: {
       control: { type: 'select', options: ['left', 'right'] },
     },
-    hint: {
-      control: 'text',
-    },
-    initialValue: {
-      control: 'text',
-    },
+    hint: { control: 'text' },
+    initialValue: { control: 'text' },
+    icon: { control: false, table: { disable: true } },
   },
 } as Meta;
 
 const Template: StoryFn<InputProps> = (args) => <Input {...args} />;
 
-export const EditableInput = Template.bind({});
-EditableInput.args = {
+export const Default = Template.bind({});
+Default.args = {
   type: 'default',
   label: 'Username',
   placeholder: 'Enter your username',
-  icon: <GitHub />,
   iconPosition: 'left',
   hint: 'This is a hint for the username input',
   initialValue: 'JohnDoe',
 };
+Default.tags = ['!dev'];
 
 export const AllTypes = () => (
   <div className="flex gap-2">
@@ -74,8 +63,4 @@ export const AllTypes = () => (
   </div>
 );
 
-AllTypes.parameters = {
-  controls: {
-    disable: true
-  }
-};
+AllTypes.parameters = { controls: { disable: true } };
