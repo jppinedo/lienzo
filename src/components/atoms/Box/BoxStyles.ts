@@ -29,5 +29,6 @@ export const boxContentArea = [
 ].join(' ');
 
 export const boxHeader = 'px-3 pt-3 pb-2';
+export const boxHeaderOutside = 'px-3 py-3';
 export const boxContent = 'p-3';
 export const boxFooter = 'px-3 py-3';

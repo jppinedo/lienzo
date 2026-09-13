@@ -10,6 +10,7 @@ export default {
     fontFamily: { control: 'select', options: ['lexend', 'poppins'] },
     thikness: { control: 'select', options: ['thin', 'regular', 'bold'] },
     children: { control: 'text' },
+    className: { control: 'text' },
   },
 } as Meta;
 

@@ -14,16 +14,16 @@ The path `@organisms/*` is set up in `tsconfig.json` for future use, but there a
 | Component | Description |
 |-----------|-------------|
 | **Background** | Gradient or custom background wrapper |
-| **Box** | Container with default or glass style; supports dark mode |
+| **Box** | Container with default or glass style; optional header and footer; `headerOutside` places the header in the outer container; supports dark mode |
 | **Button** | Primary UI action with variants (type, fill, mode) and optional icon |
 | **Checkbox** | Form checkbox control |
 | **CircleSpinner** | Circular loading indicator |
-| **Input** | Text input field |
+| **Input** | Text input with type, fill (`solid`, `outline`, `ghost`), rounding, optional label, hint, and icon |
 | **Label** | Text label with optional icon and type styling |
 | **Select** | Dropdown select control |
 | **Spinner** | Loading spinner |
 | **Switch** | Toggle switch |
-| **Title** | Heading / title text |
+| **Title** | Heading / title text; optional `className` for extra Tailwind or CSS classes |
 
 ## Molecules
 

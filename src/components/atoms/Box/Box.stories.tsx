@@ -14,6 +14,7 @@ export default {
     children: { control: false, table: { disable: true } },
     header: { control: false, table: { disable: true } },
     footer: { control: false, table: { disable: true } },
+    headerOutside: { control: 'boolean' },
   },
 } as Meta;
 
@@ -32,8 +33,16 @@ Default.args = {
   ),
   className: 'w-5/12',
   type: 'default',
+  headerOutside: false,
 };
 Default.tags = ['!dev'];
+
+export const HeaderOutside = Template.bind({});
+HeaderOutside.args = {
+  ...Default.args,
+  headerOutside: true,
+};
+HeaderOutside.tags = ['!dev'];
 
 export const GlassBox = () => (
   <div className='p-3 h-full'>

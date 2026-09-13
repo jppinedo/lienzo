@@ -8,6 +8,7 @@ export interface TitleProps {
   children: React.ReactNode;
   thikness?: 'thin' | 'regular' | 'bold';
   fontFamily?: 'lexend' | 'poppins';
+  className?: string;
 }
 
 declare const TitleTags: Readonly<{
@@ -22,7 +23,8 @@ const Title: React.FC<TitleProps> = ({
   size = 'md', 
   children,
   thikness = 'regular',
-  fontFamily = 'poppins'
+  fontFamily = 'poppins',
+  className,
 }) => {
 
   const sizeToTag = {
@@ -35,7 +37,7 @@ const Title: React.FC<TitleProps> = ({
 
   const Tag: keyof typeof TitleTags = sizeToTag[size] as keyof typeof TitleTags;
 
-  const classes = `${titleStyles.base} ${titleStyles[size]} font-${thikness} font-${fontFamily}`;
+  const classes = `${titleStyles.base} ${titleStyles[size]} font-${thikness} font-${fontFamily} ${className || ''}`;
 
   return (
     <Tag className={classes}>

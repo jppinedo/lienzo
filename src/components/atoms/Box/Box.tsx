@@ -3,6 +3,7 @@ import {
   boxStyles,
   boxContentArea,
   boxHeader,
+  boxHeaderOutside,
   boxContent,
   boxFooter,
 } from './BoxStyles';
@@ -13,6 +14,7 @@ export interface BoxProps {
   type?: 'glass' | 'default';
   header?: React.ReactNode;
   footer?: React.ReactNode;
+  headerOutside?: boolean;
 }
 
 const Box: React.FC<BoxProps> = ({
@@ -21,6 +23,7 @@ const Box: React.FC<BoxProps> = ({
   type = 'default',
   header,
   footer,
+  headerOutside = false,
 }) => {
   if (type === 'glass') {
     return (
@@ -32,14 +35,21 @@ const Box: React.FC<BoxProps> = ({
     );
   }
 
+  const headerEl =
+    header != null ? (
+      <div
+        data-box-header
+        className={headerOutside ? boxHeaderOutside : boxHeader}
+      >
+        {header}
+      </div>
+    ) : null;
+
   return (
     <div className={`${boxStyles.default} ${className || ''}`}>
+      {headerOutside && headerEl}
       <div data-box-content-area className={boxContentArea}>
-        {header != null && (
-          <div data-box-header className={boxHeader}>
-            {header}
-          </div>
-        )}
+        {!headerOutside && headerEl}
         <div data-box-content className={boxContent}>
           {children}
         </div>
