@@ -57,7 +57,7 @@ Atoms
 
 **Default** is a CSF export used only by Docs. It is hidden from the sidebar (`tags: ['!dev']` plus a sidebar filter in [.storybook/manager.js](../.storybook/manager.js)). Changing Docs controls does not surface a separate Default page.
 
-**Variant stories** (e.g. `Sizes`, `AllTypes`) are visible galleries. Set `parameters: { controls: { disable: true } }` on them.
+**Variant stories** (e.g. `Sizes`, `AllTypes`) are visible galleries. Set `parameters: { controls: { disable: true } }` on them. The bottom addon panel (Actions, Visual Tests, Interactions) is hidden by default via `showPanel: false` in [.storybook/manager.js](../.storybook/manager.js).
 
 Pattern per component:
 
@@ -107,7 +107,7 @@ Stub handlers can still be passed in `Default.args` so the component renders; th
 | **Styling (webpack)** | Ensures CSS (including Tailwind) is loaded in Storybook |
 | **Chromatic** | Visual testing and regression (when configured) |
 
-They appear in the Storybook UI toolbar and in the docs tab. Use the theme switcher to verify `dark:` styles.
+They appear in the Storybook UI toolbar. The bottom addon panel is hidden by default so variant stories stay as galleries; prop editing happens on **Docs**. Use the theme switcher to verify `dark:` styles.
 
 ## Building for deploy
 

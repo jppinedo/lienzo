@@ -19,5 +19,6 @@ Clone the repo, then run `npm install` and `npm run storybook`. Storybook will b
 | [Libraries](libraries.md) | React, TypeScript, Tailwind, Storybook, Recharts, react-feather |
 | [Storybook](storybook.md) | Running Storybook, story locations, addons, and build |
 | [Assets](assets.md) | `src/assets/`, SVG components, and `@assets` usage |
+| [Feature specs](../features/component_view_template/00-overview.md) | Staged plans under `features/` (not runtime). Component-view Docs template: [overview](../features/component_view_template/00-overview.md) |
 
 Start with **Getting started** to run the project, then **Architecture** and **Component structure** to understand how the codebase is organized.

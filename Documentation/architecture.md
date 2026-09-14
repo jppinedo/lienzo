@@ -6,6 +6,8 @@
 - **`.storybook/`**: Storybook configuration (main, preview, webpack, global CSS)
 - **`src/`**: All application source code (see below)
 - **`Documentation/`**: Project documentation (this folder)
+- **`features/`**: Staged feature specs (implementation plans split by step). These are not the public component Docs pages. The component-view Docs template sequence lives in [features/component_view_template/](../features/component_view_template/00-overview.md).
+- **`brand/`**: Design references (e.g. Stitch HTML/PNG) used as visual source, not runtime code
 
 ## `src/` folder structure
 

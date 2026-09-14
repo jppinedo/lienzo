@@ -8,11 +8,26 @@ The **source of truth** for color values is `src/css/tokens.css` (CSS variables)
 - **Tailwind utilities**: `tailwind.config.js` maps each Tailwind color name to the token using `rgb(var(--token) / <alpha-value>)` so utilities support opacity (e.g. `bg-pio-teal-black/80`).
 - **Plain CSS (e.g. 3rd-party libs)**: component CSS can use the same tokens directly, e.g. `color: rgb(var(--lz-pio-teal-black));`.
 
+## Component variant mapping
+
+Public `type` props stay semantic. Chromatic variants use pio tokens; `default` stays gray.
+
+| `type` | Role | Token family |
+|--------|------|----------------|
+| `default` | Neutral | `gray-*`, white/black (no teal or green) |
+| `red` | Error / destructive | `pio-coral` |
+| `yellow` | Warning | `pio-amber` |
+| `green` | Success / positive | `pio-teal-dark` |
+
+Each chromatic family has a shade ladder: **base**, **hover**, **dark**, **muted**, **pale**, plus **opacity-14** and **opacity-20** washes.
+
 ## Color groups
 
 ### Grays
 
-- **Scale**: `gray-100`, `gray-200`, `gray-300`, `gray-600`, `gray-700`, `gray-800`, `gray-900`
+Used for the `default` variant and neutral chrome.
+
+- **Scale**: `gray-100`, `gray-300`, `gray-600`, `gray-700`, `gray-800`, `gray-900`
 - **Opacity**: `gray-opacity-14`, `gray-opacity-20`, `gray-opacity-30`
 
 ### Base
@@ -21,21 +36,39 @@ The **source of truth** for color values is `src/css/tokens.css` (CSS variables)
 - **Opacity**: `white-opacity-14`, `black-opacity-14`, `black-opacity-20`
 - **Transparent**: `transparent`
 
-### Semantic (red, yellow, green)
+### Blue
 
-- **Red**: `red`, `red-dark`, `red-bright`, `red-300`, `red-opacity-14`, `red-opacity-20`, `red-opacity-30`
-- **Yellow**: `yellow`, `yellow-dark`, `yellow-bright`, `yellow-ghost`
-- **Green**: `green`, `green-bright`, `green-300`, `green-opacity-14`, `green-opacity-20`, `green-opacity-30`
+Used mainly for dark-mode text (`blue-200`): `blue-200`, `blue-400`, `blue-600`
 
-### Pio chart UI
-
-Used for chart backgrounds, tabs, and data series:
+### Pio backgrounds
 
 - **Backgrounds**: `pio-bg`, `pio-bg-light`, `pio-bg-opacity-90`
-- **Teal (active/primary)**: `pio-teal-dark`, `pio-teal-dark-hover`, `pio-teal-dark-opacity-20`
-- **Accents**: `pio-coral`, `pio-teal`, `pio-amber`, `pio-stone` (and `pio-coral-500`, `pio-teal-500`, `pio-amber-500`, `pio-stone-700`)
-- **Accent opacity**: `pio-coral-opacity-14`, `pio-teal-opacity-14`, `pio-amber-opacity-14`, `pio-stone-opacity-14`
-- **Text & UI**: `pio-text`, `pio-text-muted`, `pio-grid`
+
+### Pio teal dark (green / success)
+
+- **Fill / hover**: `pio-teal-dark`, `pio-teal-dark-hover`
+- **Shades**: `pio-teal-dark-muted`, `pio-teal-dark-pale`, `pio-teal-black`
+- **Opacity**: `pio-teal-dark-opacity-14`, `pio-teal-dark-opacity-20`
+
+### Pio coral (red / error)
+
+- **Fill / hover / dark / muted / pale**: `pio-coral`, `pio-coral-hover`, `pio-coral-dark`, `pio-coral-muted`, `pio-coral-pale`
+- **Opacity**: `pio-coral-opacity-14`, `pio-coral-opacity-20`
+
+### Pio amber (yellow / warning)
+
+- **Fill / hover / dark / muted / pale**: `pio-amber`, `pio-amber-hover`, `pio-amber-dark`, `pio-amber-muted`, `pio-amber-pale`
+- **Opacity**: `pio-amber-opacity-14`, `pio-amber-opacity-20`
+
+### Pio stone (chart accent)
+
+Not a control variant. Used for data series.
+
+- `pio-stone`, `pio-stone-dark`, `pio-stone-pale`, `pio-stone-opacity-14`
+
+### Pio text & UI
+
+- `pio-text`, `pio-text-muted`, `pio-grid`
 
 ### Canvas (theming)
 
@@ -52,7 +85,7 @@ Configured as:
 darkMode: ['class', '[data-mode="dark"]']
 ```
 
-Dark mode is active when the root element has the `dark` class or a `data-mode="dark"` attribute. In components, use Tailwind’s `dark:` variant (e.g. `dark:bg-gray-800`, `dark:text-gray-200`).
+Dark mode is active when the root element has the `dark` class or a `data-mode="dark"` attribute. In components, use Tailwind’s `dark:` variant (e.g. `dark:bg-gray-800`, `dark:text-blue-200`).
 
 ## Extended theme (typography)
 
@@ -62,6 +95,6 @@ Dark mode is active when the root element has the `dark` class or a `data-mode="
 ## Using colors in code
 
 - **In JS/TS**: Prefer Tailwind utility classes. When you need a runtime color value (e.g. canvas/chart library), read the computed CSS variable from the DOM (tokens are defined in `src/css/tokens.css`).
-- **In components**: Prefer Tailwind utility classes (e.g. `bg-pio-bg`, `text-pio-text`, `border-gray-200`).
+- **In components**: Prefer Tailwind utility classes (e.g. `bg-pio-bg`, `text-pio-text`, `border-gray-300`).
 
 For a **visual reference** of the palette, open Storybook and go to the **Colors** story ([src/colors/colors.stories.tsx](../src/colors/colors.stories.tsx)).
