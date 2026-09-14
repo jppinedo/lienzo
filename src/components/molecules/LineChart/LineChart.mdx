@@ -1,11 +1,148 @@
-import { Meta, Canvas, Controls } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
 import * as Stories from './LineChart.stories';
-
-# LineChart
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
-Line chart built with Recharts. Configurable series, axes, grid, and tooltip.
+export const lineChartExample = `import LineChart from '@molecules/LineChart/LineChart';
 
-<Canvas of={Stories.Default} />
-<Controls of={Stories.Default} />
+const data = [
+  { day: 'Mon', series1: 0.6, series2: 2.1 },
+  { day: 'Tue', series1: 1.2, series2: 2.3 },
+  { day: 'Wed', series1: 2.9, series2: 1.5 },
+  { day: 'Thu', series1: 2.0, series2: 2.4 },
+  { day: 'Fri', series1: 0.9, series2: 3.7 },
+  { day: 'Sat', series1: 2.5, series2: 1.4 },
+  { day: 'Sun', series1: 2.2, series2: 1.5 },
+];
+
+const series = [
+  {
+    dataKey: 'series1',
+    name: 'Series 1',
+    stroke: '#2b665d',
+    dotFill: '#2b665d',
+    dotStroke: '#2b665d',
+  },
+  {
+    dataKey: 'series2',
+    name: 'Series 2',
+    stroke: '#f4a460',
+    dotFill: '#f4a460',
+    dotStroke: '#f4a460',
+  },
+];
+
+<LineChart
+  data={data}
+  series={series}
+  xAxisKey="day"
+  height={280}
+  showGrid={false}
+  showTooltip
+  yAxisDomain={[0, 4]}
+/>`;
+
+<ComponentDocsPage
+  title="LineChart"
+  description="Line chart built with Recharts. Configurable series, axes, grid, and tooltip."
+  stories={Stories}
+  useCases={{
+    cases: [
+      'Show trends over continuous periods (day, week, or similar sequences).',
+      'Compare a small number of series on a shared axis.',
+      'Highlight peaks, troughs, and crossovers between lines.',
+      'Embed a compact trend beside related UI, such as inside a Box.',
+    ],
+  }}
+  variations={[
+    {
+      id: 'chart-only',
+      label: 'Chart only',
+      canvas: <Canvas of={Stories.ChartOnly} />,
+      description: 'Standalone chart with sample series, axes, and tooltip—no surrounding chrome.',
+    },
+    {
+      id: 'with-box',
+      label: 'In a Box',
+      canvas: <Canvas of={Stories.WithBox} />,
+      description: 'Chart nested in a Box with a title header and action footer.',
+    },
+    {
+      id: 'alternating-dots',
+      label: 'Alternating dots',
+      canvas: <Canvas of={Stories.WithAlternatingDotColors} />,
+      description: 'Same Box composition with series stroke colors and contrasting dot fills.',
+    },
+  ]}
+  props={{
+    interfaceName: 'LineChartProps',
+    lead: 'Runtime props for LineChart. Style-only Controls expose height, showGrid, and showTooltip; data and series stay API-only.',
+    rows: [
+      {
+        name: 'data',
+        type: 'LineChartDataItem[]',
+        description: 'Row objects keyed by axis and series fields. Hidden from Controls.',
+      },
+      {
+        name: 'series',
+        type: 'LineChartSeriesConfig[]',
+        description:
+          'Series definitions: dataKey, optional name, stroke, dotFill, and dotStroke. Hidden from Controls.',
+      },
+      {
+        name: 'xAxisKey',
+        type: 'string',
+        description: 'Key on each data item used for the X axis. Hidden from Controls.',
+      },
+      {
+        name: 'width',
+        type: "number | `${number}%`",
+        defaultValue: "'100%'",
+        description: 'Chart width passed to ResponsiveContainer. Hidden from Controls.',
+      },
+      {
+        name: 'height',
+        type: "number | `${number}%`",
+        defaultValue: '280',
+        description: 'Chart height. Exposed in Live Preview Controls.',
+      },
+      {
+        name: 'showGrid',
+        type: 'boolean',
+        defaultValue: 'false',
+        description: 'Renders a horizontal Cartesian grid. Exposed in Controls.',
+      },
+      {
+        name: 'showTooltip',
+        type: 'boolean',
+        defaultValue: 'true',
+        description: 'Shows the Recharts tooltip on hover. Exposed in Controls.',
+      },
+      {
+        name: 'yAxisDomain',
+        type: "[number | 'auto', number | 'auto']",
+        defaultValue: "[0, 'auto']",
+        description: 'Y-axis domain bounds. Hidden from Controls.',
+      },
+    ],
+  }}
+  usage={{
+    whenToUse: [
+      'Values change continuously along an ordered axis (especially time).',
+      'You need to compare a few series and relative change matters more than absolute volume.',
+      'Readers should scan shape—rises, drops, and crossings—rather than exact cell values.',
+    ],
+    whenToAvoid: [
+      'Part-to-whole or ranked category comparisons (prefer bars or similar).',
+      'Many overlapping series that become hard to read as lines.',
+      'Emphasizing filled volume under the curve—that is a different chart type, not LineChart.',
+      'A single static snapshot with no trend to follow.',
+    ],
+  }}
+  example={{
+    code: lineChartExample,
+    filename: 'LineChart.example.tsx',
+    language: 'tsx',
+  }}
+/>

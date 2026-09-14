@@ -1,6 +1,6 @@
 # Stage 01 — Tokens, fonts, and colors
 
-**Status:** spec (not implemented)  
+**Status:** implemented  
 **Depends on:** [00-overview.md](00-overview.md)
 
 ## Goal

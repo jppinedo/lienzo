@@ -43,6 +43,18 @@ const config = {
     },
   ],
   webpackFinal: async (webpackConfig) => {
+    // Ensure path aliases apply (Storybook 8 does not auto-load webpack.config.js).
+    const withAliases = require('./webpack.config.js')({ config: webpackConfig });
+    webpackConfig = withAliases || webpackConfig;
+
+    webpackConfig.resolve = webpackConfig.resolve || {};
+    if (webpackConfig.resolve.extensions) {
+      for (const ext of ['.ts', '.tsx', '.js', '.jsx']) {
+        if (!webpackConfig.resolve.extensions.includes(ext)) {
+          webpackConfig.resolve.extensions.push(ext);
+        }
+      }
+    }
     if (webpackConfig.module && webpackConfig.module.rules) {
       webpackConfig.module.rules.push({
         test: /\.tsx?$/,
@@ -51,6 +63,7 @@ const config = {
             loader: require.resolve('babel-loader'),
             options: {
               presets: [['react-app', { flow: false, typescript: true }]],
+              babelrc: true,
             },
           },
         ],
@@ -74,9 +87,6 @@ const config = {
         ],
         include: path.resolve(__dirname, '../'),
       });
-    }
-    if (webpackConfig.resolve && webpackConfig.resolve.extensions) {
-      webpackConfig.resolve.extensions.push('.ts', '.tsx');
     }
     return webpackConfig;
   },

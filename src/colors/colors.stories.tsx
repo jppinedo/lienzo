@@ -82,7 +82,22 @@ const Template: StoryFn = () => (
       <div className="bg-pio-text p-4" title="pio-text"></div>
       <div className="bg-pio-text-muted p-4" title="pio-text-muted"></div>
       <div className="bg-pio-grid p-4" title="pio-grid"></div>
+      <div className="bg-pio-border-subtle p-4 border border-pio-grid" title="pio-border-subtle"></div>
       <Label text="Pio text & grid" type="default" icon={<ArrowLeft />} />
+    </div>
+    <div className="mt-8 space-y-3">
+      <h2 className="font-playfair text-3xl font-bold text-pio-text">Playfair Display</h2>
+      <p className="font-jakarta text-base text-pio-text">Plus Jakarta Sans</p>
+      <code className="font-jetbrains text-sm text-pio-text">JetBrains Mono</code>
+      <p className="font-lexend text-base text-pio-text">Lexend</p>
+      <p className="font-poppins text-base text-pio-text">Poppins</p>
+      <div className="flex gap-4 pt-2">
+        <div className="h-12 w-24 rounded-xl bg-white shadow-pio-card" title="shadow-pio-card"></div>
+        <div className="h-12 w-24 rounded-xl bg-white shadow-pio-float" title="shadow-pio-float"></div>
+        <div className="h-12 w-24 rounded-xl bg-white shadow-pio-soft" title="shadow-pio-soft"></div>
+        <div className="h-12 w-24 rounded-xl bg-white shadow-pio-glow-coral" title="shadow-pio-glow-coral"></div>
+        <div className="h-12 w-24 rounded-xl bg-white shadow-pio-glow-teal" title="shadow-pio-glow-teal"></div>
+      </div>
     </div>
     <div className="flex gap-4 mt-4">
       <div className="bg-dark-canvas p-4" title="dark-canvas"></div>

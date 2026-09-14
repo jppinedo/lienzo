@@ -11,7 +11,7 @@
         "@colors": "./src/colors",
         "@assets": "./src/assets",
         "@css": "./src/css",
-        // Add more aliases as needed
+        "@docs": "./src/docs"
       }
     }]
   ]

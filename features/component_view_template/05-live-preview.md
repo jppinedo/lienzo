@@ -1,6 +1,6 @@
 # Stage 05 — Live Preview layout
 
-**Status:** spec (not implemented)  
+**Status:** implemented  
 **Depends on:** [03-surfaces-and-code-block.md](03-surfaces-and-code-block.md) (cards, badges). Does not replace Controls.
 
 ## Goal
@@ -56,14 +56,18 @@ LineChart **Default** Controls today ([LineChart.stories.tsx](../../src/componen
 
 ## Current system
 
-- MDX: `<Canvas of={Stories.Default} />` then `<Controls of={Stories.Default} />`
-- Canvas renders an iframe/story; Controls bind to the same story args
+- **LivePreview** ([src/docs/LivePreview/LivePreview.tsx](../../src/docs/LivePreview/LivePreview.tsx)): `of={Stories.Default}` renders Storybook `<Controls>` + `<Canvas>` in one Card
+- Desktop: CSS grid `lg:grid-cols-12` — Controls `col-span-4`, Canvas `col-span-8`, `min-h-[560px]`
+- Mobile: single column; Controls first in DOM (above Canvas)
+- Header: Playfair “Live Preview” Title + teal “Interactive” Badge; optional `helperText` / `caption`
+- Controls restyle: [LivePreview.css](../../src/docs/LivePreview/LivePreview.css) under `.live-preview` (best-effort Storybook 8 class names)
+- Pilot usage: [LineChart.mdx](../../src/components/molecules/LineChart/LineChart.mdx). Other MDX pages may still use bare Canvas + Controls
 - Bottom addon panel hidden (`showPanel: false`)
 
 ## Implementation notes
 
-1. Wrapper example: `LivePreview` with `children` = Canvas + Controls, or explicit `of={Stories.Default}` rendering both internally (must still be the Storybook blocks so args stay connected).
-2. Storybook 8 Docs DOM (`.docblock-argstable`, `.sbdocs-preview`, etc.) **will change**. Prefer wrapping + layout CSS; treat deep restyles as best-effort. Fallback: card around a vertical stack if grid breaks.
+1. Wrapper: `LivePreview` with `of={Stories.Default}` rendering both Storybook blocks internally (args stay connected). Path alias `@docs/*` → `src/docs/*`.
+2. Storybook 8 Docs DOM (`.docblock-argstable`, `.sbdocs-preview`, etc.) **will change**. Prefer wrapping + layout CSS; treat deep restyles as best-effort. Fallback: card around a vertical stack if grid/restyles break.
 3. Do not fork `@storybook/blocks` Controls implementation.
 4. Hide “Show code” on Canvas only if it conflicts with the card; keeping it is acceptable (maps to source).
 5. Dark mode: card and table must remain readable under `data-mode="dark"`.

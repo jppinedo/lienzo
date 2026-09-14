@@ -1,11 +1,11 @@
-import { Meta, Canvas, Controls } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as Stories from './Title.stories';
-
-# Title
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
-Heading / title text. Size, font family (`lexend`, `poppins`), and thickness can be customized. Pass extra Tailwind or CSS classes with `className` for spacing and other styles.
-
-<Canvas of={Stories.Default} />
-<Controls of={Stories.Default} />
+<ComponentDocsPage
+  title="Title"
+  description="Heading / title text. Size, font family (`lexend`, `poppins`, `playfair`, `jakarta`), and thickness can be customized. Set `uppercase` for tracked all-caps labels and `dot` (with optional `dotTone`) for a color mark beside the text. A Docs section header is two Titles: an uppercase dotted eyebrow, then a Playfair display line. Pass extra Tailwind or CSS classes with `className` for spacing and other styles."
+  stories={Stories}
+/>

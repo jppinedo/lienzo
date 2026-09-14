@@ -1,6 +1,6 @@
 # Stage 02 — Storybook Docs canvas
 
-**Status:** spec (not implemented)  
+**Status:** implemented  
 **Depends on:** [01-tokens-fonts-colors.md](01-tokens-fonts-colors.md)
 
 ## Goal
@@ -50,6 +50,8 @@ Do not restyle the **story iframe** (`docs-story`) background to the marketing c
 3. Glows: `radial-gradient` with `rgb(var(--lz-pio-coral) / 0.18)` and teal equivalent; `filter: blur`; fixed or absolute inside the docs wrapper.
 4. Keep existing `.docs-story` canvas colors for the live component frame unless stage 05 needs a white card around it.
 5. Update [Documentation/storybook.md](../../Documentation/storybook.md) briefly: Docs pages use brand canvas typography.
+
+Implemented in [.storybook/story-global.css](../../.storybook/story-global.css) without a custom `docs.container`. Coral and teal orbs are `::before` / `::after` on `.sbdocs-wrapper`; a third coral wash is a radial on `#storybook-docs`. Dark Docs use `dark-canvas` and `blue-200` text so contrast holds without cloning the light mock.
 
 ## Acceptance criteria
 

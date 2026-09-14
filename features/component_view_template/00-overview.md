@@ -1,10 +1,10 @@
 # Component view template — overview
 
-**Status:** spec (not implemented)  
+**Status:** implemented (stages 01–07)  
 **Depends on:** none  
-**Purpose:** Index for this folder. Run **one numbered stage per implementation session**. Do not skip [01-tokens-fonts-colors.md](01-tokens-fonts-colors.md).
+**Purpose:** Index for this folder. Historical staged specs; lasting Docs rules live in [Documentation/component-docs.md](../../Documentation/component-docs.md).
 
-These files are **implementation specs**, not the public Storybook Docs template. When a stage discovers a constraint, update that stage file. Lasting developer rules for `Component.mdx` will live in `Documentation/component-docs.md` after [07-rollout.md](07-rollout.md).
+These files are **implementation specs**, not the public Storybook Docs template. When a stage discovers a constraint, update that stage file.
 
 ## How to use this folder
 

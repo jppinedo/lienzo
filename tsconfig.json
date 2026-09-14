@@ -17,6 +17,7 @@
       "@colors/*": ["src/colors/*"],
       "@assets/*": ["src/assets/*"],
       "@css/*": ["src/css/*"],
+      "@docs/*": ["src/docs/*"]
     }
   },
   "include": ["./src/**/*"]

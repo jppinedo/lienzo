@@ -1,0 +1,11 @@
+import { Meta } from '@storybook/blocks';
+import * as Stories from './Card.stories';
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
+
+<Meta of={Stories} />
+
+<ComponentDocsPage
+  title="Card"
+  description="Elevated surface: white, subtle, or transparent fill, `rounded-2xl` or `rounded-3xl`, `pio-grid` border, and soft/card shadows. Distinct from Box, which is the product container with glass and header/footer slots."
+  stories={Stories}
+/>

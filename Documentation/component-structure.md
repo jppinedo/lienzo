@@ -14,8 +14,10 @@ The path `@organisms/*` is set up in `tsconfig.json` for future use, but there a
 | Component | Description |
 |-----------|-------------|
 | **Background** | Gradient or custom background wrapper |
+| **Badge** | Pill label for Docs chrome (version, interactive, pattern); tones `coral`, `teal`, `amber`; optional color dot |
 | **Box** | Container with default or glass style; optional header and footer; `headerOutside` places the header in the outer container; supports dark mode |
 | **Button** | Primary UI action with variants (type, fill, mode) and optional icon |
+| **Card** | Elevated surface (white, subtle, or transparent fill; `rounded-2xl`/`rounded-3xl`; `pio-grid` border; soft/card shadow). Not a substitute for **Box** |
 | **Checkbox** | Form checkbox control |
 | **CircleSpinner** | Circular loading indicator |
 | **Input** | Text input with type, fill (`solid`, `outline`, `ghost`), rounding, optional label, hint, and icon |
@@ -23,16 +25,17 @@ The path `@organisms/*` is set up in `tsconfig.json` for future use, but there a
 | **Select** | Dropdown select control |
 | **Spinner** | Loading spinner |
 | **Switch** | Toggle switch |
-| **Title** | Heading / title text; optional `className` for extra Tailwind or CSS classes |
+| **Title** | Heading / title text; font families `lexend`, `poppins`, `playfair`, `jakarta`; `uppercase` and optional side `dot` (`dotTone`: coral, teal, amber) |
 
 ## Molecules
 
 | Component | Description |
 |-----------|-------------|
 | **Calendar** | Date picker with single or range selection; Lienzo-styled wrapper around React DayPicker |
+| **CodeBlock** | Code panel: light filename bar, copy-to-clipboard, JetBrains Mono; `codeMode` (`dark` default, `light`) styles only the syntax pane and ignores the app theme; optional `language` highlighting via prism-react-renderer |
 | **LineChart** | Line chart built with Recharts; configurable series, axes, tooltip |
 | **Menu** | Menu component (dropdown/list) |
-| **Tabs** | Tabbed navigation with tab buttons |
+| **Tabs** | Tabbed navigation (`tablist` / `tab` / `tabpanel`); variants `underline` (default), `pills` (coral active pill), `segmented` (white chip on beige track) |
 | **Toolbar** | Horizontal toolbar of items (buttons or labels); supports menus |
 
 ## File conventions per component
@@ -45,7 +48,7 @@ Each component lives in its own folder under `atoms/` or `molecules/`. Typical f
 | `ComponentNameStyles.ts` | (Optional) Tailwind class strings exported as objects (e.g. [BoxStyles.ts](../src/components/atoms/Box/BoxStyles.ts), [ButtonStyles.ts](../src/components/atoms/Button/ButtonStyles.ts)) |
 | `ComponentName.css` | (Optional) Component-specific CSS when Tailwind is not enough (e.g. [Button.css](../src/components/atoms/Button/Button.css)) |
 | `ComponentName.stories.tsx` | Storybook CSF stories: a hidden `Default` story for Docs (not listed in the sidebar), plus visible variant galleries |
-| `ComponentName.mdx` | Storybook Docs page: description, one live instance, and style-only Controls |
+| `ComponentName.mdx` | Storybook Docs page via `ComponentDocsPage`: required title, description, Live Preview (`Default` + style-only Controls); optional use cases, variations, props, usage, example only when content is real. See [Component Docs](component-docs.md) |
 
 **Pattern**: Prefer Tailwind for styling. Use `*Styles.ts` to keep class names in one place. Use `.css` only when Tailwind cannot handle the case (e.g. keyframes, complex selectors). Many components use shared types from `@interfaces/sizes` (e.g. `RoundedSizes`).
 
@@ -56,7 +59,7 @@ Each component lives in its own folder under `atoms/` or `molecules/`. Typical f
 1. Create a folder under `src/components/atoms/` or `src/components/molecules/` (e.g. `src/components/atoms/MyAtom/`).
 2. Add `ComponentName.tsx` with the React component and its props interface.
 3. Add optional `ComponentNameStyles.ts` for Tailwind class strings and optional `ComponentName.css` if needed.
-4. Add `ComponentName.stories.tsx` and `ComponentName.mdx` so the component appears in Storybook (see [Storybook](storybook.md) for the Docs page pattern). Set `title` to `Atoms/ComponentName`, `Molecules/ComponentName`, or `Organisms/ComponentName`.
+4. Add `ComponentName.stories.tsx` and `ComponentName.mdx` so the component appears in Storybook (see [Component Docs](component-docs.md) and [Storybook](storybook.md)). Set `title` to `Atoms/ComponentName`, `Molecules/ComponentName`, or `Organisms/ComponentName`.
 5. Use path aliases for imports (e.g. `@atoms/MyAtom/MyAtom`, `@interfaces/sizes`).
 6. Use design tokens from the Tailwind theme where possible (see [Design tokens & colors](design-tokens-colors.md)).
 

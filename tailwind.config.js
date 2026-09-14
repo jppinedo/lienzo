@@ -67,6 +67,7 @@ module.exports = {
       'pio-text': 'rgb(var(--lz-pio-text) / <alpha-value>)',
       'pio-text-muted': 'rgb(var(--lz-pio-text-muted) / <alpha-value>)',
       'pio-grid': 'rgb(var(--lz-pio-grid) / <alpha-value>)',
+      'pio-border-subtle': 'rgb(var(--lz-pio-border-subtle) / <alpha-value>)',
     },
 
     extend: {
@@ -77,6 +78,16 @@ module.exports = {
       fontFamily: {
         'lexend': ['Lexend', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'],
+        'playfair': ['"Playfair Display"', 'Georgia', 'serif'],
+        'jakarta': ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        'jetbrains': ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      },
+      boxShadow: {
+        'pio-soft': '0 10px 30px -5px rgba(47, 109, 104, 0.05), 0 4px 12px -2px rgba(255, 107, 87, 0.04)',
+        'pio-card': '0 12px 36px -8px rgba(31, 36, 33, 0.06), 0 4px 12px rgba(0, 0, 0, 0.02)',
+        'pio-float': '0 12px 32px -6px rgba(31, 36, 33, 0.12), 0 4px 12px -2px rgba(31, 36, 33, 0.06)',
+        'pio-glow-coral': '0 0 25px -3px rgba(255, 107, 87, 0.4)',
+        'pio-glow-teal': '0 0 25px -3px rgba(58, 125, 118, 0.35)',
       },
       fontWeight: {
         'thin': 100,

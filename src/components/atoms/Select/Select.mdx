@@ -1,11 +1,11 @@
-import { Meta, Canvas, Controls } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as Stories from './Select.stories';
-
-# Select
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
-Dropdown select control with a placeholder and a list of options.
-
-<Canvas of={Stories.Default} />
-<Controls of={Stories.Default} />
+<ComponentDocsPage
+  title="Select"
+  description="Dropdown select control with a placeholder and a list of options."
+  stories={Stories}
+/>

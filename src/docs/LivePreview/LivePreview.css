@@ -1,0 +1,105 @@
+/**
+ * Live Preview — best-effort restyles of Storybook Docs blocks.
+ *
+ * Brittle selectors (Storybook 8; may change between majors):
+ *   .sbdocs-preview, .docs-story, .docblock-argstable,
+ *   .docblock-argstable-head, .docblock-argstable-body,
+ *   .docblock-code-toggle
+ *
+ * Fallback: layout is a CSS grid that collapses to a vertical stack
+ * (controls above canvas). If these class names disappear, Controls and
+ * Canvas remain usable inside the card without the panel chrome polish.
+ */
+
+.live-preview .sbdocs-preview {
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.live-preview .sbdocs-preview > div {
+  /* Storybook preview inner chrome */
+  border: none;
+  box-shadow: none;
+}
+
+.live-preview .docs-story {
+  padding: 0;
+  background: transparent;
+}
+
+.live-preview .docblock-code-toggle {
+  /* Keep “Show code”; soften so it sits in the card */
+  margin-top: 0.75rem;
+}
+
+/* Args table → customization panel feel */
+.live-preview .docblock-argstable {
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.live-preview .docblock-argstable-head {
+  /* Hide column headers (Name / Description / Default / Control);
+     our “Control Panel” eyebrow replaces that chrome. */
+  display: none;
+}
+
+.live-preview .docblock-argstable-body {
+  border: none;
+}
+
+.live-preview .docblock-argstable-body tr {
+  border-bottom: 1px solid rgb(var(--lz-pio-border-subtle));
+}
+
+.live-preview .docblock-argstable-body tr:last-child {
+  border-bottom: none;
+}
+
+.live-preview .docblock-argstable-body td {
+  padding: 0.75rem 0;
+  vertical-align: middle;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Name cell → uppercase control label */
+.live-preview .docblock-argstable-body td:first-child {
+  width: 42%;
+  padding-right: 0.75rem;
+}
+
+.live-preview .docblock-argstable-body td:first-child span,
+.live-preview .docblock-argstable-body td:first-child code {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(var(--lz-pio-text));
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Description + Default columns: collapse when present */
+.live-preview .docblock-argstable-body td:nth-child(2),
+.live-preview .docblock-argstable-body td:nth-child(3) {
+  display: none;
+}
+
+.live-preview .docblock-argstable-body td:last-child {
+  width: 58%;
+}
+
+html[data-mode='dark'] .live-preview .docblock-argstable-body tr {
+  border-bottom-color: rgb(var(--lz-gray-700));
+}
+
+html[data-mode='dark'] .live-preview .docblock-argstable-body td:first-child span,
+html[data-mode='dark'] .live-preview .docblock-argstable-body td:first-child code {
+  color: rgb(var(--lz-blue-200));
+}

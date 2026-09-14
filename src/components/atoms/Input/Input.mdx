@@ -1,11 +1,11 @@
-import { Meta, Canvas, Controls } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as Stories from './Input.stories';
-
-# Input
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
-Text input with type (`default`, `red`, `green`), fill (`solid`, `outline`, `ghost`), rounding, optional label, hint, and icon.
-
-<Canvas of={Stories.Default} />
-<Controls of={Stories.Default} />
+<ComponentDocsPage
+  title="Input"
+  description="Text input with type (`default`, `red`, `green`), fill (`solid`, `outline`, `ghost`), rounding, optional label, hint, and icon."
+  stories={Stories}
+/>

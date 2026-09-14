@@ -1,0 +1,11 @@
+import { Meta } from '@storybook/blocks';
+import * as Stories from './CodeBlock.stories';
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
+
+<Meta of={Stories} />
+
+<ComponentDocsPage
+  title="CodeBlock"
+  description="Code panel with a light filename bar, copy control, and a syntax pane that defaults to dark. `codeMode` (`dark` | `light`) styles only the code surface and is independent of the Storybook theme toolbar."
+  stories={Stories}
+/>

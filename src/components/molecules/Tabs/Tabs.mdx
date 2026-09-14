@@ -1,11 +1,31 @@
-import { Meta, Canvas, Controls } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
 import * as Stories from './Tabs.stories';
-
-# Tabs
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
-Tabbed navigation with tab buttons. Each tab has a label and content panel.
-
-<Canvas of={Stories.Default} />
-<Controls of={Stories.Default} />
+<ComponentDocsPage
+  title="Tabs"
+  description="Tabbed navigation with tab buttons. Each tab has a label and content panel. Variants: `underline` (default), `pills`, and `segmented`."
+  stories={Stories}
+  variations={[
+    {
+      id: 'underline',
+      label: 'Underline',
+      canvas: <Canvas of={Stories.Underline} />,
+      description: 'Default variant: coral underline on the active tab.',
+    },
+    {
+      id: 'pills',
+      label: 'Pills',
+      canvas: <Canvas of={Stories.Pills} />,
+      description: 'Active tab as a coral-filled pill; used in Docs galleries such as Variations.',
+    },
+    {
+      id: 'segmented',
+      label: 'Segmented',
+      canvas: <Canvas of={Stories.Segmented} />,
+      description: 'White chip on a beige track for mutually exclusive choices.',
+    },
+  ]}
+/>

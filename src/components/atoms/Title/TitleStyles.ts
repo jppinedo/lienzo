@@ -6,4 +6,36 @@ export const titleStyles = {
   xl: 'text-2xl',
   xxl: 'text-3xl',
   base: 'text-gray-600 dark:text-white',
-};
+  colorMuted: 'text-pio-text-muted',
+  colorDisplay: 'text-pio-text dark:text-white',
+  uppercase: 'uppercase tracking-widest',
+  playfairTracking: 'tracking-tight',
+  withDot: 'inline-flex items-center gap-2.5',
+  fontFamily: {
+    lexend: 'font-lexend',
+    poppins: 'font-poppins',
+    playfair: 'font-playfair',
+    jakarta: 'font-jakarta',
+  },
+  thikness: {
+    thin: 'font-thin',
+    regular: 'font-regular',
+    bold: 'font-bold',
+  },
+  fontFamilyCss: {
+    lexend: "'Lexend', sans-serif",
+    poppins: "'Poppins', sans-serif",
+    playfair: "'Playfair Display', Georgia, serif",
+    jakarta: "'Plus Jakarta Sans', system-ui, sans-serif",
+  },
+  thiknessCss: {
+    thin: 100,
+    regular: 400,
+    bold: 700,
+  },
+  dot: {
+    coral: 'w-2 h-2 rounded-full flex-shrink-0 bg-pio-coral',
+    teal: 'w-2 h-2 rounded-full flex-shrink-0 bg-pio-teal-dark',
+    amber: 'w-2 h-2 rounded-full flex-shrink-0 bg-pio-amber',
+  },
+} as const;

@@ -1,6 +1,6 @@
 # Stage 03 — Surfaces and code block
 
-**Status:** spec (not implemented)  
+**Status:** implemented  
 **Depends on:** [02-storybook-docs-canvas.md](02-storybook-docs-canvas.md)
 
 ## Goal
@@ -28,23 +28,23 @@ Ship reusable UI for Docs sections: elevated cards, pill badges, section eyebrow
 |--------|-----------|
 | White `rounded-3xl` bordered cards | Card surface |
 | Version chip, “Interactive”, “Pattern: …” pills | Badge |
-| `uppercase tracking-widest` + serif heading | SectionHeader (component or documented class set) |
+| `uppercase tracking-widest` + serif heading | Two **Title** atoms: `uppercase` + `dot` eyebrow, then `fontFamily="playfair"` |
 | `data-purpose="code-example-card"` | CodeBlock |
 | Copy Snippet button | CodeBlock copy control |
 
 ## Current system
 
-- **Box** atom: product container (glass, header/footer)—not the Docs editorial card. Do not overload Box unless the APIs align cleanly; a Docs-oriented `DocsCard` or reuse of Box `className` is acceptable if documented.
-- No syntax highlighter in [package.json](../../package.json).
-- Buttons exist for copy CTAs; CodeBlock may use Button or a text button matching the mock.
+- **Box** atom: product container (glass, header/footer)—not the elevated **Card** surface. Do not overload Box unless the APIs align cleanly.
+- **prism-react-renderer** is a direct dependency for **CodeBlock** highlighting.
+- Buttons exist for copy CTAs; CodeBlock uses a text button matching the mock (not the product Button atom).
 
 ## Implementation notes
 
-1. **CodeBlock** API (minimum): `code: string`, optional `filename`, optional `language` for highlighting. Copy writes `code` to clipboard and shows brief “Copied” state (see `code-copy-handler` in `code.html`).
-2. Highlighter: pick one small library (e.g. `prism-react-renderer` or Storybook’s existing Docs highlighter if it can be reused in a molecule). Record the choice in [Documentation/libraries.md](../../Documentation/libraries.md). If highlighting is too heavy for this stage, ship monospace + token keyword colors as a follow-up; the panel chrome must still ship.
+1. **CodeBlock** API (minimum): `code: string`, optional `filename`, optional `language` for highlighting, `codeMode` (`dark` default | `light`) for the syntax pane only. Filename bar stays light and ignores the app theme. Copy writes `code` to clipboard and shows brief “Copied” state (see `code-copy-handler` in `code.html`).
+2. Highlighter: **prism-react-renderer** (direct dependency). Omit `language` for plain JetBrains Mono. Theme uses pio coral/teal/amber (not Stitch span-color parity). Prism inline `backgroundColor` is stripped so `codeMode` classes paint the pane.
 3. Keep primitives in `src/components/` (atom or molecule) with `*Styles.ts` as per [Documentation/component-structure.md](../../Documentation/component-structure.md).
 4. Tailwind `content` already includes `src/**`; new files are covered.
-5. SectionHeader and Badge may be tiny atoms **or** a documented Tailwind recipe used only inside the Docs template (stage 06). Prefer real components if stage 06 would otherwise duplicate markup.
+5. Section eyebrows use **Title** (`uppercase`, `dot`, `dotTone`) plus a second Playfair Title. **Badge** is a separate pill atom.
 
 ## Acceptance criteria
 

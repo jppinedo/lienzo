@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import TabButton from './TabButton';
+import { tablistClass, TabsVariant } from './TabsStyles';
+
+export type { TabsVariant };
 
 export interface TabType {
   id: string;
@@ -10,11 +13,13 @@ export interface TabType {
 export interface TabSystemProps {
   activeTab?: string;
   tabs: TabType[];
+  variant?: TabsVariant;
 }
 
 const TabSystem: React.FC<TabSystemProps> = ({
   activeTab,
-  tabs
+  tabs,
+  variant = 'underline',
 }) => {
   const [active, setActive] = useState(activeTab || tabs[0].id);
 
@@ -25,7 +30,7 @@ const TabSystem: React.FC<TabSystemProps> = ({
   return (
     <div className="w-full">
       <nav>
-        <ul role="tablist" className="border-b border-gray-300 flex dark:border-gray-700">
+        <ul role="tablist" className={tablistClass[variant]}>
           {tabs.map((tab: TabType) => (
             <TabButton
               key={tab.id}
@@ -33,6 +38,7 @@ const TabSystem: React.FC<TabSystemProps> = ({
               label={tab.label}
               active={active === tab.id}
               onClick={handleActiveTab}
+              variant={variant}
             />
           ))}
         </ul>

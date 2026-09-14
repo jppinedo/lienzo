@@ -1,11 +1,11 @@
-import { Meta, Canvas, Controls } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as Stories from './Button.stories';
-
-# Button
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
-Primary UI action with variants for `type`, `fill`, and `mode`, plus an optional icon.
-
-<Canvas of={Stories.Default} />
-<Controls of={Stories.Default} />
+<ComponentDocsPage
+  title="Button"
+  description="Primary UI action with variants for `type`, `fill`, and `mode`, plus an optional icon."
+  stories={Stories}
+/>

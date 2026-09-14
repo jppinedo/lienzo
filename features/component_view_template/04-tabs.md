@@ -1,6 +1,6 @@
 # Stage 04 — Tabs evolution
 
-**Status:** spec (not implemented)  
+**Status:** implemented  
 **Depends on:** [01-tokens-fonts-colors.md](01-tokens-fonts-colors.md) (tokens/fonts). Canvas (02) and CodeBlock (03) are not required.
 
 ## Goal

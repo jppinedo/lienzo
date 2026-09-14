@@ -69,6 +69,7 @@ Not a control variant. Used for data series.
 ### Pio text & UI
 
 - `pio-text`, `pio-text-muted`, `pio-grid`
+- `pio-border-subtle` — warm inner hairlines and nested tracks (Docs dividers). Use `pio-grid` for card strokes.
 
 ### Canvas (theming)
 
@@ -89,8 +90,42 @@ Dark mode is active when the root element has the `dark` class or a `data-mode="
 
 ## Extended theme (typography)
 
-- **Font families**: `font-lexend`, `font-poppins` (Lexend and Poppins, sans-serif)
+- **Font families**: `font-lexend`, `font-poppins`, `font-playfair`, `font-jakarta` (Title `fontFamily`), `font-jetbrains` (JetBrains Mono, code). Do not remap `font-sans` for product components.
 - **Font weights**: `font-thin` (100), `font-regular` (400), `font-bold` (700)
+- **Loading**: Google Fonts CSS `@import` in [.storybook/story-global.css](../.storybook/story-global.css). Preview loads that file for every story and Docs page.
+
+## Box shadows
+
+Elevation utilities (not color tokens): `shadow-pio-soft`, `shadow-pio-card`, `shadow-pio-float`, `shadow-pio-glow-coral`, `shadow-pio-glow-teal`.
+
+## Component-view Stitch mapping
+
+Stitch `lienzo-*` names from the component-view mock map onto existing `pio-*` tokens. New tokens exist only where nothing similar was available.
+
+| Stitch | Hex / profile | Lienzo token | Action |
+|--------|---------------|--------------|--------|
+| `lienzo-bg` | `#FAF8F5` | `pio-bg` / `light-canvas` | Adapt |
+| `lienzo-card` | `#FFFFFF` | `white` | Reuse |
+| `lienzo-card-alt` | `#FDFCFA` | `pio-bg-light` | Adapt |
+| `lienzo-coral` | `#FF6B57` | `pio-coral` | Adapt |
+| `lienzo-coral-light` | coral 0.15 | `pio-coral-opacity-14` / `20` | Reuse |
+| `lienzo-coral-soft` | `#FFEBE8` | `pio-coral-pale` | Adapt |
+| `lienzo-teal` | `#3A7D76` | `pio-teal-dark-hover` | Adapt |
+| `lienzo-teal-dark` | `#2F6D68` | `pio-teal-dark` | Adapt |
+| `lienzo-teal-light` | teal 0.15 | `pio-teal-dark-opacity-14` / `20` | Reuse |
+| `lienzo-amber` | `#EAA838` | `pio-amber` | Adapt |
+| `lienzo-stone` (UI labels) | `#8C827A` | `pio-text-muted` | Adapt |
+| `lienzo-stone` (data) | `#8C827A` | `pio-stone` | Keep for charts |
+| `lienzo-text` | `#1F2421` | `pio-text` | Adapt |
+| `lienzo-text-muted` | `#6D726D` | `pio-text-muted` | Adapt |
+| `lienzo-border` | `#EAE5DE` | `pio-grid` | Adapt |
+| `lienzo-border-subtle` | `#F2EFEB` | `pio-border-subtle` | Add — no close token; inner Docs dividers |
+| Code panel | `#181C1A` | `dark-canvas` | Adapt |
+| CDN `emerald-*` / `rose-*` | interactive / don’ts | `pio-teal-dark` / `pio-coral` | Adapt; no emerald/rose brand colors |
+| `lienzo-soft` / `lienzo-card` / glows | elevation | `shadow-pio-*` | Add |
+| Playfair Display | display | `font-playfair` | Add |
+| Plus Jakarta Sans | UI | `font-jakarta` | Add |
+| Mono | code | `font-jetbrains` (JetBrains Mono) | Add; Courier Prime is not used |
 
 ## Using colors in code
 

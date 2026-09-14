@@ -1,11 +1,11 @@
-import { Meta, Canvas, Controls } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as Stories from './Spinner.stories';
-
-# Spinner
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
-Loading spinner. Color, size, and thickness can be customized.
-
-<Canvas of={Stories.Default} />
-<Controls of={Stories.Default} />
+<ComponentDocsPage
+  title="Spinner"
+  description="Loading spinner. Color, size, and thickness can be customized."
+  stories={Stories}
+/>

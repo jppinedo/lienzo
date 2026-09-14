@@ -1,29 +1,37 @@
 import React from "react";
+import {
+  tabButtonClass,
+  tabItemClass,
+  tabUnderlineBar,
+  TabsVariant,
+} from './TabsStyles';
 
 export interface TabButton {
     id: string;
     label: React.ReactNode;
     active: boolean;
     onClick: (id: string) => void;
+    variant?: TabsVariant;
 }
 
-const TabButton: React.FC<TabButton> = ({ id, label, active, onClick }) => {
+const TabButton: React.FC<TabButton> = ({ id, label, active, onClick, variant = 'underline' }) => {
 
   return (
-    <li role="presentation" key={id} className="relative">
+    <li role="presentation" key={id} className={tabItemClass[variant]}>
       <button
+        type="button"
         role="tab"
         id={`tab-${id}`}
         aria-controls={`tabpanel-${id}`}
         aria-selected={active}
-        className='py-2 px-6 block outline-none opacity-80 hover:opacity-100 text-gray-900 dark:text-blue-200'
+        className={tabButtonClass(variant, active)}
         onClick={() => onClick(id)}
       >
         {label}
       </button>
-      <div 
-        className={`absolute bottom-0 left-0 h-0.5 bg-pio-teal-dark transition-all duration-200 ${active ? 'w-full' : 'w-0'}`}
-      ></div>
+      {variant === 'underline' && (
+        <div className={tabUnderlineBar(active)}></div>
+      )}
     </li>
   )
 }

@@ -1,6 +1,6 @@
 # Stage 06 — Docs page template
 
-**Status:** spec (not implemented)  
+**Status:** implemented  
 **Depends on:** [04-tabs.md](04-tabs.md), [05-live-preview.md](05-live-preview.md)
 
 ## Goal
@@ -64,7 +64,12 @@ A component documentation file (`ComponentName.mdx`) is the Storybook Docs page 
 
 ## Current system
 
-Every component MDX is the same shape: heading, one paragraph, Canvas, Controls. There is no shared wrapper. File list is in [Documentation/storybook.md](../../Documentation/storybook.md).
+- **ComponentDocsPage** ([src/docs/ComponentDocsPage/ComponentDocsPage.tsx](../../src/docs/ComponentDocsPage/ComponentDocsPage.tsx)): required `title` + `description` + `stories` (Live Preview on `stories.Default`); optional `breadcrumb`, `badge`, `useCases`, `variations`, `props`, `usage`, `example`
+- Optional sections render only when content is present (no empty cards)
+- Variations use Tabs `variant="pills"`; canvases are caller-supplied (typically `<Canvas of={…} />` without Controls)
+- Props: hand rows table and/or custom node (e.g. Storybook `ArgTypes`)
+- Example: CodeBlock via `example={{ code, filename?, language? }}` or a custom node
+- No production MDX migrated in this stage (LineChart still uses Live Preview directly)
 
 ## Implementation notes
 
