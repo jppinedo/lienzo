@@ -6,13 +6,13 @@
  *   - range_middle td: solid <bar-color>
  *   - range_end td:   linear-gradient(<bar-color> 50%, transparent 50%)
  *
- * Overriding --rdp-range_middle-background-color makes all three use slate-700,
+ * Overriding --rdp-range_middle-background-color makes all three use pio-teal-dark,
  * which (combined with no gap between cells) creates the continuous bar.
  */
 
-/* Range bar color (slate-700) via CSS variable and day sizing */
+/* Range bar color (pio-teal-dark) via CSS variable and day sizing */
 .rdp-root {
-  --rdp-range_middle-background-color: rgb(var(--lz-slate-700)); /* slate-700 */
+  --rdp-range_middle-background-color: rgb(var(--lz-pio-teal-dark));
   --rdp-range_middle-color: rgb(var(--lz-white));
   /* Make the day buttons the same size as the day cells so
      the start/end circles align perfectly with the range bar. */
@@ -20,22 +20,22 @@
   --rdp-day_button-width: var(--rdp-day-width);
 }
 
-/* Dark mode: use the blue range palette */
+/* Dark mode: darker teal range bar */
 html[data-mode='dark'] .rdp-root,
 html.dark .rdp-root {
-  --rdp-range_middle-background-color: rgb(var(--lz-blue-600)); /* blue-600 */
+  --rdp-range_middle-background-color: rgb(var(--lz-pio-teal-black));
 }
 
 /* Single selection: pio-teal-black sphere, no border */
 .rdp-selected .rdp-day_button {
-  background-color: rgb(var(--lz-pio-teal-black)); /* pio-teal-black */
+  background-color: rgb(var(--lz-pio-teal-black));
   color: rgb(var(--lz-white));
   font-weight: normal;
   border: none;
   border-radius: 9999px;
 }
 
-/* Range middle: transparent button over the slate-700 td bar, no circle */
+/* Range middle: transparent button over the range bar, no circle */
 .rdp-range_middle .rdp-day_button {
   background-color: transparent;
   color: rgb(var(--lz-white));
@@ -51,25 +51,25 @@ html.dark .rdp-root {
   outline-offset: 0;
 }
 
-/* Range end: sage-600 sphere, pio-teal-black text */
+/* Range end: lighter teal-dark sphere, pio-teal-black text */
 .rdp-range_end .rdp-day_button {
-  background-color: rgb(var(--lz-sage-600)); /* sage-600 */
-  color: rgb(var(--lz-pio-teal-black)); /* pio-teal-black */
+  background-color: rgb(var(--lz-pio-teal-dark-hover));
+  color: rgb(var(--lz-pio-teal-black));
   border: none;
   border-radius: 9999px;
   font-weight: normal;
 }
 
-/* Dark mode range end: blue-400 sphere */
+/* Dark mode range end */
 html[data-mode='dark'] .rdp-range_end .rdp-day_button,
 html.dark .rdp-range_end .rdp-day_button {
-  background-color: rgb(var(--lz-blue-400)); /* blue-400 */
+  background-color: rgb(var(--lz-pio-teal-dark));
   color: rgb(var(--lz-white));
 }
 
 /* Today (when not in a range): pio-teal-black sphere, no border */
 .rdp-today .rdp-day_button {
-  background-color: rgb(var(--lz-pio-teal-black)); /* pio-teal-black */
+  background-color: rgb(var(--lz-pio-teal-black));
   color: rgb(var(--lz-white));
   border-radius: 9999px;
   border: none;
@@ -78,6 +78,6 @@ html.dark .rdp-range_end .rdp-day_button {
 /* Single-day range (range_start == range_end): pio-teal-black sphere */
 .rdp-day.rdp-range_start.rdp-range_end .rdp-day_button {
   border-radius: 9999px;
-  background-color: rgb(var(--lz-pio-teal-black)); /* pio-teal-black */
+  background-color: rgb(var(--lz-pio-teal-black));
   color: rgb(var(--lz-white));
 }

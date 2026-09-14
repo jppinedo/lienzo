@@ -1,6 +1,6 @@
 
 const getItemBorder = (index: number) => (
-  `${index === 0 ? '' : 'border-l border-blue-200 dark:border-gray-700'}`
+  `${index === 0 ? '' : 'border-l border-gray-300 dark:border-gray-700'}`
 );
 
 export const toolbarStyles = (rounded?: string, ) => {

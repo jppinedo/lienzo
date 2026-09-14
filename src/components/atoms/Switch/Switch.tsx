@@ -43,7 +43,7 @@ const Switch: React.FC<SwitchProps> = ({
 
   return (
     <div
-      className={`relative ${sizeClasses[size].container} rounded-full cursor-pointer ${active ? 'bg-green' : 'bg-gray-opacity-30'} ${propClass}`}
+      className={`relative ${sizeClasses[size].container} rounded-full cursor-pointer ${active ? 'bg-pio-teal-dark' : 'bg-gray-opacity-30'} ${propClass}`}
       onClick={handleOnChange}
     >
       <div

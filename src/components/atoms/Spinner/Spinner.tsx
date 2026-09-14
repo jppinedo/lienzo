@@ -8,7 +8,7 @@ export interface SpinnerProps {
 }
 
 const Spinner: React.FC<SpinnerProps> = ({ 
-  colorClass = 'border-red', 
+  colorClass = 'border-pio-coral', 
   size = '60px', 
   thickness = '16px' 
 }) => (

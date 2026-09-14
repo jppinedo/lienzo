@@ -32,6 +32,8 @@ export interface LineChartProps {
   yAxisDomain?: [number | 'auto', number | 'auto'];
 }
 
+const DEFAULT_SERIES_COLOR = 'rgb(var(--lz-pio-teal-dark))';
+
 const LineChart: React.FC<LineChartProps> = ({
   data,
   series,
@@ -84,12 +86,12 @@ const LineChart: React.FC<LineChartProps> = ({
             type="monotone"
             dataKey={s.dataKey}
             name={s.name ?? s.dataKey}
-            stroke={s.stroke ?? '#4db86c'}
+            stroke={s.stroke ?? DEFAULT_SERIES_COLOR}
             strokeWidth={2}
             dot={{
               r: 4,
-              fill: s.dotFill ?? s.stroke ?? '#4db86c',
-              stroke: s.dotStroke ?? s.stroke ?? '#4db86c',
+              fill: s.dotFill ?? s.stroke ?? DEFAULT_SERIES_COLOR,
+              stroke: s.dotStroke ?? s.stroke ?? DEFAULT_SERIES_COLOR,
               strokeWidth: 2,
             }}
             activeDot={{

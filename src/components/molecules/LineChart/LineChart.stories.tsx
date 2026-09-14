@@ -8,7 +8,6 @@ import LineChart, { LineChartProps, LineChartDataItem } from './LineChart';
 // Pio colors from tailwind.config.js (for use in recharts)
 const PIO_COLORS = {
   tealDark: '#2b665d',
-  teal: '#4db86c',
   amber: '#f4a460',
   stone: '#6d4c41',
   coral: '#e05a5a',

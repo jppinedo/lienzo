@@ -19,25 +19,9 @@
   --lz-white: 255 255 255;
   --lz-black: 17 17 17;
 
-  --lz-red: 255 108 81;
-  --lz-red-dark: 215 60 31;
-  --lz-red-bright: 247 79 48;
-  --lz-red-300: 206 124 109;
-
-  --lz-yellow: 254 191 129;
-  --lz-yellow-dark: 125 93 61;
-  --lz-yellow-bright: 255 176 97;
-
-  --lz-green: 76 158 143;
-  --lz-green-bright: 68 183 162;
-  --lz-green-300: 92 166 152;
-
   --lz-blue-200: 155 157 191;
   --lz-blue-400: 69 103 167;
   --lz-blue-600: 37 59 100;
-
-  --lz-slate-700: 66 95 93;
-  --lz-sage-600: 151 184 165;
 
   --lz-pio-bg: 230 230 222;
   --lz-pio-bg-light: 246 244 235;
@@ -45,12 +29,25 @@
 
   --lz-pio-teal-dark: 43 102 93;
   --lz-pio-teal-dark-hover: 58 122 112;
+  --lz-pio-teal-dark-muted: 92 140 132;
+  --lz-pio-teal-dark-pale: 214 232 226;
   --lz-pio-teal-black: 19 27 38;
 
   --lz-pio-coral: 224 90 90;
-  --lz-pio-teal: 77 184 108;
+  --lz-pio-coral-hover: 232 118 118;
+  --lz-pio-coral-dark: 176 52 52;
+  --lz-pio-coral-muted: 196 120 120;
+  --lz-pio-coral-pale: 252 228 226;
+
   --lz-pio-amber: 244 164 96;
+  --lz-pio-amber-hover: 250 184 118;
+  --lz-pio-amber-dark: 156 88 40;
+  --lz-pio-amber-muted: 200 148 100;
+  --lz-pio-amber-pale: 252 240 220;
+
   --lz-pio-stone: 109 76 65;
+  --lz-pio-stone-dark: 82 54 46;
+  --lz-pio-stone-pale: 230 220 214;
 
   --lz-pio-text: 45 45 47;
   --lz-pio-text-muted: 107 114 128;
@@ -59,4 +56,3 @@
   --lz-dark-canvas: 22 22 26;
   --lz-light-canvas: 250 250 249;
 }
-

@@ -20,66 +20,53 @@ module.exports = {
       'black': 'rgb(var(--lz-black) / <alpha-value>)',
       'black-opacity-14': 'rgb(var(--lz-black) / 0.14)',
       'black-opacity-20': 'rgb(var(--lz-black) / 0.2)',
-      'red': 'rgb(var(--lz-red) / <alpha-value>)',
-      'red-dark': 'rgb(var(--lz-red-dark) / <alpha-value>)',
-      'red-bright': 'rgb(var(--lz-red-bright) / <alpha-value>)',
-      'red-opacity-14': 'rgb(var(--lz-red) / 0.14)',
-      'red-opacity-20': 'rgb(var(--lz-red) / 0.2)',
-      'red-opacity-30': 'rgb(var(--lz-red) / 0.3)',
-      'red-300': 'rgb(var(--lz-red-300) / <alpha-value>)',
-      'yellow': 'rgb(var(--lz-yellow) / <alpha-value>)',
-      'yellow-dark': 'rgb(var(--lz-yellow-dark) / <alpha-value>)',
-      'yellow-bright': 'rgb(var(--lz-yellow-bright) / <alpha-value>)',
-      'yellow-ghost': 'rgb(var(--lz-yellow) / 0.14)',
-      'green': 'rgb(var(--lz-green) / <alpha-value>)',
-      'green-bright': 'rgb(var(--lz-green-bright) / <alpha-value>)',
-      'green-opacity-14': 'rgb(var(--lz-green) / 0.14)',
-      'green-opacity-20': 'rgb(var(--lz-green) / 0.2)',
-      'green-opacity-30': 'rgb(var(--lz-green) / 0.3)',
-      'green-300': 'rgb(var(--lz-green-300) / <alpha-value>)',
       'blue-200': 'rgb(var(--lz-blue-200) / <alpha-value>)',
       'blue-400': 'rgb(var(--lz-blue-400) / <alpha-value>)',
       'blue-600': 'rgb(var(--lz-blue-600) / <alpha-value>)',
-
-      'slate-700': 'rgb(var(--lz-slate-700) / <alpha-value>)',
-      'sage-600': 'rgb(var(--lz-sage-600) / <alpha-value>)',
       'transparent': 'transparent',
   
-      // ── New colors extracted from the full Pio Chart UI ──
-  
       // Chart background / card (very light warm off-white)
-      'pio-bg': 'rgb(var(--lz-pio-bg) / <alpha-value>)', // main container background
-      'pio-bg-light': 'rgb(var(--lz-pio-bg-light) / <alpha-value>)', // slightly darker variant if needed
+      'pio-bg': 'rgb(var(--lz-pio-bg) / <alpha-value>)',
+      'pio-bg-light': 'rgb(var(--lz-pio-bg-light) / <alpha-value>)',
       'pio-bg-opacity-90': 'rgb(var(--lz-pio-bg-opacity-90) / 0.9)',
   
-      // Active tab/button color (dark teal/cyan used in the selected "Chart" pill)
-      'pio-teal-dark': 'rgb(var(--lz-pio-teal-dark) / <alpha-value>)', // ≈ button background
-      'pio-teal-dark-hover': 'rgb(var(--lz-pio-teal-dark-hover) / <alpha-value>)', // slight hover/lighter variant
+      // Success / positive / selected (green variant)
+      'pio-teal-dark': 'rgb(var(--lz-pio-teal-dark) / <alpha-value>)',
+      'pio-teal-dark-hover': 'rgb(var(--lz-pio-teal-dark-hover) / <alpha-value>)',
+      'pio-teal-dark-muted': 'rgb(var(--lz-pio-teal-dark-muted) / <alpha-value>)',
+      'pio-teal-dark-pale': 'rgb(var(--lz-pio-teal-dark-pale) / <alpha-value>)',
+      'pio-teal-dark-opacity-14': 'rgb(var(--lz-pio-teal-dark) / 0.14)',
       'pio-teal-dark-opacity-20': 'rgb(var(--lz-pio-teal-dark) / 0.2)',
       'pio-teal-black': 'rgb(var(--lz-pio-teal-black) / <alpha-value>)',
   
-      // Accent colors from the lines & points (refined from visual match)
-      'pio-coral': 'rgb(var(--lz-pio-coral) / <alpha-value>)', // red/coral points (Mon, Fri, Sun, etc.)
-      'pio-teal': 'rgb(var(--lz-pio-teal) / <alpha-value>)', // teal/cyan points (Tue, Wed, Sat)
-      'pio-amber': 'rgb(var(--lz-pio-amber) / <alpha-value>)', // orange/amber points & lines (Thu, Fri/Sat trend)
-      'pio-stone': 'rgb(var(--lz-pio-stone) / <alpha-value>)', // brown/earthy points & lines (Mon, Thu, Sun)
-  
-      // Opacity variants for accents (matching your style)
+      // Error / destructive (red variant)
+      'pio-coral': 'rgb(var(--lz-pio-coral) / <alpha-value>)',
+      'pio-coral-hover': 'rgb(var(--lz-pio-coral-hover) / <alpha-value>)',
+      'pio-coral-dark': 'rgb(var(--lz-pio-coral-dark) / <alpha-value>)',
+      'pio-coral-muted': 'rgb(var(--lz-pio-coral-muted) / <alpha-value>)',
+      'pio-coral-pale': 'rgb(var(--lz-pio-coral-pale) / <alpha-value>)',
       'pio-coral-opacity-14': 'rgb(var(--lz-pio-coral) / 0.14)',
-      'pio-teal-opacity-14': 'rgb(var(--lz-pio-teal) / 0.14)',
+      'pio-coral-opacity-20': 'rgb(var(--lz-pio-coral) / 0.2)',
+  
+      // Warning (yellow variant)
+      'pio-amber': 'rgb(var(--lz-pio-amber) / <alpha-value>)',
+      'pio-amber-hover': 'rgb(var(--lz-pio-amber-hover) / <alpha-value>)',
+      'pio-amber-dark': 'rgb(var(--lz-pio-amber-dark) / <alpha-value>)',
+      'pio-amber-muted': 'rgb(var(--lz-pio-amber-muted) / <alpha-value>)',
+      'pio-amber-pale': 'rgb(var(--lz-pio-amber-pale) / <alpha-value>)',
       'pio-amber-opacity-14': 'rgb(var(--lz-pio-amber) / 0.14)',
+      'pio-amber-opacity-20': 'rgb(var(--lz-pio-amber) / 0.2)',
+
+      // Chart / data accent (not a control variant)
+      'pio-stone': 'rgb(var(--lz-pio-stone) / <alpha-value>)',
+      'pio-stone-dark': 'rgb(var(--lz-pio-stone-dark) / <alpha-value>)',
+      'pio-stone-pale': 'rgb(var(--lz-pio-stone-pale) / <alpha-value>)',
       'pio-stone-opacity-14': 'rgb(var(--lz-pio-stone) / 0.14)',
   
       // Text & subtle elements
-      'pio-text': 'rgb(var(--lz-pio-text) / <alpha-value>)', // main chart title & labels (very dark gray)
-      'pio-text-muted': 'rgb(var(--lz-pio-text-muted) / <alpha-value>)', // secondary text like days/numbers if not using gray-600
-      'pio-grid': 'rgb(var(--lz-pio-grid) / <alpha-value>)', // subtle grid lines / axis (light gray)
-  
-      // Optional: if you want numbered shades like Tailwind defaults
-      'pio-coral-500': 'rgb(var(--lz-pio-coral) / <alpha-value>)',
-      'pio-teal-500': 'rgb(var(--lz-pio-teal) / <alpha-value>)',
-      'pio-amber-500': 'rgb(var(--lz-pio-amber) / <alpha-value>)',
-      'pio-stone-700': 'rgb(var(--lz-pio-stone) / <alpha-value>)',
+      'pio-text': 'rgb(var(--lz-pio-text) / <alpha-value>)',
+      'pio-text-muted': 'rgb(var(--lz-pio-text-muted) / <alpha-value>)',
+      'pio-grid': 'rgb(var(--lz-pio-grid) / <alpha-value>)',
     },
 
     extend: {

@@ -38,7 +38,7 @@ const Template: StoryFn<ExtendedBackgroundProps> = ({ color1, color2, color3, co
     <div className='p-3 h-full'>
       <Background colors={colors} {...args}>
         <div className="py-20 px-4 flex flex-col justify-center items-center w-full h-full">
-          <div className='text-red mb-3'><Cpu size={64} /></div>
+          <div className='text-pio-coral mb-3'><Cpu size={64} /></div>
           <Title size='xxl'>Something is coming</Title>
           <p className='text-white text-lg w-2/5 text-center mt-3 mb-4'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc at pellentesque aliquet nisl.

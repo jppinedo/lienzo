@@ -25,7 +25,7 @@ const TabSystem: React.FC<TabSystemProps> = ({
   return (
     <div className="w-full">
       <nav>
-        <ul role="tablist" className="border-b border-blue-200 flex dark:border-gray-700">
+        <ul role="tablist" className="border-b border-gray-300 flex dark:border-gray-700">
           {tabs.map((tab: TabType) => (
             <TabButton
               key={tab.id}

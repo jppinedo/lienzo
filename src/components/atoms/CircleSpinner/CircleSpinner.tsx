@@ -8,7 +8,7 @@ interface CircleSpinnerProps {
 }
 
 const CircleSpinner: React.FC<CircleSpinnerProps> = ({ 
-  colorClass = 'bg-red', 
+  colorClass = 'bg-pio-coral', 
   thickness = 1, 
   size = '6rem'
 }) => (

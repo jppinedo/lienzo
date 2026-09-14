@@ -22,7 +22,7 @@ const TabButton: React.FC<TabButton> = ({ id, label, active, onClick }) => {
         {label}
       </button>
       <div 
-        className={`absolute bottom-0 left-0 h-0.5 bg-green-bright transition-all duration-200 ${active ? 'w-full' : 'w-0'}`}
+        className={`absolute bottom-0 left-0 h-0.5 bg-pio-teal-dark transition-all duration-200 ${active ? 'w-full' : 'w-0'}`}
       ></div>
     </li>
   )

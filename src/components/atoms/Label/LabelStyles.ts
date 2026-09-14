@@ -6,19 +6,19 @@ const LabelStyles = {
     icon: 'text-gray-300'
   },
   red: { 
-    label: 'text-red', 
-    items: 'bg-red-bright text-white',
-    icon: 'text-red-bright'
+    label: 'text-pio-coral', 
+    items: 'bg-pio-coral-hover text-white',
+    icon: 'text-pio-coral-hover'
   },
   yellow: { 
-    label: 'text-yellow-dark dark:text-yellow', 
-    items: 'bg-yellow text-yellow-dark',
-    icon: 'text-yellow'
+    label: 'text-pio-amber-dark dark:text-pio-amber', 
+    items: 'bg-pio-amber text-pio-amber-dark',
+    icon: 'text-pio-amber'
   },
   green: { 
-    label: 'text-green', 
-    items: 'bg-green-bright text-white',
-    icon: 'text-green-bright'
+    label: 'text-pio-teal-dark', 
+    items: 'bg-pio-teal-dark-hover text-white',
+    icon: 'text-pio-teal-dark-hover'
   },
   container: 'flex whitespace-nowrap'
 };

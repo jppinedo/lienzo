@@ -28,7 +28,8 @@ export const boxContentArea = [
   'dark:bg-gray-900',
 ].join(' ');
 
-export const boxHeader = 'px-3 pt-3 pb-2';
+export const boxHeader = 'px-5 pt-5 pb-2';
 export const boxHeaderOutside = 'px-3 py-3';
-export const boxContent = 'p-3';
-export const boxFooter = 'px-3 py-3';
+export const boxContent = 'p-5';
+// px-6 = outer p-1 + inner px-5 so footer aligns with header/content
+export const boxFooter = 'px-5 py-3';

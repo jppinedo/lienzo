@@ -31,7 +31,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
     lg: 'h-6 w-6 p-1',
   };
 
-  const bgClass = checked ? 'bg-green' : 'bg-white dark:border dark:border-gray-600 dark:bg-gray-700 border border-gray-100';
+  const bgClass = checked ? 'bg-pio-teal-dark' : 'bg-white dark:border dark:border-gray-600 dark:bg-gray-700 border border-gray-100';
   const propClass = className || '';
   const classes = [
     'flex',

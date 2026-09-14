@@ -1,23 +1,23 @@
 export const buttonStyles = {
   default: {
-    solid: 'bg-gray-100 hover:bg-blue-200 text-gray-700',
+    solid: 'bg-gray-100 hover:bg-gray-opacity-30 text-gray-700',
     outline: 'text-gray-700 border-gray-300 border-2 bg-transparent hover:bg-gray-opacity-14 dark:text-blue-200',
     ghost: 'text-gray-700 bg-transparent hover:bg-gray-opacity-14 dark:text-blue-200',
   },
   green: {
-    solid: 'bg-green hover:bg-green-bright text-white',
-    outline: 'text-green border-green border-2 bg-transparent hover:bg-green-opacity-14',
-    ghost: 'text-green bg-transparent hover:bg-green-opacity-14',
+    solid: 'bg-pio-teal-dark hover:bg-pio-teal-dark-hover text-white',
+    outline: 'text-pio-teal-dark border-pio-teal-dark border-2 bg-transparent hover:bg-pio-teal-dark-opacity-14',
+    ghost: 'text-pio-teal-dark bg-transparent hover:bg-pio-teal-dark-opacity-14',
   },
   yellow: {
-    solid: 'bg-yellow hover:bg-yellow-bright text-yellow-dark',
-    outline: 'text-yellow-dark border-yellow hover:bg-yellow-ghost border-2 bg-transparent dark:text-yellow',
-    ghost: 'text-yellow-dark bg-transparent hover:bg-yellow-ghost',
+    solid: 'bg-pio-amber hover:bg-pio-amber-hover text-pio-amber-dark',
+    outline: 'text-pio-amber-dark border-pio-amber hover:bg-pio-amber-opacity-14 border-2 bg-transparent dark:text-pio-amber',
+    ghost: 'text-pio-amber-dark bg-transparent hover:bg-pio-amber-opacity-14',
   },
   red: {
-    solid: 'bg-red hover:bg-red-bright text-white',
-    outline: 'text-red border-red border-2 bg-transparent hover:bg-red-opacity-14',
-    ghost: 'text-red bg-transparent hover:bg-red-opacity-14',
+    solid: 'bg-pio-coral hover:bg-pio-coral-hover text-white',
+    outline: 'text-pio-coral border-pio-coral border-2 bg-transparent hover:bg-pio-coral-opacity-14',
+    ghost: 'text-pio-coral bg-transparent hover:bg-pio-coral-opacity-14',
   },
   mode: {
     default: 'px-3 py-1 rounded-xl flex items-center justify-center',
@@ -33,17 +33,17 @@ export const iconStyles = {
   },
   green: {
     solid: 'text-white',
-    outline: 'text-green',
-    ghost: 'text-green',
+    outline: 'text-pio-teal-dark',
+    ghost: 'text-pio-teal-dark',
   },
   yellow: {
-    solid: 'text-yellow-dark',
-    outline: 'text-yellow-dark dark:text-yellow',
-    ghost: 'text-yellow-dark dark:text-yellow',
+    solid: 'text-pio-amber-dark',
+    outline: 'text-pio-amber-dark dark:text-pio-amber',
+    ghost: 'text-pio-amber-dark dark:text-pio-amber',
   },
   red: {
     solid: 'text-white',
-    outline: 'text-red',
-    ghost: 'text-red',
+    outline: 'text-pio-coral',
+    ghost: 'text-pio-coral',
   }
 }

@@ -7,13 +7,13 @@ export default {
   component: CircleSpinner,
   argTypes: {
     colorClass: {
-      options: ['bg-red', 'bg-yellow', 'bg-green', 'bg-gray-700', 'bg-black'],
+      options: ['bg-pio-coral', 'bg-pio-amber', 'bg-pio-teal-dark', 'bg-gray-700', 'bg-black'],
       control: {
         type: 'select',
         labels: {
-          'bg-red': 'Red',
-          'bg-yellow': 'Yellow',
-          'bg-green': 'Green',
+          'bg-pio-coral': 'Coral',
+          'bg-pio-amber': 'Amber',
+          'bg-pio-teal-dark': 'Teal dark',
           'bg-gray-700': 'Gray',
           'bg-black': 'Black',
         },
@@ -35,7 +35,7 @@ const Template: StoryFn<typeof CircleSpinner> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  colorClass: 'bg-green',
+  colorClass: 'bg-pio-teal-dark',
   thickness: 1,
   size: 6,
 };
@@ -43,9 +43,9 @@ Default.tags = ['!dev'];
 
 export const MultipleSpinners = () => (
   <div className='flex p-5 gap-3'>
-    <CircleSpinner colorClass='bg-red' thickness={0.5} size='4rem' />
-    <CircleSpinner colorClass='bg-green' thickness={0.5} size='4rem' />
-    <CircleSpinner colorClass='bg-yellow-dark dark:bg-yellow' thickness={0.5} size='4rem' />
+    <CircleSpinner colorClass='bg-pio-coral' thickness={0.5} size='4rem' />
+    <CircleSpinner colorClass='bg-pio-teal-dark' thickness={0.5} size='4rem' />
+    <CircleSpinner colorClass='bg-pio-amber' thickness={0.5} size='4rem' />
     <CircleSpinner colorClass='bg-gray-900 dark:bg-white' thickness={0.5} size='4rem' />
   </div>
 );

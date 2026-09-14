@@ -14,7 +14,7 @@ export default {
 } as Meta;
 
 const Template: StoryFn<typeof Tabs> = (args) => <Tabs {...args} />;
-const containerClass = 'flex justify-center items-center h-64 border border-blue-200 bg-gray-100 dark:border-none dark:bg-gray-900 dark:text-blue-200';
+const containerClass = 'flex justify-center items-center h-64 border border-gray-300 bg-gray-100 dark:border-none dark:bg-gray-900 dark:text-blue-200';
 
 export const Default = Template.bind({});
 Default.args = {
