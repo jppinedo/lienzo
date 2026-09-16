@@ -21,9 +21,9 @@ export default {
   title: 'Molecules/LineChart',
   component: LineChart,
   argTypes: {
-    height: { control: 'number' },
-    showGrid: { control: 'boolean' },
-    showTooltip: { control: 'boolean' },
+    height: { name: 'Height', control: 'number' },
+    showGrid: { name: 'Show grid', control: 'boolean' },
+    showTooltip: { name: 'Show tooltip', control: 'boolean' },
     data: { control: false, table: { disable: true } },
     series: { control: false, table: { disable: true } },
     xAxisKey: { control: false, table: { disable: true } },

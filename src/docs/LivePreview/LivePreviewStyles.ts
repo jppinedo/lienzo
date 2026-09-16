@@ -23,23 +23,27 @@ export const livePreviewGrid = [
   'grid',
   'grid-cols-1',
   'lg:grid-cols-12',
-  'min-h-[560px]',
+  'items-stretch',
 ].join(' ');
 
-/** Controls column — first in DOM so it stacks above Canvas on mobile. */
+/** Controls column — first in DOM so it stacks above Canvas on mobile.
+ * Padding matches Stitch (`p-6 sm:p-7`); title + Controls share this inset. */
 export const livePreviewControls = [
   'live-preview__controls',
   'lg:col-span-4',
+  'min-w-0',
+  'lg:h-full',
   'p-6',
   'sm:p-7',
   'border-b',
   'lg:border-b-0',
   'lg:border-r',
   'border-pio-grid',
-  'bg-pio-bg-light',
+  'bg-pio-bg-soft',
   'flex',
   'flex-col',
-  'gap-4',
+  'gap-6',
+  'overflow-hidden',
   'dark:border-gray-600',
   'dark:bg-gray-900',
 ].join(' ');
@@ -50,7 +54,7 @@ export const livePreviewControlsEyebrow = [
   'justify-between',
   'pb-3',
   'border-b',
-  'border-pio-border-subtle',
+  'border-pio-grid',
   'dark:border-gray-700',
 ].join(' ');
 
@@ -67,14 +71,16 @@ export const livePreviewControlsLabel = [
 export const livePreviewCanvas = [
   'live-preview__canvas',
   'lg:col-span-8',
+  'min-w-0',
+  'lg:h-full',
   'p-6',
   'sm:p-8',
   'flex',
   'flex-col',
-  'justify-between',
+  'justify-start',
+  'gap-4',
   'bg-white',
   'relative',
-  'min-h-[320px]',
   'dark:bg-gray-800',
 ].join(' ');
 

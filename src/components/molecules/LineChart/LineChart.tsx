@@ -53,7 +53,7 @@ const LineChart: React.FC<LineChartProps> = ({
         {showGrid && (
           <CartesianGrid
             strokeDasharray="3 3"
-            stroke="var(--pio-grid, #e5e7eb)"
+            stroke="var(--pio-grid, #e5e0d8)"
             vertical={false}
           />
         )}
@@ -73,8 +73,8 @@ const LineChart: React.FC<LineChartProps> = ({
         {showTooltip && (
           <Tooltip
             contentStyle={{
-              backgroundColor: 'var(--pio-bg-light, #f6f4eb)',
-              border: '1px solid var(--pio-grid, #e5e7eb)',
+              backgroundColor: 'var(--pio-bg-light, #f5f2ec)',
+              border: '1px solid var(--pio-grid, #e5e0d8)',
               borderRadius: 8,
             }}
             labelStyle={{ color: 'var(--pio-text, #2d2d2f)' }}

@@ -8,7 +8,7 @@ export interface DocsSectionHeaderProps {
   lead?: React.ReactNode;
 }
 
-/** Stage 03 section header: color dot + uppercase eyebrow + Playfair h2. */
+/** Section header: color dot + uppercase eyebrow + Playfair h2 (Stitch: text-xs / text-2xl→3xl). */
 const DocsSectionHeader: React.FC<DocsSectionHeaderProps> = ({
   eyebrow,
   title,
@@ -16,10 +16,18 @@ const DocsSectionHeader: React.FC<DocsSectionHeaderProps> = ({
   lead,
 }) => (
   <div className="space-y-1">
-    <Title size="sm" uppercase dot dotTone={dotTone} fontFamily="jakarta" thikness="bold">
+    <Title
+      size="sm"
+      className="!text-xs"
+      uppercase
+      dot
+      dotTone={dotTone}
+      fontFamily="jakarta"
+      thikness="bold"
+    >
       {eyebrow}
     </Title>
-    <Title size="xl" fontFamily="playfair" thikness="bold">
+    <Title size="xl" className="sm:text-3xl" fontFamily="playfair" thikness="bold">
       {title}
     </Title>
     {lead ? (

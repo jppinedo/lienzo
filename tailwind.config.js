@@ -28,6 +28,7 @@ module.exports = {
       // Chart background / card (very light warm off-white)
       'pio-bg': 'rgb(var(--lz-pio-bg) / <alpha-value>)',
       'pio-bg-light': 'rgb(var(--lz-pio-bg-light) / <alpha-value>)',
+      'pio-bg-soft': 'rgb(var(--lz-pio-bg-soft) / <alpha-value>)',
       'pio-bg-opacity-90': 'rgb(var(--lz-pio-bg-opacity-90) / 0.9)',
   
       // Success / positive / selected (green variant)

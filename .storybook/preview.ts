@@ -13,6 +13,12 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    docs: {
+      canvas: {
+        // Hide “Show code” on Docs Canvas (Live Preview + Variations). Runtime supports 'none'.
+        sourceState: 'none' as 'hidden',
+      },
+    },
     options: {
       storySort: (a, b) => {
         const PINNED = ['Welcome', 'Colors', 'Intro'];

@@ -42,7 +42,7 @@ Used mainly for dark-mode text (`blue-200`): `blue-200`, `blue-400`, `blue-600`
 
 ### Pio backgrounds
 
-- **Backgrounds**: `pio-bg`, `pio-bg-light`, `pio-bg-opacity-90`
+- **Backgrounds**: `pio-bg` (`#FAF8F5`), `pio-bg-light` (`#F5F2EC`), `pio-bg-soft` (`#FDFCFA`, pio-bg mixed toward white), `pio-bg-opacity-90`
 
 ### Pio teal dark (green / success)
 
@@ -68,8 +68,8 @@ Not a control variant. Used for data series.
 
 ### Pio text & UI
 
-- `pio-text`, `pio-text-muted`, `pio-grid`
-- `pio-border-subtle` — warm inner hairlines and nested tracks (Docs dividers). Use `pio-grid` for card strokes.
+- `pio-text`, `pio-text-muted`, `pio-grid` (`#E5E0D8` warm structural hairline)
+- `pio-border-subtle` (`#F2EFEB`) — warm inner hairlines and nested tracks (Docs dividers). Use `pio-grid` for card strokes and section rules.
 
 ### Canvas (theming)
 
@@ -104,9 +104,9 @@ Stitch `lienzo-*` names from the component-view mock map onto existing `pio-*` t
 
 | Stitch | Hex / profile | Lienzo token | Action |
 |--------|---------------|--------------|--------|
-| `lienzo-bg` | `#FAF8F5` | `pio-bg` / `light-canvas` | Adapt |
+| `lienzo-bg` | `#FAF8F5` | `pio-bg` / `light-canvas` | Adapt — `pio-bg` is `#FAF8F5` |
 | `lienzo-card` | `#FFFFFF` | `white` | Reuse |
-| `lienzo-card-alt` | `#FDFCFA` | `pio-bg-light` | Adapt |
+| `lienzo-card-alt` | `#FDFCFA` | `pio-bg-soft` (`#FDFCFA`) | Add — lighter nested surface from pio-bg toward white; `pio-bg-light` stays the warmer recessed wash |
 | `lienzo-coral` | `#FF6B57` | `pio-coral` | Adapt |
 | `lienzo-coral-light` | coral 0.15 | `pio-coral-opacity-14` / `20` | Reuse |
 | `lienzo-coral-soft` | `#FFEBE8` | `pio-coral-pale` | Adapt |
@@ -118,7 +118,7 @@ Stitch `lienzo-*` names from the component-view mock map onto existing `pio-*` t
 | `lienzo-stone` (data) | `#8C827A` | `pio-stone` | Keep for charts |
 | `lienzo-text` | `#1F2421` | `pio-text` | Adapt |
 | `lienzo-text-muted` | `#6D726D` | `pio-text-muted` | Adapt |
-| `lienzo-border` | `#EAE5DE` | `pio-grid` | Adapt |
+| `lienzo-border` / DESIGN `pio-grid` | `#EAE5DE` / `#E5E0D8` | `pio-grid` (`#E5E0D8`) | Adapt — warm hairline; cool gray fails on Docs canvas |
 | `lienzo-border-subtle` | `#F2EFEB` | `pio-border-subtle` | Add — no close token; inner Docs dividers |
 | Code panel | `#181C1A` | `dark-canvas` | Adapt |
 | CDN `emerald-*` / `rose-*` | interactive / don’ts | `pio-teal-dark` / `pio-coral` | Adapt; no emerald/rose brand colors |

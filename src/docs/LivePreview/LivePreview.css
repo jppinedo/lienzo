@@ -31,17 +31,22 @@
 }
 
 .live-preview .docblock-code-toggle {
-  /* Keep “Show code”; soften so it sits in the card */
-  margin-top: 0.75rem;
+  display: none;
 }
 
-/* Args table → customization panel feel */
+/* Args table → customization panel feel.
+ * Horizontal inset comes only from the panel (`p-6 sm:p-7`); zero Storybook’s
+ * own table/cell padding so the eyebrow and rows share the same left edge. */
 .live-preview .docblock-argstable {
-  margin: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   border: none;
   box-shadow: none;
   background: transparent;
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
 }
 
 .live-preview .docblock-argstable-head {
@@ -52,6 +57,8 @@
 
 .live-preview .docblock-argstable-body {
   border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .live-preview .docblock-argstable-body tr {
@@ -63,24 +70,28 @@
 }
 
 .live-preview .docblock-argstable-body td {
-  padding: 0.75rem 0;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   vertical-align: middle;
   background: transparent !important;
   border: none !important;
 }
 
-/* Name cell → uppercase control label */
+/* Name cell → sentence-case control label (Stitch singular controls) */
 .live-preview .docblock-argstable-body td:first-child {
-  width: 42%;
-  padding-right: 0.75rem;
+  width: 38%;
+  padding-right: 0.75rem !important;
+  overflow-wrap: break-word;
 }
 
 .live-preview .docblock-argstable-body td:first-child span,
 .live-preview .docblock-argstable-body td:first-child code {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
   color: rgb(var(--lz-pio-text));
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
@@ -92,7 +103,29 @@
 }
 
 .live-preview .docblock-argstable-body td:last-child {
-  width: 58%;
+  width: 62%;
+  /* Allow the control cell to shrink inside the fixed table layout */
+  overflow: hidden;
+}
+
+/* Keep Storybook control widgets inside the panel width */
+.live-preview .docblock-argstable-body td:last-child > * {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.live-preview .docblock-argstable-body input,
+.live-preview .docblock-argstable-body select,
+.live-preview .docblock-argstable-body textarea {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.live-preview .docblock-argstable-body input[type='checkbox'],
+.live-preview .docblock-argstable-body input[type='radio'],
+.live-preview .docblock-argstable-body input[type='color'] {
+  width: auto;
 }
 
 html[data-mode='dark'] .live-preview .docblock-argstable-body tr {

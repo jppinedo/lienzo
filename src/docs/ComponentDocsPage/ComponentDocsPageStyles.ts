@@ -1,5 +1,7 @@
 export const pageRoot = [
   'component-docs-page',
+  /* Prevent Storybook Docs heading chrome (e.g. h2 underlines) from leaking in */
+  'sb-unstyled',
   'w-full',
   'max-w-7xl',
   'mx-auto',
@@ -78,7 +80,7 @@ export const overviewGrid = [
   'lg:grid-cols-12',
   'gap-8',
   'lg:gap-12',
-  'items-start',
+  'items-stretch',
 ].join(' ');
 
 export const overviewLeft = [
@@ -86,11 +88,12 @@ export const overviewLeft = [
   'lg:pr-10',
   'lg:border-r',
   'lg:border-pio-grid',
+  'lg:h-full',
   'space-y-4',
   'dark:lg:border-gray-600',
 ].join(' ');
 
-export const overviewRight = 'lg:col-span-6 space-y-4';
+export const overviewRight = 'lg:col-span-6 lg:h-full space-y-4';
 
 export const useCaseList = 'space-y-3.5 text-sm sm:text-base font-jakarta text-pio-text dark:text-blue-200';
 
@@ -192,7 +195,7 @@ export const propsTableWrap = 'overflow-x-auto';
 export const propsTable = 'w-full text-left border-collapse';
 
 export const propsTheadRow = [
-  'bg-pio-bg-light',
+  'bg-pio-bg-soft',
   'text-xs',
   'font-bold',
   'uppercase',

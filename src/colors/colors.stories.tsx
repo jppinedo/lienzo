@@ -38,6 +38,7 @@ const Template: StoryFn = () => (
     <div className="flex gap-4 mt-4">
       <div className="bg-pio-bg p-4 border border-pio-grid" title="pio-bg"></div>
       <div className="bg-pio-bg-light p-4 border border-pio-grid" title="pio-bg-light"></div>
+      <div className="bg-pio-bg-soft p-4 border border-pio-grid" title="pio-bg-soft"></div>
       <div className="bg-pio-bg-opacity-90 p-4 border border-pio-grid" title="pio-bg-opacity-90"></div>
       <Label text="Pio background" type="default" icon={<ArrowLeft />} />
     </div>

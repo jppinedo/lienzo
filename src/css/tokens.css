@@ -23,8 +23,10 @@
   --lz-blue-400: 69 103 167;
   --lz-blue-600: 37 59 100;
 
-  --lz-pio-bg: 230 230 222;
-  --lz-pio-bg-light: 246 244 235;
+  --lz-pio-bg: 250 248 245;
+  --lz-pio-bg-light: 245 242 236;
+  /* Lighter warm surface (pio-bg mixed toward white) for nested panels / table heads */
+  --lz-pio-bg-soft: 253 252 250;
   --lz-pio-bg-opacity-90: 253 252 252;
 
   --lz-pio-teal-dark: 43 102 93;
@@ -51,8 +53,9 @@
 
   --lz-pio-text: 45 45 47;
   --lz-pio-text-muted: 107 114 128;
-  --lz-pio-grid: 229 231 235;
-  /* Warm inner hairline; cooler pio-grid is too close to card fill for Docs dividers */
+  /* Warm structural hairline (#E5E0D8); cool gray read as white on pio Docs canvas */
+  --lz-pio-grid: 229 224 216;
+  /* Softer warm divider for nested tracks / inner Docs rules (#F2EFEB) */
   --lz-pio-border-subtle: 242 239 235;
 
   --lz-dark-canvas: 22 22 26;

@@ -66,7 +66,7 @@ const LivePreview: React.FC<LivePreviewProps> = ({
           </div>
 
           <div className={livePreviewCanvas} data-purpose="live-render-canvas">
-            <Canvas of={of} />
+            <Canvas of={of} sourceState="none" />
             {caption ? <div className={livePreviewCaption}>{caption}</div> : null}
           </div>
         </div>
