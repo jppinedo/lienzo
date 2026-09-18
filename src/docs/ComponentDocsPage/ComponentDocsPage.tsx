@@ -8,6 +8,7 @@ import CodeBlock from '@molecules/CodeBlock/CodeBlock';
 import Tabs from '@molecules/Tabs/Tabs';
 import LivePreview from '@docs/LivePreview/LivePreview';
 import DocsSectionHeader from './DocsSectionHeader';
+import './ComponentDocsPage.css';
 import {
   breadcrumbCurrent,
   breadcrumbNav,
@@ -50,6 +51,10 @@ import {
   variationCanvas,
   variationCopy,
   variationCopyFull,
+  variationMetaLabel,
+  variationMetaList,
+  variationMetaRow,
+  variationMetaValue,
   variationPanel,
   variationsHeader,
 } from './ComponentDocsPageStyles';
@@ -76,6 +81,13 @@ export interface ComponentDocsUseCases {
   footer?: React.ReactNode;
 }
 
+export interface ComponentDocsVariationMeta {
+  label: string;
+  value: React.ReactNode;
+  /** `prop` uses coral mono (highlight); `code` uses mono; `text` is default body. */
+  valueTone?: keyof typeof variationMetaValue;
+}
+
 export interface ComponentDocsVariation {
   id: string;
   label: string;
@@ -83,6 +95,8 @@ export interface ComponentDocsVariation {
   canvas: React.ReactNode;
   description?: React.ReactNode;
   badge?: string;
+  /** Key/value rows (e.g. data signature, distinguishing props, best for). */
+  meta?: ComponentDocsVariationMeta[];
 }
 
 export interface ComponentDocsPropRow {
@@ -291,40 +305,69 @@ const ComponentDocsPage: React.FC<ComponentDocsPageProps> = ({
           </div>
           <Tabs
             variant="pills"
-            tabs={variations.map((variation) => ({
-              id: variation.id,
-              label: variation.label,
-              content: (
-                <Card padded={false} radius="3xl" surface="white" shadow="soft">
-                  <div
-                    className={
-                      variation.description ? variationPanel : variationCopyFull
-                    }
-                  >
+            tabs={variations.map((variation) => {
+              const hasCopy = Boolean(
+                variation.description ||
+                  variation.badge ||
+                  (variation.meta && variation.meta.length > 0)
+              );
+              return {
+                id: variation.id,
+                label: variation.label,
+                content: (
+                  <Card padded={false} radius="3xl" surface="white" shadow="soft">
                     <div
-                      className={
-                        variation.description
-                          ? variationCanvas
-                          : 'w-full flex items-center justify-center'
-                      }
+                      className={hasCopy ? variationPanel : variationCopyFull}
                     >
-                      {variation.canvas}
-                    </div>
-                    {variation.description ? (
-                      <div className={variationCopy}>
-                        {variation.badge ? (
-                          <Badge label={variation.badge} tone="coral" dot />
-                        ) : null}
-                        <Title size="xl" fontFamily="playfair" thikness="bold">
-                          {variation.label}
-                        </Title>
-                        <div className={descriptionText}>{variation.description}</div>
+                      <div
+                        className={
+                          hasCopy
+                            ? variationCanvas
+                            : 'component-docs-variation-canvas w-full min-w-0'
+                        }
+                      >
+                        {variation.canvas}
                       </div>
-                    ) : null}
-                  </div>
-                </Card>
-              ),
-            }))}
+                      {hasCopy ? (
+                        <div className={variationCopy}>
+                          {variation.badge ? (
+                            <Badge label={variation.badge} tone="coral" dot />
+                          ) : null}
+                          <Title size="xl" fontFamily="playfair" thikness="bold">
+                            {variation.label}
+                          </Title>
+                          {variation.description ? (
+                            <div className={descriptionText}>
+                              {variation.description}
+                            </div>
+                          ) : null}
+                          {variation.meta && variation.meta.length > 0 ? (
+                            <dl className={variationMetaList}>
+                              {variation.meta.map((row) => {
+                                const tone = row.valueTone ?? 'text';
+                                return (
+                                  <div
+                                    key={row.label}
+                                    className={variationMetaRow}
+                                  >
+                                    <dt className={variationMetaLabel}>
+                                      {row.label}
+                                    </dt>
+                                    <dd className={variationMetaValue[tone]}>
+                                      {row.value}
+                                    </dd>
+                                  </div>
+                                );
+                              })}
+                            </dl>
+                          ) : null}
+                        </div>
+                      ) : null}
+                    </div>
+                  </Card>
+                ),
+              };
+            })}
           />
         </section>
       ) : null}

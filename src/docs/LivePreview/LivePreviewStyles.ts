@@ -68,6 +68,7 @@ export const livePreviewControlsLabel = [
   'dark:text-blue-200/80',
 ].join(' ');
 
+/** Preview column — single padded surface; story content is vertically centered. */
 export const livePreviewCanvas = [
   'live-preview__canvas',
   'lg:col-span-8',
@@ -77,7 +78,7 @@ export const livePreviewCanvas = [
   'sm:p-8',
   'flex',
   'flex-col',
-  'justify-start',
+  'justify-center',
   'gap-4',
   'bg-white',
   'relative',

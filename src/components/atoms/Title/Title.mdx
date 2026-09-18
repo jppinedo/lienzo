@@ -4,8 +4,86 @@ import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
+export const exampleCode = `import Title from '@atoms/Title/Title';
+
+<>
+  <Title size="sm" fontFamily="jakarta" uppercase dot dotTone="coral">
+    Overview
+  </Title>
+  <Title size="xl" fontFamily="playfair" thikness="bold">
+    Component Description
+  </Title>
+</>`;
+
 <ComponentDocsPage
   title="Title"
-  description="Heading / title text. Size, font family (`lexend`, `poppins`, `playfair`, `jakarta`), and thickness can be customized. Set `uppercase` for tracked all-caps labels and `dot` (with optional `dotTone`) for a color mark beside the text. A Docs section header is two Titles: an uppercase dotted eyebrow, then a Playfair display line. Pass extra Tailwind or CSS classes with `className` for spacing and other styles."
+  badge="0.1.0"
+  description="Heading / title text. Size, font family (`lexend`, `poppins`, `playfair`, `jakarta`), and thickness can be customized. Set `uppercase` for tracked all-caps labels and `dot` (with optional `dotTone`) for a color mark beside the text. A Docs section header is often two Titles: an uppercase dotted eyebrow, then a Playfair display line."
   stories={Stories}
+  useCases={{
+    cases: [
+      'Page and section headings across the product UI.',
+      'Docs eyebrows (uppercase + dot) paired with Playfair display titles.',
+      'Hierarchy via size mapping to semantic heading tags.',
+      'Muted tracked labels for categories and section markers.',
+    ],
+  }}
+  variations={[]}
+  props={{
+    interfaceName: 'TitleProps',
+    lead: 'Runtime props for Title.',
+    rows: [
+      {
+        name: 'children',
+        type: 'React.ReactNode',
+        description: 'Title text or nodes.',
+      },
+      {
+        name: 'size',
+        type: "'sm' | 'md' | 'lg' | 'xl' | 'xxl'",
+        defaultValue: "'md'",
+        description: 'Visual size; maps to heading tags h5–h1.',
+      },
+      {
+        name: 'thikness',
+        type: "'thin' | 'regular' | 'bold'",
+        defaultValue: "'regular'",
+        description: 'Font weight token (note the existing prop spelling).',
+      },
+      {
+        name: 'fontFamily',
+        type: "'lexend' | 'poppins' | 'playfair' | 'jakarta'",
+        defaultValue: "'poppins'",
+        description: 'Typeface for the title.',
+      },
+      {
+        name: 'uppercase',
+        type: 'boolean',
+        defaultValue: 'false',
+        description: 'Tracked all-caps label treatment.',
+      },
+      {
+        name: 'dot',
+        type: 'boolean',
+        defaultValue: 'false',
+        description: 'Shows a side color dot before the text.',
+      },
+      {
+        name: 'dotTone',
+        type: "'coral' | 'teal' | 'amber'",
+        defaultValue: "'coral'",
+        description: 'Dot color when `dot` is true.',
+      },
+      {
+        name: 'className',
+        type: 'string',
+        description: 'Optional class passthrough for spacing and layout.',
+      },
+    ],
+  }}
+  example={{
+    code: exampleCode,
+    filename: 'Title.example.tsx',
+    language: 'tsx',
+  }}
 />

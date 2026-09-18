@@ -43,18 +43,20 @@ const TabSystem: React.FC<TabSystemProps> = ({
           ))}
         </ul>
       </nav>
-      {tabs.map((tab: TabType) => (
-        <div
-          id={`tabpanel-${tab.id}`}
-          role="tabpanel"
-          aria-labelledby={`tab-${tab.id}`}
-          className="py-5"
-          hidden={active !== tab.id}
-          key={tab.id}
-        >
-          {tab.content}
-        </div>
-      ))}
+      {tabs.map((tab: TabType) => {
+        if (active !== tab.id) return null;
+        return (
+          <div
+            id={`tabpanel-${tab.id}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${tab.id}`}
+            className="py-5"
+            key={tab.id}
+          >
+            {tab.content}
+          </div>
+        );
+      })}
     </div>
   );
 }

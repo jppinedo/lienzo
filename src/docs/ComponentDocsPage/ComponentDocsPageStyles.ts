@@ -148,24 +148,46 @@ export const variationPanel = [
 ].join(' ');
 
 export const variationCanvas = [
+  'component-docs-variation-canvas',
   'lg:col-span-7',
+  'w-full',
+  'min-w-0',
   'bg-pio-bg-light',
   'rounded-2xl',
   'p-6',
   'border',
   'border-pio-border-subtle',
-  'flex',
-  'items-center',
-  'justify-center',
   'min-h-[300px]',
   'overflow-hidden',
   'dark:bg-gray-900',
   'dark:border-gray-700',
 ].join(' ');
 
-export const variationCopy = 'lg:col-span-5 space-y-4';
+export const variationCopy = 'lg:col-span-5 space-y-5';
 
-export const variationCopyFull = 'space-y-4 p-6 sm:p-8';
+export const variationCopyFull = 'space-y-5 p-6 sm:p-8';
+
+export const variationMetaList = 'space-y-0 pt-2 text-xs font-jakarta';
+
+export const variationMetaRow = [
+  'flex',
+  'items-start',
+  'justify-between',
+  'gap-4',
+  'py-2',
+  'border-b',
+  'border-pio-border-subtle',
+  'last:border-b-0',
+  'dark:border-gray-700',
+].join(' ');
+
+export const variationMetaLabel = 'text-pio-stone shrink-0 dark:text-blue-200/60';
+
+export const variationMetaValue = {
+  text: 'text-pio-text font-medium text-right dark:text-blue-200',
+  code: 'font-jetbrains text-pio-text font-medium text-right dark:text-blue-200',
+  prop: 'font-jetbrains text-pio-coral font-semibold text-right',
+} as const;
 
 export const propsCardHeader = [
   'p-6',

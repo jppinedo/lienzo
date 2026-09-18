@@ -4,8 +4,66 @@ import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
+export const exampleCode = `import Background from '@atoms/Background/Background';
+
+<Background
+  colors={['pio-coral', 'pio-teal-dark', 'pio-amber']}
+  isHexColors={false}
+  rounded
+>
+  {/* overlay content */}
+</Background>`;
+
 <ComponentDocsPage
   title="Background"
-  description="Gradient or custom background wrapper. Supports hex colors, CSS variable colors, and optional rounded corners."
+  badge="0.1.0"
+  description="Full-bleed gradient background wrapper with optional turbulence distortion. Accepts CSS variable color names or hex values, optional rounded corners, and children layered above the SVG fill."
   stories={Stories}
+  useCases={{
+    cases: [
+      'Hero or panel backgrounds behind product content.',
+      'Story and Docs demos that need a rich gradient plane.',
+      'Rounded surface fills when the parent does not supply its own background.',
+      'Layer titles, buttons, or other atoms as children over the gradient.',
+    ],
+  }}
+  variations={[]}
+  props={{
+    interfaceName: 'BackgroundProps',
+    lead: 'Runtime props for Background.',
+    rows: [
+      {
+        name: 'colors',
+        type: 'string[]',
+        description:
+          'Gradient stop colors. When `isHexColors` is false, values are CSS custom property names (e.g. `pio-coral`).',
+      },
+      {
+        name: 'isHexColors',
+        type: 'boolean',
+        description: 'When true, `colors` are treated as hex (or raw) color values; otherwise as CSS variable names.',
+      },
+      {
+        name: 'children',
+        type: 'React.ReactNode',
+        description: 'Optional content layered above the background.',
+      },
+      {
+        name: 'className',
+        type: 'string',
+        description: 'Optional class passthrough on the wrapper.',
+      },
+      {
+        name: 'rounded',
+        type: 'boolean',
+        defaultValue: 'false',
+        description: 'Applies `rounded-3xl` and clips overflow.',
+      },
+    ],
+  }}
+  example={{
+    code: exampleCode,
+    filename: 'Background.example.tsx',
+    language: 'tsx',
+  }}
 />

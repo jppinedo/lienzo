@@ -53,15 +53,15 @@ Atoms
 
 ## Docs vs variant stories
 
-**Docs** (`ComponentName.mdx`) is the interactive reference for a component. The contract (required vs optional sections, Controls rules, Default vs variants) is documented in [Component Docs](component-docs.md).
+**Docs** (`ComponentName.mdx`) is the interactive reference for a component. The contract (mandatory sections, Controls rules, Default vs variants) is documented in [Component Docs](component-docs.md).
 
-Every production Docs page uses **ComponentDocsPage** ([src/docs/ComponentDocsPage/ComponentDocsPage.tsx](../src/docs/ComponentDocsPage/ComponentDocsPage.tsx)): required `title`, `description`, and `stories` (Live Preview on `stories.Default`); optional `breadcrumb`, `badge`, `useCases`, `variations` (pills Tabs + canvases), `props`, `usage`, and `example` only when content is real. Import via `@docs/ComponentDocsPage`. **LineChart** is the richer reference page; most atoms (e.g. **Button**) stay title + description + Live Preview.
+Every production Docs page **must** use **ComponentDocsPage** ([src/docs/ComponentDocsPage/ComponentDocsPage.tsx](../src/docs/ComponentDocsPage/ComponentDocsPage.tsx)). **Mandatory:** `title`, version `badge` (default `0.1.0`), `description`, `stories` (Live Preview on `stories.Default`), `useCases`, `props`, and `example`. **Variations** are required once distinct stories exist (may be temporarily empty). **Optional:** `breadcrumb`, `usage` (nice to have). Import via `@docs/ComponentDocsPage`. Do not hand-roll Docs layout. **[LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)** is the content-quality reference. Full contract: [Component Docs](component-docs.md).
 
 Docs pages use the brand canvas: `pio-bg` in light mode (`dark-canvas` in dark mode), coral/teal ambient glows behind the article, Plus Jakarta Sans for body copy, and Playfair Display for **article** H1/H2 (direct children of `.sbdocs-content`, not headings inside a Canvas preview). Selection uses `pio-coral-pale` / `pio-coral`. This applies only inside `#storybook-docs`; variant **Canvas** stories keep `light-canvas` / `dark-canvas` and are not restyled to the marketing page. The live `.docs-story` frame keeps those canvas colors so the component is not sitting on the Docs article fill.
 
-**Live Preview** ([src/docs/LivePreview/LivePreview.tsx](../src/docs/LivePreview/LivePreview.tsx)) wraps Storybook `<Canvas>` and `<Controls>` for the dual-column card layout (Controls left ~4/12, Canvas right ~8/12 on wide viewports; Controls stack **above** Canvas on small screens). Card height is content-driven (no fixed min-height on the grid or canvas); both columns use `items-stretch` so the control panel fill and divider match the taller canvas. It uses Card, Badge (“Interactive”), and Title. Pass the hidden `Default` story via `of={Stories.Default}` so args stay connected. Optional `helperText` and decorative `caption` are supported. Canvas uses `sourceState="none"` (also set globally in [.storybook/preview.ts](../.storybook/preview.ts)) so the Docs “Show code” toggle is not rendered. ComponentDocsPage embeds Live Preview; do not hand-roll Canvas + Controls in new MDX.
+**Live Preview** ([src/docs/LivePreview/LivePreview.tsx](../src/docs/LivePreview/LivePreview.tsx)) wraps Storybook `<Canvas>` and `<Controls>` for the dual-column card layout (Controls left ~4/12, Canvas right ~8/12 on wide viewports; Controls stack **above** Canvas on small screens). Card height is content-driven (no fixed min-height on the grid or canvas); both columns use `items-stretch` so the control panel fill and divider match the taller canvas. It uses Card, Badge (“Interactive”), and Title. Pass the hidden `Default` story via `of={Stories.Default}` so args stay connected. Optional `helperText` and decorative `caption` are supported. Canvas uses `sourceState="none"` (also set globally in [.storybook/preview.ts](../.storybook/preview.ts)) and `layout="fullscreen"` so the Docs “Show code” toggle is not rendered and Storybook’s padded preview chrome is skipped. The right column (`live-preview__canvas`) is the only padded surface and vertically centers the rendered story (`justify-center`); Storybook’s `.docs-story` fill is cleared inside Live Preview so a second nested box does not appear. ComponentDocsPage embeds Live Preview; do not hand-roll Canvas + Controls in new MDX.
 
-**Controls restyle (best-effort):** scoped under `.live-preview` in [LivePreview.css](../src/docs/LivePreview/LivePreview.css). Selectors target Storybook 8 Docs classes (`.docblock-argstable`, `.docblock-argstable-head`, `.docblock-argstable-body`, `.sbdocs-preview`, `.docs-story`, `.docblock-code-toggle`). The controls column uses Stitch padding (`p-6 sm:p-7`); Storybook table/cell horizontal padding is zeroed so the “Control Panel” eyebrow and arg rows share the same inset. Labels are sentence-case (`text-xs` / medium weight)—set friendly display names via `argTypes.name` (e.g. `Show grid`) when camelCase prop keys would look awkward. The args table uses `table-layout: fixed` and constrains control inputs to the panel width so widgets (e.g. number spinners) are not clipped by the card’s `overflow-hidden`. These class names can change between Storybook versions. **Fallback:** if restyles break, the card still stacks Controls above Canvas and Controls remain usable—do not replace Controls with a custom form. Boolean args keep Storybook’s built-in False/True control (not the design-system Switch).
+**Controls restyle (best-effort):** scoped under `.live-preview` in [LivePreview.css](../src/docs/LivePreview/LivePreview.css). Selectors target Storybook 8 Docs classes (`.docblock-argstable`, `.docblock-argstable-head`, `.docblock-argstable-body`, `.sbdocs-preview`, `.docs-story`, `.docblock-code-toggle`). The controls column uses Stitch padding (`p-6 sm:p-7`); Storybook table/cell horizontal padding is zeroed so the “Control Panel” eyebrow and arg rows share the same inset. Labels are sentence-case (`text-xs` / medium weight)—set friendly display names via `argTypes.name` (e.g. `Show grid`) when camelCase prop keys would look awkward. The args table uses `table-layout: fixed` and constrains control inputs to the panel width so widgets (e.g. number spinners) are not clipped by the card’s `overflow-hidden`. **Widget chrome:** inputs, selects, textareas, and boolean True/False labels are restyled toward the Stitch control panel using pio tokens (`pio-grid` borders, `pio-border-subtle` tracks, rounded corners, teal focus rings, coral range thumbs) and Storybook drop shadows are cleared. Structure stays Storybook’s (True/False pills, not the design-system Switch). These class names and Emotion DOM shapes can change between Storybook versions. **Fallback:** if restyles break, the card still stacks Controls above Canvas and Controls remain usable—do not replace Controls with a custom form.
 
 **Default** is a CSF export used only by Docs. It is hidden from the sidebar (`tags: ['!dev']` plus a sidebar filter in [.storybook/manager.js](../.storybook/manager.js)). Changing Docs controls does not surface a separate Default page.
 
@@ -74,23 +74,7 @@ Pattern per component:
 | `ComponentName.stories.tsx` | Hidden `Default` + visible variant stories; `title` uses `Atoms/` / `Molecules/` / `Organisms/` |
 | `ComponentName.mdx` | Docs page via `ComponentDocsPage` (see [Component Docs](component-docs.md)) |
 
-Example MDX (minimal — required only):
-
-```mdx
-import { Meta } from '@storybook/blocks';
-import * as Stories from './Button.stories';
-import { ComponentDocsPage } from '@docs/ComponentDocsPage';
-
-<Meta of={Stories} />
-
-<ComponentDocsPage
-  title="Button"
-  description="Primary UI action with variants for type, fill, and mode, plus an optional icon."
-  stories={Stories}
-/>
-```
-
-Example MDX (richer — optional slots when content is real):
+Example MDX (mandatory sections — see [Component Docs](component-docs.md) and [LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)):
 
 ```mdx
 import { Meta, Canvas } from '@storybook/blocks';
@@ -99,32 +83,63 @@ import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
+export const exampleCode = `import LineChart from '@molecules/LineChart/LineChart';
+
+<LineChart data={data} series={series} xAxisKey="day" height={280} showTooltip />`;
+
 <ComponentDocsPage
   title="LineChart"
+  badge="0.1.0"
   description="Line chart built with Recharts. Configurable series, axes, grid, and tooltip."
   stories={Stories}
   useCases={{ cases: ['Show trends over continuous periods.'] }}
   variations={[
     {
-      id: 'chart-only',
-      label: 'Chart only',
-      canvas: <Canvas of={Stories.ChartOnly} />,
+      id: 'comparison',
+      label: 'Comparison',
+      canvas: <Canvas of={Stories.Comparison} layout="fullscreen" />,
+      badge: 'Pattern: Multi-series comparison',
+      description: 'Three series with grid and legend.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: 'showLegend · showGrid',
+          valueTone: 'prop',
+        },
+        { label: 'Best For', value: 'Weekly KPIs, multi-metric trends' },
+      ],
     },
   ]}
+  props={{
+    interfaceName: 'LineChartProps',
+    rows: [
+      {
+        name: 'showGrid',
+        type: 'boolean',
+        defaultValue: 'false',
+        description: 'Renders a horizontal Cartesian grid.',
+      },
+    ],
+  }}
+  example={{
+    code: exampleCode,
+    filename: 'LineChart.example.tsx',
+    language: 'tsx',
+  }}
 />
 ```
 
-Omit unused optional props so empty sections are not rendered. Sibling variant stories stay in the sidebar.
+`usage` and `breadcrumb` are optional. Variations may be temporarily empty until distinct stories exist. Sibling variant stories stay in the sidebar. The baseline demo belongs in Live Preview (`Default`), not in the Variations gallery. Variation canvases sit on a single `pio-bg-light` frame; Storybook’s `.docs-story` fill is cleared inside that frame so a second padded box does not shrink the chart. Full contract: [Component Docs](component-docs.md).
 
 `@docs/LivePreview/LivePreview` and `@docs/ComponentDocsPage` resolve via the alias in [.storybook/webpack.config.js](../.storybook/webpack.config.js) (applied from `webpackFinal`). That file merges aliases whether Storybook provides `resolve.alias` as an object or an array (MDX relies on webpack aliases; it does not use Babel `module-resolver`).
 
 ## Style-only Controls
 
-Docs Controls expose only props that affect visual appearance (size, type, fill, colors, rounded, labels, booleans like `isChecked`). Hide everything else with `control: false` and `table: { disable: true }`:
+Docs Controls **must** expose every prop that affects visual appearance (size, type, fill, colors, rounded, labels, booleans like `isChecked`). Hide everything else with `control: false` and `table: { disable: true }`:
 
 - Event handlers (`onClick`, `onChange`, …)
 - JSX / React nodes (`icon`, `children` when complex, slots)
-- Functions and data structures (`options`, `items`, chart `data`)
+- Functions and objects that are not user-friendly in Controls (`options`, `items`, chart `data` / `series`)
 - Generic `className` passthroughs that do not drive a predefined visual variant
 
 When a class-like prop **does** change appearance (for example Spinner `colorClass`), use a **select** with labeled options (`Red`, `Green`) instead of a free-text class name.

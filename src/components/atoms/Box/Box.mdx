@@ -4,8 +4,83 @@ import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
+export const exampleCode = `import Box from '@atoms/Box/Box';
+import Title from '@atoms/Title/Title';
+
+<Box
+  type="default"
+  header={<Title size="lg">Sample title</Title>}
+  headerOutside={false}
+>
+  <p>Box content</p>
+</Box>`;
+
 <ComponentDocsPage
   title="Box"
-  description="Container with default or glass style, optional header and footer slots, and dark mode. On the default type, the header sits in the lighter inner area; set `headerOutside` to place the header in the outer container (matching the footer). The footer always sits outside the lighter inner area. See the HeaderOutside and GlassBox stories for compositions."
+  badge="0.1.0"
+  description="Container with default or glass style, optional header and footer slots, and dark mode. On the default type, the header sits in the lighter inner area; set `headerOutside` to place the header in the outer container (matching the footer). The footer always sits outside the lighter inner area."
   stories={Stories}
+  useCases={{
+    cases: [
+      'Product panels with a title header and optional footer actions.',
+      'Glass overlays on rich backgrounds.',
+      'Compositions where the header should sit outside the inner content area.',
+      'Related: use Card for a simple elevated surface without header/footer slots.',
+    ],
+  }}
+  variations={[]}
+  props={{
+    interfaceName: 'BoxProps',
+    lead: 'Runtime props for Box.',
+    rows: [
+      {
+        name: 'children',
+        type: 'React.ReactNode',
+        description: 'Main body content inside the box.',
+      },
+      {
+        name: 'type',
+        type: "'glass' | 'default'",
+        defaultValue: "'default'",
+        description: 'Visual style: solid default container or glass.',
+      },
+      {
+        name: 'header',
+        type: 'React.ReactNode',
+        description: 'Optional header slot.',
+      },
+      {
+        name: 'footer',
+        type: 'React.ReactNode',
+        description: 'Optional footer slot outside the lighter inner area.',
+      },
+      {
+        name: 'headerOutside',
+        type: 'boolean',
+        defaultValue: 'false',
+        description:
+          'When true on the default type, places the header in the outer container.',
+      },
+      {
+        name: 'className',
+        type: 'string',
+        description: 'Optional class passthrough.',
+      },
+    ],
+  }}
+  usage={{
+    whenToUse: [
+      'Containers that need header and/or footer slots.',
+      'Glass panels over imagery or gradients.',
+    ],
+    whenToAvoid: [
+      'Simple elevated content surfaces without slots—use Card.',
+      'Inline chrome like toolbars—use Toolbar.',
+    ],
+  }}
+  example={{
+    code: exampleCode,
+    filename: 'Box.example.tsx',
+    language: 'tsx',
+  }}
 />

@@ -81,7 +81,8 @@ Update `storybook.md` “Docs vs variant stories” and the example MDX to the t
 
 - LineChart Docs uses `ComponentDocsPage` with required + truthful optional sections (use cases, variations, props API, usage, LineChart code example). No version chip, breadcrumb, or Area Chart–only widgets.
 - Remaining component MDX pages use `ComponentDocsPage`; atoms such as Button are required-only. Tabs includes Variations for underline / pills / segmented.
-- [Documentation/component-docs.md](../../Documentation/component-docs.md) publishes the Docs contract; linked from [index.md](../../Documentation/index.md). [storybook.md](../../Documentation/storybook.md) and [component-structure.md](../../Documentation/component-structure.md) point at the template.
+- [Documentation/component-docs.md](../../Documentation/component-docs.md) publishes the Docs contract (mandatory `ComponentDocsPage` sections, version badge default `0.1.0`, style-only Controls, Variations, Props API, short code example; optional breadcrumb and usage); linked from [index.md](../../Documentation/index.md). [storybook.md](../../Documentation/storybook.md) and [component-structure.md](../../Documentation/component-structure.md) point at the template.
+
 ## Implementation notes
 
 1. Do not merge “migrate all MDX” in the same session as the LineChart pilot if review is needed; the spec allows two implementation sessions under this stage (07a LineChart + docs page, 07b remaining MDX).

@@ -8,6 +8,7 @@ export type {
   ComponentDocsUsage,
   ComponentDocsUseCases,
   ComponentDocsVariation,
+  ComponentDocsVariationMeta,
 } from './ComponentDocsPage';
 export { default as DocsSectionHeader } from './DocsSectionHeader';
 export type { DocsSectionHeaderProps } from './DocsSectionHeader';

@@ -4,8 +4,65 @@ import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
+export const exampleCode = `import Switch from '@atoms/Switch/Switch';
+
+<Switch size="md" isActive={false} onChange={(active) => console.log(active)} />`;
+
 <ComponentDocsPage
   title="Switch"
-  description="Toggle switch. Three sizes: `sm`, `md`, and `lg`."
+  badge="0.1.0"
+  description="Toggle switch for binary on/off state. Supports small, medium, and large sizes."
   stories={Stories}
+  useCases={{
+    cases: [
+      'Enable or disable a single setting immediately.',
+      'Feature flags and preferences with a clear on/off affordance.',
+      'Inline toggles beside a short setting label.',
+      'Related: use Checkbox when multiple independent options can be selected.',
+    ],
+  }}
+  variations={[]}
+  props={{
+    interfaceName: 'SwitchProps',
+    lead: 'Runtime props for Switch.',
+    rows: [
+      {
+        name: 'size',
+        type: "'sm' | 'md' | 'lg'",
+        defaultValue: "'md'",
+        description: 'Visual size of the track and thumb.',
+      },
+      {
+        name: 'isActive',
+        type: 'boolean',
+        defaultValue: 'false',
+        description: 'Controlled on/off state.',
+      },
+      {
+        name: 'onChange',
+        type: '(active: boolean) => void',
+        description: 'Called when the user toggles the switch.',
+      },
+      {
+        name: 'className',
+        type: 'string',
+        description: 'Optional class passthrough.',
+      },
+    ],
+  }}
+  usage={{
+    whenToUse: [
+      'A single binary preference that takes effect immediately.',
+      'Settings UIs where a sliding toggle matches user expectation.',
+    ],
+    whenToAvoid: [
+      'Multi-select lists—use Checkbox.',
+      'Submitting a choice among many labeled options—use Select or Tabs.',
+    ],
+  }}
+  example={{
+    code: exampleCode,
+    filename: 'Switch.example.tsx',
+    language: 'tsx',
+  }}
 />

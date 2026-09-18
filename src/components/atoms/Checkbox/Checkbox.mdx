@@ -4,8 +4,65 @@ import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 <Meta of={Stories} />
 
+export const exampleCode = `import Checkbox from '@atoms/Checkbox/Checkbox';
+
+<Checkbox size="md" isChecked={false} onChange={(checked) => console.log(checked)} />`;
+
 <ComponentDocsPage
   title="Checkbox"
-  description="A simple checkbox component with basic customization. Three sizes: `sm`, `md`, and `lg`."
+  badge="0.1.0"
+  description="Form checkbox control with small, medium, and large sizes. Shows a check icon when selected."
   stories={Stories}
+  useCases={{
+    cases: [
+      'Multi-select options in forms and filters.',
+      'Independent yes/no choices that are not mutually exclusive.',
+      'Settings lists where several items can be on at once.',
+      'Related: use Switch for a single on/off toggle with a sliding affordance.',
+    ],
+  }}
+  variations={[]}
+  props={{
+    interfaceName: 'CheckboxProps',
+    lead: 'Runtime props for Checkbox.',
+    rows: [
+      {
+        name: 'size',
+        type: "'sm' | 'md' | 'lg'",
+        defaultValue: "'md'",
+        description: 'Visual size of the control.',
+      },
+      {
+        name: 'isChecked',
+        type: 'boolean',
+        defaultValue: 'false',
+        description: 'Controlled checked state.',
+      },
+      {
+        name: 'onChange',
+        type: '(checked: boolean) => void',
+        description: 'Called when the user toggles the checkbox.',
+      },
+      {
+        name: 'className',
+        type: 'string',
+        description: 'Optional class passthrough.',
+      },
+    ],
+  }}
+  usage={{
+    whenToUse: [
+      'Selecting zero or more items from a set.',
+      'Binary options that sit next to labels in a list or form row.',
+    ],
+    whenToAvoid: [
+      'A single binary preference with a switch affordance—use Switch.',
+      'Choosing one option from many—use Select or radio-style patterns.',
+    ],
+  }}
+  example={{
+    code: exampleCode,
+    filename: 'Checkbox.example.tsx',
+    language: 'tsx',
+  }}
 />

@@ -2,7 +2,7 @@
 
 **Status:** implemented (stages 01–07)  
 **Depends on:** none  
-**Purpose:** Index for this folder. Historical staged specs; lasting Docs rules live in [Documentation/component-docs.md](../../Documentation/component-docs.md).
+**Purpose:** Index for this folder. Historical staged specs; lasting Docs rules live in [Documentation/component-docs.md](../../Documentation/component-docs.md) (mandatory sections, version badge default `0.1.0`, LineChart reference).
 
 These files are **implementation specs**, not the public Storybook Docs template. When a stage discovers a constraint, update that stage file.
 
@@ -36,28 +36,11 @@ Not every component Docs page includes all of these. See **Docs page contract** 
 
 ## Docs page contract
 
+**Superseded for day-to-day work** by [Documentation/component-docs.md](../../Documentation/component-docs.md). That file is the lasting contract: most sections are **mandatory** (title + version badge default `0.1.0`, overview/use cases, Live Preview, Variations, Props API, short code example); **optional** are breadcrumb and usage/best practices. The notes below describe the original staged approach and are kept for history only.
+
 A **component documentation file** is the Storybook **Docs** entry for a component (`ComponentName.mdx`), bound to that component’s CSF stories. It is the interactive reference: live instance, style-only Controls, and written guidance. Variant galleries remain sibling sidebar stories.
 
-The Stitch mock shows the richest page. Lienzo uses a **shared page type** with a required core and optional sections.
-
-### Required (every `Component.mdx`)
-
-- **Title** — component name (display serif in the new template)
-- **Short description** — one paragraph
-- **Live Preview** — hidden `Default` story via `<Canvas of={Stories.Default} />` and style-only `<Controls of={Stories.Default} />` in the layout from [05-live-preview.md](05-live-preview.md)
-
-### Optional (only with real content)
-
-- Header extras: breadcrumb, version/status chip
-- Overview / use cases (two-column editorial block)
-- Variations gallery (Tabs + existing variant story canvases). Sidebar variant stories stay.
-- Props API table
-- Usage / when to use / when to avoid
-- Code example (CodeBlock)
-
-**Do not** render empty optional sections. A Button page may be title + description + Live Preview (and maybe props). The LineChart **pilot** should use as many optional sections as are truthful for LineChart—not Area Chart–only widgets.
-
-The shared wrapper in [06-docs-page-template.md](06-docs-page-template.md) must be **composable** (slots or optional props).
+The Stitch mock shows the richest page. Lienzo uses a **shared page type** (`ComponentDocsPage`).
 
 ## Live Preview: keep vs restyle vs leave
 

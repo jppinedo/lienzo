@@ -15,7 +15,7 @@ Clone the repo, then run `npm install` and `npm run storybook`. Storybook will b
 | [Getting started](getting-started.md) | Requirements, setup, development, build, and troubleshooting |
 | [Architecture](architecture.md) | Repository layout, `src/` structure, and TypeScript path aliases |
 | [Component structure](component-structure.md) | Atomic Design, list of atoms and molecules, file conventions |
-| [Component Docs](component-docs.md) | `Component.mdx` contract: required vs optional sections, Controls, Default vs variants |
+| [Component Docs](component-docs.md) | Docs page template (`ComponentDocsPage`): mandatory sections, version badge, Controls rules, LineChart reference |
 | [Design tokens & colors](design-tokens-colors.md) | Tailwind theme: colors, dark mode, and fonts |
 | [Libraries](libraries.md) | React, TypeScript, Tailwind, Storybook, Recharts, react-feather |
 | [Storybook](storybook.md) | Running Storybook, story locations, addons, and build |
