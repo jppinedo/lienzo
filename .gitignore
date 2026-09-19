@@ -41,3 +41,7 @@ Thumbs.db
 # Optional tooling caches
 .eslintcache
 .stylelintcache
+
+# Local-only (not published to the repo)
+brand/
+.cursor/rules/no-agent-testing.mdc
