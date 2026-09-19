@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
 import * as Stories from './Box.stories';
 import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
@@ -18,7 +18,7 @@ import Title from '@atoms/Title/Title';
 <ComponentDocsPage
   title="Box"
   badge="0.1.0"
-  description="Container with default or glass style, optional header and footer slots, and dark mode. On the default type, the header sits in the lighter inner area; set `headerOutside` to place the header in the outer container (matching the footer). The footer always sits outside the lighter inner area."
+  description="Container with default or glass style, optional header and footer slots, optional elevation (`shadow`), and dark mode. On the default type, the header sits in the lighter inner area; set `headerOutside` to place the header in the outer container (matching the footer). The footer always sits outside the lighter inner area."
   stories={Stories}
   useCases={{
     cases: [
@@ -28,7 +28,56 @@ import Title from '@atoms/Title/Title';
       'Related: use Card for a simple elevated surface without header/footer slots.',
     ],
   }}
-  variations={[]}
+  variations={[
+    {
+      id: 'product-panel',
+      label: 'Product panel',
+      canvas: <Canvas of={Stories.ProductPanel} layout="fullscreen" />,
+      badge: 'Pattern: Default type',
+      description:
+        'Default nested surface with a Playfair title, green footer action, and soft shadow.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: "type='default' · shadow='soft'",
+          valueTone: 'prop',
+        },
+        {
+          label: 'Slots',
+          value: 'Title fontFamily playfair · Button type green',
+          valueTone: 'prop',
+        },
+        {
+          label: 'Best For',
+          value: 'Product summaries, report cards, action panels',
+        },
+      ],
+    },
+    {
+      id: 'glass-panel',
+      label: 'Glass panel',
+      canvas: <Canvas of={Stories.GlassPanel} layout="fullscreen" />,
+      badge: 'Pattern: Glass type',
+      description:
+        'Glass container with a Jakarta title, yellow footer action, and card shadow on a dotted Background (`pio-bg-light` / `pio-grid`, vignette).',
+      meta: [
+        {
+          label: 'Component Props',
+          value: "type='glass' · shadow='card'",
+          valueTone: 'prop',
+        },
+        {
+          label: 'Slots',
+          value: 'Title fontFamily jakarta · Button type yellow',
+          valueTone: 'prop',
+        },
+        {
+          label: 'Best For',
+          value: 'Overlays on warm light surfaces and dotted fields',
+        },
+      ],
+    },
+  ]}
   props={{
     interfaceName: 'BoxProps',
     lead: 'Runtime props for Box.',
@@ -60,6 +109,13 @@ import Title from '@atoms/Title/Title';
         defaultValue: 'false',
         description:
           'When true on the default type, places the header in the outer container.',
+      },
+      {
+        name: 'shadow',
+        type: "'soft' | 'card' | 'none'",
+        defaultValue: "'none'",
+        description:
+          'Elevation using the same pio shadow tokens as Card (`shadow-pio-soft`, `shadow-pio-card`).',
       },
       {
         name: 'className',

@@ -13,10 +13,10 @@ The path `@organisms/*` is set up in `tsconfig.json` for future use, but there a
 
 | Component | Description |
 |-----------|-------------|
-| **Background** | Gradient or custom background wrapper |
+| **Background** | Full-bleed background wrapper; `type` `gradient` (turbulent SVG gradient; Live Preview default: Amber Dawn; Docs variants: Studio Teal, Charcoal Depth) or `dotted` (fill + dot grid, optional `vignette` / `vignetteColor`) |
 | **Badge** | Pill label for Docs chrome (version, interactive, pattern); tones `coral`, `teal`, `amber`; optional color dot |
-| **Box** | Container with default or glass style; optional header and footer; `headerOutside` places the header in the outer container; supports dark mode |
-| **Button** | Primary UI action with variants (type, fill, mode) and optional icon |
+| **Box** | Container with default (`bg-pio-grid` outer, lighter inner) or glass style; optional header and footer; `headerOutside` places the header in the outer container; `shadow` (`none` / `soft` / `card`, same tokens as Card); supports dark mode |
+| **Button** | Primary UI action with variants (type, fill, size, mode) and optional icon |
 | **Card** | Elevated surface (white, subtle, or transparent fill; `rounded-2xl`/`rounded-3xl`; `pio-grid` border; soft/card shadow). Not a substitute for **Box** |
 | **Checkbox** | Form checkbox control |
 | **CircleSpinner** | Circular loading indicator |

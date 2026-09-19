@@ -141,7 +141,7 @@ export const variationPanel = [
   'grid-cols-1',
   'lg:grid-cols-12',
   'gap-8',
-  'items-center',
+  'items-start',
   'p-6',
   'sm:p-8',
   'lg:p-10',
@@ -154,16 +154,16 @@ export const variationCanvas = [
   'min-w-0',
   'bg-pio-bg-light',
   'rounded-2xl',
-  'p-6',
+  'p-4',
+  'sm:p-5',
   'border',
   'border-pio-border-subtle',
-  'min-h-[300px]',
   'overflow-hidden',
   'dark:bg-gray-900',
   'dark:border-gray-700',
 ].join(' ');
 
-export const variationCopy = 'lg:col-span-5 space-y-5';
+export const variationCopy = 'lg:col-span-5 space-y-4';
 
 export const variationCopyFull = 'space-y-5 p-6 sm:p-8';
 

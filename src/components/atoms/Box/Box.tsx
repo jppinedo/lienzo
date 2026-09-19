@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   boxStyles,
+  boxShadow,
   boxContentArea,
   boxHeader,
   boxHeaderOutside,
@@ -15,6 +16,7 @@ export interface BoxProps {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   headerOutside?: boolean;
+  shadow?: keyof typeof boxShadow;
 }
 
 const Box: React.FC<BoxProps> = ({
@@ -24,10 +26,13 @@ const Box: React.FC<BoxProps> = ({
   header,
   footer,
   headerOutside = false,
+  shadow = 'none',
 }) => {
+  const shadowClass = boxShadow[shadow];
+
   if (type === 'glass') {
     return (
-      <div className={`${boxStyles.glass} ${className || ''}`}>
+      <div className={`${boxStyles.glass} ${shadowClass} ${className || ''}`}>
         {header != null && <div data-box-header>{header}</div>}
         {children}
         {footer != null && <div data-box-footer>{footer}</div>}
@@ -46,7 +51,7 @@ const Box: React.FC<BoxProps> = ({
     ) : null;
 
   return (
-    <div className={`${boxStyles.default} ${className || ''}`}>
+    <div className={`${boxStyles.default} ${shadowClass} ${className || ''}`}>
       {headerOutside && headerEl}
       <div data-box-content-area className={boxContentArea}>
         {!headerOutside && headerEl}

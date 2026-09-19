@@ -1,5 +1,5 @@
 import React, {cloneElement} from "react";
-import { buttonStyles, iconStyles } from "./ButtonStyles";
+import { buttonStyles, iconStyles, iconSizeByButtonSize, type ButtonSize } from "./ButtonStyles";
 import './Button.css';
 
 export interface ButtonProps {
@@ -9,6 +9,7 @@ export interface ButtonProps {
   mode?: 'default' | 'tool';
   type?: 'default' | 'red' | 'green' | 'yellow';
   fill?: 'solid' | 'outline' | 'ghost';
+  size?: ButtonSize;
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right' | 'top' | 'bottom';
 }
@@ -20,21 +21,23 @@ const Button: React.FC<ButtonProps> = ({
   mode = 'default',
   type = 'default', 
   fill = 'solid',
+  size = 'md',
   icon,
   iconPosition = 'left'
 }) => {
   const modeStyles = buttonStyles.mode[mode];
+  const sizeStyles = buttonStyles.size[mode][size];
   const styles = buttonStyles[type][fill];
 
-  const getIconSized = (size: string) => {
+  const getIconSized = (iconPx: string) => {
     return React.isValidElement(icon) && !icon.props.size
-      ? cloneElement(icon as React.ReactElement<any>, { size })
+      ? cloneElement(icon as React.ReactElement<any>, { size: iconPx })
       : icon;
   }
 
   const ButtonDefault = () => {
     let sizedIcon;
-    if(icon) sizedIcon = getIconSized('18');
+    if(icon) sizedIcon = getIconSized(iconSizeByButtonSize.default[size]);
     const iconMargin = iconPosition === 'left' ? 'mr-2' : 'ml-2';
     const iconEl = <span className={`${iconMargin} ${iconStyles[type]}`}>{sizedIcon}</span>;
 
@@ -49,7 +52,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const ButtonTool = () => {
     let sizedIcon;
-    if(icon) sizedIcon = getIconSized('32');
+    if(icon) sizedIcon = getIconSized(iconSizeByButtonSize.tool[size]);
     const styles = iconStyles[type][fill];
     const iconEl = <span className={styles}>{sizedIcon}</span>;
     return (
@@ -62,7 +65,7 @@ const Button: React.FC<ButtonProps> = ({
   }
   return (
     <button
-        className={`lz-button-${mode} ${modeStyles} ${styles}`}
+        className={`lz-button-${mode} ${modeStyles} ${sizeStyles} ${styles}`}
         onClick={onClick}
         aria-label={ariaLabel}
       >

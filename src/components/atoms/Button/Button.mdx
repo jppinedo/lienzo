@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
 import * as Stories from './Button.stories';
 import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
@@ -10,6 +10,7 @@ export const exampleCode = `import Button from '@atoms/Button/Button';
   label="Save"
   type="default"
   fill="solid"
+  size="md"
   mode="default"
   onClick={() => {}}
 />`;
@@ -17,7 +18,7 @@ export const exampleCode = `import Button from '@atoms/Button/Button';
 <ComponentDocsPage
   title="Button"
   badge="0.1.0"
-  description="Primary UI action with variants for `type`, `fill`, and `mode`, plus an optional icon and icon position."
+  description="Primary UI action with variants for `type`, `fill`, `size`, and `mode`, plus an optional icon and icon position."
   stories={Stories}
   useCases={{
     cases: [
@@ -27,7 +28,54 @@ export const exampleCode = `import Button from '@atoms/Button/Button';
       'Icon + label combinations with left/right (default) or top/bottom (tool) placement.',
     ],
   }}
-  variations={[]}
+  variations={[
+    {
+      id: 'variants',
+      label: 'Variants',
+      canvas: <Canvas of={Stories.Variants} layout="fullscreen" />,
+      badge: 'Pattern: Type × fill gallery',
+      description:
+        'Solid fills for primary actions; outline for secondary emphasis; ghost for low-chrome controls; icons pair with any fill and left/right placement.',
+      meta: [
+        {
+          label: 'Solid',
+          value: 'Filled background — strongest call to action',
+        },
+        {
+          label: 'Outline',
+          value: 'Bordered, transparent — secondary actions',
+        },
+        {
+          label: 'Ghost',
+          value: 'No border or fill until hover — quiet chrome',
+        },
+        {
+          label: 'With icon',
+          value: 'Optional icon · left or right of the label',
+          valueTone: 'prop',
+        },
+      ],
+    },
+    {
+      id: 'tools',
+      label: 'Tools',
+      canvas: <Canvas of={Stories.Tools} layout="fullscreen" />,
+      badge: 'Pattern: Tool mode',
+      description:
+        'Stacked icon-above-label (or icon-only) buttons for toolbars. Same type and fill tokens as default mode, with a compact vertical layout.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: "mode='tool' · iconPosition='top'",
+          valueTone: 'prop',
+        },
+        {
+          label: 'Best For',
+          value: 'Toolbars, palettes, icon-first chrome',
+        },
+      ],
+    },
+  ]}
   props={{
     interfaceName: 'ButtonProps',
     lead: 'Runtime props for Button.',
@@ -64,6 +112,12 @@ export const exampleCode = `import Button from '@atoms/Button/Button';
         type: "'solid' | 'outline' | 'ghost'",
         defaultValue: "'solid'",
         description: 'Fill style.',
+      },
+      {
+        name: 'size',
+        type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+        defaultValue: "'md'",
+        description: 'Padding, type scale, rounding, and icon size.',
       },
       {
         name: 'icon',

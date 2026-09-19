@@ -47,8 +47,8 @@ Each component looks like:
 Atoms
   Button
     Docs
-    DefaultButtons
-    ToolButtons
+    Variants
+    Tools
 ```
 
 ## Docs vs variant stories
@@ -138,11 +138,13 @@ export const exampleCode = `import LineChart from '@molecules/LineChart/LineChar
 Docs Controls **must** expose every prop that affects visual appearance (size, type, fill, colors, rounded, labels, booleans like `isChecked`). Hide everything else with `control: false` and `table: { disable: true }`:
 
 - Event handlers (`onClick`, `onChange`, …)
-- JSX / React nodes (`icon`, `children` when complex, slots)
+- Raw JSX / React nodes as free-form Controls (`children` slots, arbitrary node editors)
 - Functions and objects that are not user-friendly in Controls (`options`, `items`, chart `data` / `series`)
 - Generic `className` passthroughs that do not drive a predefined visual variant
 
 When a class-like prop **does** change appearance (for example Spinner `colorClass`), use a **select** with labeled options (`Red`, `Green`) instead of a free-text class name.
+
+For optional icon (or similar node) props, use a **select** of sample names plus Storybook **`mapping`** to real elements (include a `None` → `null` option). Default.args stores the select key; the story receives the mapped node. Do not build a custom icon picker unless product needs demand it.
 
 Prefer readable Control labels via `argTypes.name` (e.g. `showGrid: { name: 'Show grid', control: 'boolean' }`) so Live Preview does not show raw camelCase.
 

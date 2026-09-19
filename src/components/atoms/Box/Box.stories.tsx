@@ -2,14 +2,15 @@ import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 import Box, { BoxProps } from './Box';
 import Title from '@atoms/Title/Title';
-import SquareBackground from '@assets/SVG/SquaresBackground';
 import Button from '../Button/Button';
+import Background from '@atoms/Background/Background';
 
 export default {
   title: 'Atoms/Box',
   component: Box,
   argTypes: {
     type: { control: 'select', options: ['default', 'glass'] },
+    shadow: { control: 'select', options: ['none', 'soft', 'card'] },
     className: { control: false, table: { disable: true } },
     children: { control: false, table: { disable: true } },
     header: { control: false, table: { disable: true } },
@@ -34,6 +35,7 @@ Default.args = {
   className: 'w-5/12',
   type: 'default',
   headerOutside: false,
+  shadow: 'none',
 };
 Default.tags = ['!dev'];
 
@@ -44,25 +46,64 @@ HeaderOutside.args = {
 };
 HeaderOutside.tags = ['!dev'];
 
-export const GlassBox = () => (
-  <div className='p-3 h-full'>
-  <div className='relative py-20 h-full w-full rounded-xl overflow-hidden'>
-    <div className='h-full w-full absolute top-0 left-0' >
-      <SquareBackground />
-    </div>
-    <div className='relative z-10 items-center justify-center flex h-full w-full'>
-      <Box
-        type='glass'
-        className='w-5/12 p-8 text-white'
-        header={<Title size='xxl'>Sample title</Title>}
-        footer={<Button label='Click me' type='red' onClick={() => console.log('Button clicked')} />}
-      >
-        <p className='mt-2 mb-4'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc at pellentesque aliquet nisl.
-        </p>
-      </Box>
-    </div>
-  </div>
+export const ProductPanel = () => (
+  <div className='w-full p-3'>
+    <Box
+      type='default'
+      shadow='soft'
+      className='w-full'
+      header={
+        <Title size='lg' fontFamily='playfair' thikness='bold'>
+          Quarterly overview
+        </Title>
+      }
+      footer={
+        <Button
+          label='View report'
+          type='green'
+          onClick={() => console.log('View report')}
+        />
+      }
+    >
+      <p className='mt-2 mb-4 text-gray-600 dark:text-blue-200'>
+        Revenue and retention held steady this quarter. Open the full report for
+        channel breakdowns and cohort trends.
+      </p>
+    </Box>
   </div>
 );
-GlassBox.parameters = { controls: { disable: true } };
+ProductPanel.parameters = { controls: { disable: true } };
+
+export const GlassPanel = () => (
+  <Background
+    type='dotted'
+    colors={['pio-bg-light', 'pio-grid']}
+    isHexColors={false}
+    vignette
+    className='w-full px-6 py-8'
+  >
+    <Box
+      type='glass'
+      shadow='card'
+      className='w-full text-pio-text'
+      header={
+        <Title size='xl' fontFamily='jakarta' thikness='bold'>
+          Focus mode
+        </Title>
+      }
+      footer={
+        <Button
+          label='Start session'
+          type='yellow'
+          onClick={() => console.log('Start session')}
+        />
+      }
+    >
+      <p className='mt-2 mb-4 text-pio-text-muted'>
+        Dim distractions and keep a single task in view. Sessions pause
+        notifications until you finish or end early.
+      </p>
+    </Box>
+  </Background>
+);
+GlassPanel.parameters = { controls: { disable: true } };

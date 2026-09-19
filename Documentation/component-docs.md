@@ -74,12 +74,14 @@ Always pass **`stories={Stories}`**. Live Preview binds `stories.Default` (Canva
 
 **Do not expose in Controls:**
 
-- JSX / React nodes (`icon`, complex `children`, slots)
+- Raw JSX / React nodes as free-form editors (complex `children`, slots)
 - Functions / event handlers (`onClick`, `onChange`, …)
 - Objects or data structures that are not user-friendly in the Controls panel (`data`, `series`, `options`, `items`, …)
 - Generic `className` passthroughs that do not map to a predefined visual variant
 
-Hide those with `control: false` and `table: { disable: true }` in CSF. Stub them in `Default.args` so the story still renders. Prefer readable labels via `argTypes.name` (e.g. `Show grid`). Full rules: [Storybook — Style-only Controls](storybook.md#style-only-controls).
+**Exception:** optional `icon`-like props may use a **select** of sample names with Storybook **`mapping`** to elements (and a `None` option). See [Storybook — Style-only Controls](storybook.md#style-only-controls).
+
+Hide non-visual props with `control: false` and `table: { disable: true }` in CSF. Stub them in `Default.args` so the story still renders. Prefer readable labels via `argTypes.name` (e.g. `Show grid`). Full rules: [Storybook — Style-only Controls](storybook.md#style-only-controls).
 
 ### 4. Variations gallery
 

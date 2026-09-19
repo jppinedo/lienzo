@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
 import * as Stories from './Background.stories';
 import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
@@ -7,8 +7,9 @@ import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 export const exampleCode = `import Background from '@atoms/Background/Background';
 
 <Background
-  colors={['pio-coral', 'pio-teal-dark', 'pio-amber']}
-  isHexColors={false}
+  type="gradient"
+  colors={['#FAF8F5', '#EAA838', '#FF6B57']}
+  isHexColors
   rounded
 >
   {/* overlay content */}
@@ -17,31 +18,101 @@ export const exampleCode = `import Background from '@atoms/Background/Background
 <ComponentDocsPage
   title="Background"
   badge="0.1.0"
-  description="Full-bleed gradient background wrapper with optional turbulence distortion. Accepts CSS variable color names or hex values, optional rounded corners, and children layered above the SVG fill."
+  description="Full-bleed background wrapper with type-specific recipes. `gradient` is a turbulent SVG gradient; `dotted` is a solid fill with an evenly spaced dot grid and optional edge vignette. Each type is implemented separately so more recipes can be added without mixing logic."
   stories={Stories}
   useCases={{
     cases: [
       'Hero or panel backgrounds behind product content.',
       'Story and Docs demos that need a rich gradient plane.',
-      'Rounded surface fills when the parent does not supply its own background.',
-      'Layer titles, buttons, or other atoms as children over the gradient.',
+      'Warm dotted fields under glass panels or light overlays.',
+      'Layer titles, buttons, or other atoms as children over the surface.',
     ],
   }}
-  variations={[]}
+  variations={[
+    {
+      id: 'studio-teal',
+      label: 'Gradient — Studio Teal',
+      canvas: <Canvas of={Stories.ExampleBackgroundTwo} layout="fullscreen" />,
+      badge: 'Pattern: Gradient type',
+      description:
+        'Earthy 45° stops: pio-bg-light → teal-light → teal-dark. White type and a coral button against the deepening teal field.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: "type='gradient' · studio teal · rounded",
+          valueTone: 'prop',
+        },
+      ],
+    },
+    {
+      id: 'charcoal-depth',
+      label: 'Gradient — Charcoal Depth',
+      canvas: <Canvas of={Stories.ExampleBackgroundThree} layout="fullscreen" />,
+      badge: 'Pattern: Gradient type',
+      description:
+        'Moody 45° stops: charcoal → inverse-surface → secondary teal. Off-white titles; coral marks the high-intent action.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: "type='gradient' · charcoal depth · rounded",
+          valueTone: 'prop',
+        },
+      ],
+    },
+    {
+      id: 'dotted',
+      label: 'Dotted',
+      canvas: <Canvas of={Stories.Dotted} layout="fullscreen" />,
+      badge: 'Pattern: Dotted type',
+      description:
+        'pio-bg-light fill with pio-grid dots and a vignette that defaults to the fill color.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: "type='dotted' · colors={[fill, dots]} · vignette",
+          valueTone: 'prop',
+        },
+        {
+          label: 'Best For',
+          value: 'Light glass overlays, soft product canvases',
+        },
+      ],
+    },
+  ]}
   props={{
     interfaceName: 'BackgroundProps',
     lead: 'Runtime props for Background.',
     rows: [
       {
+        name: 'type',
+        type: "'gradient' | 'dotted'",
+        defaultValue: "'gradient'",
+        description:
+          'Background recipe. Each type has its own renderer; props like `vignette` apply to `dotted` only.',
+      },
+      {
         name: 'colors',
         type: 'string[]',
         description:
-          'Gradient stop colors. When `isHexColors` is false, values are CSS custom property names (e.g. `pio-coral`).',
+          'For `gradient`: stop colors. For `dotted`: `[fill, dots]`. Token names when `isHexColors` is false (e.g. `pio-bg-light`).',
       },
       {
         name: 'isHexColors',
         type: 'boolean',
-        description: 'When true, `colors` are treated as hex (or raw) color values; otherwise as CSS variable names.',
+        description:
+          'When true, `colors` / `vignetteColor` are raw CSS colors; otherwise design-token names mapped to `--lz-*` channels.',
+      },
+      {
+        name: 'vignette',
+        type: 'boolean',
+        defaultValue: 'false',
+        description: '`dotted` only. Fades the dots toward the edges.',
+      },
+      {
+        name: 'vignetteColor',
+        type: 'string',
+        description:
+          '`dotted` only. Edge fade color; defaults to `colors[0]` (fill) when omitted.',
       },
       {
         name: 'children',
