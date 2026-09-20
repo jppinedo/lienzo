@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Check } from 'react-feather';
+import {
+  checkboxBase,
+  checkboxSize,
+  checkboxUnchecked,
+  checkboxChecked,
+  checkboxIcon,
+  type CheckboxSize,
+  type CheckboxType,
+} from './CheckboxStyles';
 
 export interface CheckboxProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: CheckboxSize;
+  /** Accent when checked. `default` uses gray; chromatic types use Pio accents. */
+  type?: CheckboxType;
   onChange?: (checked: boolean) => void;
   isChecked?: boolean;
   className?: string;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ 
-  size = 'md', 
-  onChange, 
+const Checkbox: React.FC<CheckboxProps> = ({
+  size = 'md',
+  type = 'default',
+  onChange,
   isChecked = false,
   className,
 }) => {
@@ -25,35 +37,18 @@ const Checkbox: React.FC<CheckboxProps> = ({
     setChecked(isChecked);
   }, [isChecked]);
 
-  const sizeClasses = {
-    sm: 'h-4 w-4 p-0.5',
-    md: 'h-5 w-5 p-1',
-    lg: 'h-6 w-6 p-1',
-  };
-
-  const bgClass = checked ? 'bg-pio-teal-dark' : 'bg-white dark:border dark:border-gray-600 dark:bg-gray-700 border border-gray-100';
+  const stateClass = checked ? checkboxChecked[type] : checkboxUnchecked;
   const propClass = className || '';
-  const classes = [
-    'flex',
-    'inline-block',
-    'items-center', 
-    'justify-center', 
-    'rounded', 
-    'border-gray-300', 
-    'cursor-pointer', 
-    'shadow-sm', 
-    'outline-none',
-  ].join(' ');
 
   return (
     <div
-      className={`${classes} ${bgClass} ${sizeClasses[size]} ${propClass}`}
+      className={`${checkboxBase} ${stateClass} ${checkboxSize[size]} ${propClass}`}
       onClick={handleOnChange}
       role="checkbox"
       aria-checked={checked}
       tabIndex={0}
     >
-      {checked && <Check className="text-white" />}
+      {checked && <Check className={checkboxIcon[type]} />}
     </div>
   );
 };

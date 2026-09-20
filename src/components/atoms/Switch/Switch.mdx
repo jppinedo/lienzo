@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
 import * as Stories from './Switch.stories';
 import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
@@ -6,12 +6,12 @@ import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 
 export const exampleCode = `import Switch from '@atoms/Switch/Switch';
 
-<Switch size="md" isActive={false} onChange={(active) => console.log(active)} />`;
+<Switch size="md" type="green" isActive={false} onChange={(active) => console.log(active)} />`;
 
 <ComponentDocsPage
   title="Switch"
   badge="0.1.0"
-  description="Toggle switch for binary on/off state. Supports small, medium, and large sizes."
+  description="Toggle switch for binary on/off state with Pio accent types (default gray, green, red, yellow). Off track uses pio-grid; the white thumb is inset 2px from the track edge at every size (stitch control panel)."
   stories={Stories}
   useCases={{
     cases: [
@@ -21,7 +21,46 @@ export const exampleCode = `import Switch from '@atoms/Switch/Switch';
       'Related: use Checkbox when multiple independent options can be selected.',
     ],
   }}
-  variations={[]}
+  variations={[
+    {
+      id: 'types',
+      label: 'Types',
+      canvas: <Canvas of={Stories.Types} layout="fullscreen" />,
+      badge: 'Pattern: Accent types',
+      description:
+        'On-state track uses the selected type. default is gray; green, red, and yellow map to Pio teal-dark, coral, and amber. Off stays pio-grid.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: "type='default' | 'green' | 'red' | 'yellow' · isActive",
+          valueTone: 'prop',
+        },
+        {
+          label: 'Best For',
+          value: 'Semantic accents on settings and feature toggles',
+        },
+      ],
+    },
+    {
+      id: 'sizes',
+      label: 'Sizes',
+      canvas: <Canvas of={Stories.Sizes} layout="fullscreen" />,
+      badge: 'Pattern: Size scale',
+      description:
+        'Small, medium, and large tracks with a 2px-inset thumb at every size.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: "size='sm' | 'md' | 'lg'",
+          valueTone: 'prop',
+        },
+        {
+          label: 'Best For',
+          value: 'Matching switch scale to the surrounding settings row',
+        },
+      ],
+    },
+  ]}
   props={{
     interfaceName: 'SwitchProps',
     lead: 'Runtime props for Switch.',
@@ -31,6 +70,12 @@ export const exampleCode = `import Switch from '@atoms/Switch/Switch';
         type: "'sm' | 'md' | 'lg'",
         defaultValue: "'md'",
         description: 'Visual size of the track and thumb.',
+      },
+      {
+        name: 'type',
+        type: "'default' | 'red' | 'green' | 'yellow'",
+        defaultValue: "'default'",
+        description: 'On-state accent. default is gray; chromatic types map to Pio coral, teal-dark, and amber.',
       },
       {
         name: 'isActive',

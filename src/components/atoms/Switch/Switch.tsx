@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import {
+  switchSize,
+  switchOff,
+  switchOn,
+  switchThumb,
+  type SwitchSize,
+  type SwitchType,
+} from './SwitchStyles';
 
 export interface SwitchProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: SwitchSize;
+  /** Accent when on. `default` uses gray; chromatic types use Pio accents. */
+  type?: SwitchType;
   isActive?: boolean;
   onChange?: (active: boolean) => void;
   className?: string;
 }
 
-const Switch: React.FC<SwitchProps> = ({ 
-  size = 'md', 
-  isActive = false, 
+const Switch: React.FC<SwitchProps> = ({
+  size = 'md',
+  type = 'default',
+  isActive = false,
   onChange,
-  className
+  className,
 }) => {
   const [active, setActive] = useState(isActive);
 
@@ -24,30 +35,22 @@ const Switch: React.FC<SwitchProps> = ({
     setActive(isActive);
   }, [isActive]);
 
-  const sizeClasses = {
-    sm: {
-      container: 'h-3 w-6',
-      inner: 'h-3 w-3',
-    },
-    md: {
-      container: 'h-4 w-8',
-      inner: 'h-4 w-4',
-    },
-    lg: {
-      container: 'h-6 w-12',
-      inner: 'h-6 w-6',
-    },
-  };
-
+  const sizes = switchSize[size];
+  const trackClass = active ? switchOn[type] : switchOff;
   const propClass = className || '';
 
   return (
     <div
-      className={`relative ${sizeClasses[size].container} rounded-full cursor-pointer ${active ? 'bg-pio-teal-dark' : 'bg-gray-opacity-30'} ${propClass}`}
+      className={`relative ${sizes.container} rounded-full cursor-pointer ${trackClass} ${propClass}`}
       onClick={handleOnChange}
+      role="switch"
+      aria-checked={active}
+      tabIndex={0}
     >
       <div
-        className={`absolute top-0 transform transition-transform border border-gray-100 dark:border-none duration-200 ease-in-out ${sizeClasses[size].inner} rounded-full dark:shadow-none bg-white ${active ? 'translate-x-full ' : 'translate-x-0 dark:bg-gray-300'}`}
+        className={`${switchThumb} ${sizes.thumb} ${
+          active ? sizes.thumbOn : 'translate-x-0'
+        }`}
       />
     </div>
   );

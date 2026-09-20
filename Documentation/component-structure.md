@@ -18,13 +18,13 @@ The path `@organisms/*` is set up in `tsconfig.json` for future use, but there a
 | **Box** | Container with default (`bg-pio-grid` outer, lighter inner) or glass style; optional header and footer; `headerOutside` places the header in the outer container; `shadow` (`none` / `soft` / `card`, same tokens as Card); supports dark mode |
 | **Button** | Primary UI action with variants (type, fill, size, mode) and optional icon |
 | **Card** | Elevated surface (white, subtle, or transparent fill; `rounded-2xl`/`rounded-3xl`; `pio-grid` border; soft/card shadow). Not a substitute for **Box** |
-| **Checkbox** | Form checkbox control |
+| **Checkbox** | Form checkbox (`type`: default gray, red, green, yellow); unchecked uses pio-bg / pio-grid |
 | **CircleSpinner** | Circular loading indicator |
 | **Input** | Text input with type, fill (`solid`, `outline`, `ghost`), rounding, optional label, hint, and icon |
 | **Label** | Text label with optional icon and type styling |
 | **Select** | Dropdown select control |
 | **Spinner** | Loading spinner |
-| **Switch** | Toggle switch |
+| **Switch** | Toggle switch (`type`: default gray, red, green, yellow); thumb inset 2px from track |
 | **Title** | Heading / title text; font families `lexend`, `poppins`, `playfair`, `jakarta`; `uppercase` and optional side `dot` (`dotTone`: coral, teal, amber) |
 
 ## Molecules
