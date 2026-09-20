@@ -31,6 +31,16 @@ stories: [
 
 The **Intro** story ([src/docs/intro.stories.tsx](../src/docs/intro.stories.tsx)) is the welcome screen that describes Atomic Design and Tailwind; it uses the Background atom and Lienzo logo.
 
+## Manager branding (sidebar logo)
+
+The default Storybook mark in the left sidebar is replaced via theme config in [`.storybook/manager.js`](../.storybook/manager.js):
+
+- `brandTitle`: `Lienzo`
+- `brandImage`: `./lienzo-horizontal-logo.svg` (served from [`.storybook/public/`](../.storybook/public/) via `staticDirs` in [`.storybook/main.cjs`](../.storybook/main.cjs))
+- Manager theme `base`: `dark` (matches a dark sidebar; the SVG uses light mark/wordmark)
+
+Storybook’s manager only accepts an image URL for `brandImage` (not a React component). The React lockup for in-canvas use is `LienzoHorizontalLogo` (`variant="onDark"` matches the sidebar asset).
+
 ## Sidebar structure
 
 Components appear under capitalized atomic-design folders. Set `title` on each stories file accordingly:

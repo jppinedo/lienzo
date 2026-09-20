@@ -7,6 +7,8 @@ const config = {
     '../src/**/*.stories.tsx',
     '../src/**/*.mdx',
   ],
+  // Serves brand assets for manager theme (sidebar logo).
+  staticDirs: ['./public'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

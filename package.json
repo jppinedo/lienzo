@@ -22,6 +22,7 @@
     "@storybook/addon-essentials": "^8.0.10",
     "@storybook/addon-interactions": "^8.0.10",
     "@storybook/addon-links": "^8.0.10",
+    "@storybook/addon-mcp": "^10.6.0",
     "@storybook/addon-onboarding": "^8.0.10",
     "@storybook/addon-styling-webpack": "^1.0.0",
     "@storybook/addon-themes": "^8.0.10",

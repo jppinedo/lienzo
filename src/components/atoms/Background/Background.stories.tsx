@@ -19,10 +19,15 @@ const PIO = {
   text: '#1F2421',
   inverseSurface: '#30312F',
   secondary: '#296863',
+  accent1: '#8cc8ba',
+  accent2: '#f5f5eb',
+  accent3: '#f8b67a',
+  accent4: '#f99280',
+  accent5: '#e4ece0',
 } as const;
 
-/** Amber Dawn — warm & bright: pio-bg → pio-amber → pio-coral (45°). Live Preview default. */
-const GRADIENT_AMBER_DAWN = [PIO.bg, PIO.amber, PIO.coral];
+/** Amber Dawn — five-stop warm field. Live Preview default. */
+const GRADIENT_AMBER_DAWN = [PIO.accent1, PIO.accent2, PIO.accent3, PIO.accent4, PIO.accent5];
 
 /** Studio Canvas to Teal — earthy & calming: pio-bg-light → teal-light → teal-dark (45°). */
 const GRADIENT_STUDIO_TEAL = [PIO.bgLight, PIO.tealLight, PIO.tealDark];
@@ -41,6 +46,8 @@ export default {
     color1: { control: 'color' },
     color2: { control: 'color' },
     color3: { control: 'color' },
+    color4: { control: 'color' },
+    color5: { control: 'color' },
     isHexColors: { control: 'boolean' },
     rounded: { control: 'boolean' },
     vignette: { control: 'boolean' },
@@ -55,6 +62,8 @@ type ExtendedBackgroundProps = BackgroundProps & {
   color1: string;
   color2: string;
   color3: string;
+  color4?: string;
+  color5?: string;
 };
 
 const previewBody =
@@ -106,6 +115,8 @@ const Template: StoryFn<ExtendedBackgroundProps> = ({
   color1,
   color2,
   color3,
+  color4,
+  color5,
   type = 'gradient',
   isHexColors,
   rounded,
@@ -113,7 +124,9 @@ const Template: StoryFn<ExtendedBackgroundProps> = ({
   vignetteColor,
   className,
 }) => {
-  const colors = [color1, color2, color3];
+  const colors = [color1, color2, color3, color4, color5].filter(
+    (color): color is string => Boolean(color)
+  );
   const isDotted = type === 'dotted';
 
   return (
@@ -142,6 +155,8 @@ Default.args = {
   color1: GRADIENT_AMBER_DAWN[0],
   color2: GRADIENT_AMBER_DAWN[1],
   color3: GRADIENT_AMBER_DAWN[2],
+  color4: GRADIENT_AMBER_DAWN[3],
+  color5: GRADIENT_AMBER_DAWN[4],
   isHexColors: true,
   rounded: true,
   vignette: false,
