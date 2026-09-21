@@ -41,6 +41,8 @@ html[data-mode='dark'] .component-docs-variation-canvas .docs-story,
 /* Storybook ChildrenContainer: default layout="padded" → 30px 20px */
 .component-docs-variation-canvas .docs-story > div {
   padding: 0 !important;
+  /* Storybook ChildrenContainer defaults to overflow:auto — hide needless scrollbars. */
+  overflow: visible !important;
 }
 
 /* Transparent 10px border used by padded/centered layouts */

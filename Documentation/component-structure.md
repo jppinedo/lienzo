@@ -25,7 +25,7 @@ The path `@organisms/*` is set up in `tsconfig.json` for future use, but there a
 | **Select** | Dropdown select control |
 | **Spinner** | Loading spinner |
 | **Switch** | Toggle switch (`type`: default gray, red, green, yellow); thumb inset 2px from track |
-| **Title** | Heading / title text; font families `lexend`, `poppins`, `playfair`, `jakarta`; `uppercase` and optional side `dot` (`dotTone`: coral, teal, amber) |
+| **Title** | Heading / title text; sizes `sm`–`xxxxl`; font families `lexend`, `poppins`, `playfair`, `jakarta`; optional `gradient` (`amber-dawn`, `studio-teal`, `charcoal-depth`, `coral-ember`, `teal-mist`, `deep-coral`) and `color` (`coral`, `teal`, `amber`, `stone`); `uppercase` and optional side `dot` (`dotTone`: coral, teal, amber) |
 
 ## Molecules
 

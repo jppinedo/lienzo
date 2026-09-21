@@ -52,6 +52,9 @@ html[data-mode='dark'] .live-preview .docs-story,
 
 .live-preview .docs-story > div {
   padding: 0 !important;
+  /* Storybook ChildrenContainer defaults to overflow:auto — causes
+     needless scrollbars when the canvas height is stretched (e.g. Live Preview). */
+  overflow: visible !important;
 }
 
 .live-preview .innerZoomElementWrapper > * {

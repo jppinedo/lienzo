@@ -1,0 +1,102 @@
+/**
+ * Gradient text fills for Title.
+ * Solid color is the fallback; clip + transparent fill apply only when supported.
+ * Background-inspired: Amber Dawn, Studio Teal, Charcoal Depth (demo hexes).
+ * Pio accent: Coral Ember, Teal Mist, Deep Coral (token CSS variables).
+ */
+
+.lz-title-gradient-amber-dawn {
+  color: #8cc8ba;
+}
+
+.lz-title-gradient-studio-teal {
+  color: #3a7d76;
+}
+
+.lz-title-gradient-charcoal-depth {
+  color: #1f2421;
+}
+
+/* Coral Ember — pio-coral-hover → pio-amber */
+.lz-title-gradient-coral-ember {
+  color: rgb(var(--lz-pio-coral-hover));
+}
+
+/* Teal Mist — pio-teal-dark-hover → pio-teal-dark-pale */
+.lz-title-gradient-teal-mist {
+  color: rgb(var(--lz-pio-teal-dark-hover));
+}
+
+/* Deep Coral — pio-coral-dark → pio-coral-hover */
+.lz-title-gradient-deep-coral {
+  color: rgb(var(--lz-pio-coral-dark));
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .lz-title-gradient-amber-dawn {
+    background-image: linear-gradient(
+      to right,
+      #8cc8ba,
+      #f5f5eb,
+      #f8b67a,
+      #f99280,
+      #e4ece0
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lz-title-gradient-studio-teal {
+    background-image: linear-gradient(to right, #f5f2ec, #3a7d76, #2f6d68);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lz-title-gradient-charcoal-depth {
+    background-image: linear-gradient(to right, #1f2421, #30312f, #296863);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lz-title-gradient-coral-ember {
+    background-image: linear-gradient(
+      to right,
+      rgb(var(--lz-pio-coral-hover)),
+      rgb(var(--lz-pio-amber))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lz-title-gradient-teal-mist {
+    background-image: linear-gradient(
+      to right,
+      rgb(var(--lz-pio-teal-dark-hover)),
+      rgb(var(--lz-pio-teal-dark-pale))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lz-title-gradient-deep-coral {
+    background-image: linear-gradient(
+      to right,
+      rgb(var(--lz-pio-coral-dark)),
+      rgb(var(--lz-pio-coral-hover))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
