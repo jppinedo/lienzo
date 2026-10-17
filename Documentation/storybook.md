@@ -49,7 +49,7 @@ Components appear under capitalized atomic-design folders. Set `title` on each s
 - `Molecules/ComponentName` — molecules (e.g. `Molecules/Toolbar`)
 - `Organisms/ComponentName` — reserved for future organism components
 - `Templates/ComponentName` — layout shells (e.g. `Templates/Phone`)
-- `Pages/ComponentName` — filled page compositions (e.g. `Pages/WelcomeHero`, `Pages/CanvasStudio`)
+- `Pages/ComponentName` — filled page compositions (e.g. `Pages/WelcomeHero`, `Pages/WelcomeFoundations`, `Pages/CanvasStudio`)
 
 Pinned at the top (in order): **Welcome**, **Colors**, **Intro**. Then Atoms, Molecules, Organisms, Templates, Pages. Within each component, **Docs** is listed first, then variant stories. Sort order is configured in [.storybook/preview.ts](../.storybook/preview.ts).
 
@@ -65,7 +65,9 @@ Atoms
 
 ## Docs vs variant stories
 
-**Docs** (`ComponentName.mdx`) is the interactive reference for a component. The contract (mandatory sections, Controls rules, Default vs variants) is documented in [Component Docs](component-docs.md).
+**Docs** (`ComponentName.mdx`) is the interactive reference for atoms, molecules, organisms, and templates. The contract (mandatory sections, Controls rules, Default vs variants) is documented in [Component Docs](component-docs.md).
+
+**Pages are exempt:** page-level components (`Pages/…`) ship CSF stories only. Do not add `ComponentName.mdx` / `ComponentDocsPage` for a page unless it gains a meaningful Controls API. See [Component Docs — Scope: Pages are exempt](component-docs.md#scope-pages-are-exempt).
 
 Every production Docs page **must** use **ComponentDocsPage** ([src/docs/ComponentDocsPage/ComponentDocsPage.tsx](../src/docs/ComponentDocsPage/ComponentDocsPage.tsx)). **Mandatory:** `title`, version `badge` (default `0.1.0`), `description`, `stories` (Live Preview on `stories.Default`), `useCases`, `props`, and `example`. **Variations** are required once distinct stories exist (may be temporarily empty). **Optional:** `breadcrumb`, `usage` (nice to have). Import via `@docs/ComponentDocsPage`. Do not hand-roll Docs layout. **[LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)** is the content-quality reference. Full contract: [Component Docs](component-docs.md).
 
@@ -79,12 +81,14 @@ Docs pages use the brand canvas: `pio-bg` in light mode (`dark-canvas` in dark m
 
 **Variant stories** (e.g. `Sizes`, `AllTypes`) are visible galleries. Set `parameters: { controls: { disable: true } }` on them. Optional Docs Variations tabs preview the same stories without Controls; they do not replace the sidebar. The bottom addon panel (Actions, Visual Tests, Interactions) is hidden by default via `showPanel: false` in [.storybook/manager.js](../.storybook/manager.js).
 
-Pattern per component:
+Pattern per component (atoms / molecules / organisms / templates):
 
 | File | Purpose |
 |------|---------|
-| `ComponentName.stories.tsx` | Hidden `Default` + visible variant stories; `title` uses `Atoms/` / `Molecules/` / `Organisms/` / `Templates/` / `Pages/` |
+| `ComponentName.stories.tsx` | Hidden `Default` + visible variant stories; `title` uses `Atoms/` / `Molecules/` / `Organisms/` / `Templates/` |
 | `ComponentName.mdx` | Docs page via `ComponentDocsPage` (see [Component Docs](component-docs.md)) |
+
+**Pages:** `ComponentName.stories.tsx` only (`title` `Pages/…`). No Docs MDX.
 
 Example MDX (mandatory sections — see [Component Docs](component-docs.md) and [LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)):
 

@@ -8,7 +8,7 @@
 - **`Documentation/`**: Project documentation (this folder)
 - **`features/`**: Staged feature specs (implementation plans split by step). These are not the public component Docs pages. Component Docs contract: [Documentation/component-docs.md](component-docs.md). Historical component-view sequence: [features/component_view_template/](../features/component_view_template/00-overview.md).
 - **`brand/`**: Design references (e.g. Stitch HTML/PNG) used as visual source, not runtime code
-- **`lienzo_welcome/`**: Stitch welcome-page export (HTML/DESIGN/PNG); design reference for Phone chrome and WelcomeHero (and future welcome sections), not runtime code
+- **`lienzo_welcome/`**: Stitch welcome-page export (HTML/DESIGN/PNG); design reference for Phone chrome, WelcomeHero, WelcomeFoundations (and future welcome sections), not runtime code
 
 ## `src/` folder structure
 

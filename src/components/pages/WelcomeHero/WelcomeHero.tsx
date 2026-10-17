@@ -8,6 +8,7 @@ import Label from '@atoms/Label/Label';
 import Switch from '@atoms/Switch/Switch';
 import Title from '@atoms/Title/Title';
 import CanvasStudio from '@pages/CanvasStudio/CanvasStudio';
+import { WELCOME_FOUNDATIONS_ID } from '@pages/WelcomeFoundations/WelcomeFoundations';
 import {
   ctaRow,
   depChip,
@@ -52,7 +53,6 @@ type CopyKey = 'clone' | 'install';
 const CLONE_CMD = 'git clone https://github.com/jppinedo/lienzo.git';
 const INSTALL_CMD = 'yarn install';
 const COPY_RESET_MS = 2200;
-const FOUNDATIONS_ID = 'welcome-foundations';
 
 /** Real counts: 20 components (13 atoms, 6 molecules, 1 template), 60+ Storybook stories, light + dark themes. */
 const HERO_STATS = [
@@ -109,7 +109,7 @@ const WelcomeHero: React.FC<WelcomeHeroProps> = ({
   };
 
   const scrollToFoundations = () => {
-    document.getElementById(FOUNDATIONS_ID)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(WELCOME_FOUNDATIONS_ID)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (

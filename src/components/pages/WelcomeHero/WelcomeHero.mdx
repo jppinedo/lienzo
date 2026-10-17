@@ -17,7 +17,7 @@ export const exampleCode = `import WelcomeHero from '@pages/WelcomeHero/WelcomeH
   title="WelcomeHero"
   badge="0.1.0"
   breadcrumb={['Pages', 'WelcomeHero']}
-  description="First section of the Lienzo welcome page: large LienzoHorizontalLogo, “Every interface starts on a canvas.” headline, product tagline highlighting the live playground, 20 Components / 60+ Live stories / 2 Themes stats, run-it-locally clone and yarn install commands, an Open the playground CTA (onOpenPlayground) plus a scroll CTA to #welcome-foundations, Built with strip, and the interactive CanvasStudio phone. The Light/Dark Switch drives Storybook’s global theme (same as the toolbar). Soft dotted Background with darkColors. Built from Background, Title, Label, Button, Card, Switch, Phone, and CanvasStudio."
+  description="First section of the Lienzo welcome page: large LienzoHorizontalLogo, “Every interface starts on a canvas.” headline, product tagline highlighting the live playground, 20 Components / 60+ Live stories / 2 Themes stats, run-it-locally clone and yarn install commands, an Open the playground CTA (onOpenPlayground) plus a scroll CTA to #welcome-foundations (WelcomeFoundations), Built with strip, and the interactive CanvasStudio phone. The Light/Dark Switch drives Storybook’s global theme (same as the toolbar). Soft dotted Background with darkColors. Built from Background, Title, Label, Button, Card, Switch, Phone, and CanvasStudio."
   stories={Stories}
   useCases={{
     cases: [
@@ -26,7 +26,7 @@ export const exampleCode = `import WelcomeHero from '@pages/WelcomeHero/WelcomeH
       'Compose brand messaging beside the CanvasStudio phone showcase.',
       'Drive Storybook light/dark theme from the Interactive Showcase Switch.',
       'Scroll CTA targets #welcome-foundations for the colors and typography section.',
-      'Related: CanvasStudio fills the Phone template; later welcome sections can follow as sibling Pages.',
+      'Related: CanvasStudio fills the Phone template; WelcomeFoundations mounts at #welcome-foundations in LivePreview.',
     ],
   }}
   variations={[
@@ -35,11 +35,11 @@ export const exampleCode = `import WelcomeHero from '@pages/WelcomeHero/WelcomeH
       label: 'Live preview',
       canvas: <Canvas of={Stories.LivePreview} layout="fullscreen" />,
       badge: 'Pattern: Welcome hero',
-      description: 'Full hero composition with dotted Background, get-started commands, scroll CTA, foundation strip, Storybook theme Switch, and a stub #welcome-foundations section.',
+      description: 'Full hero composition with dotted Background, get-started commands, scroll CTA, foundation strip, Storybook theme Switch, and WelcomeFoundations at #welcome-foundations.',
       meta: [
         {
           label: 'Composition',
-          value: 'Background · Title · Button · Switch · CanvasStudio',
+          value: 'Background · Title · Button · Switch · CanvasStudio · WelcomeFoundations',
           valueTone: 'prop',
         },
         {
