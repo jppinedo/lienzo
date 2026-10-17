@@ -8,7 +8,7 @@ export interface InputProps {
   rounded?: RoundedSizes;
   label?: string;
   placeholder?: string;
-  icon?: React.ReactElement;
+  icon?: React.ReactElement<{ size?: string | number }>;
   iconPosition?: 'left' | 'right';
   hint?: string;
   initialValue?: string;
@@ -52,7 +52,7 @@ const Input: React.FC<InputProps> = ({
   const inputClasses = [InputStyles.input, variant.input].join(' ');
 
   const sizedIcon = icon && !icon.props.size
-    ? cloneElement(icon as React.ReactElement<any>, { size: 18 })
+    ? cloneElement(icon, { size: 18 })
     : icon;
 
   const iconEl = sizedIcon && (
