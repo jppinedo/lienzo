@@ -11,7 +11,7 @@ Full project documentation lives in **[Documentation](Documentation/index.md)**.
 ## Features
 
 - **Atomic Design** — UI built from atoms and molecules with clear file conventions
-- **Storybook 8** — Isolated development; Docs + Live Preview (`ComponentDocsPage`) for atoms / molecules / organisms; light/dark themes
+- **Storybook 10** — Isolated development; Docs + Live Preview (`ComponentDocsPage`) for atoms / molecules / organisms; light/dark themes
 - **Design tokens** — Colors as CSS variables in `src/css/tokens.css`, mapped through Tailwind (`pio-*` palette)
 - **TypeScript path aliases** — Clean imports such as `@atoms/*` and `@molecules/*`
 - **Focused UI building blocks** — Charts (Recharts), calendar (react-day-picker), icons (react-feather), and more — see [Libraries](Documentation/libraries.md)
@@ -20,19 +20,20 @@ Full project documentation lives in **[Documentation](Documentation/index.md)**.
 
 | Area | Tools |
 |------|--------|
-| UI | React 18, TypeScript |
-| Styling | Tailwind CSS 3, PostCSS |
-| Docs & demos | Storybook 8 |
+| UI | React 19, TypeScript 6 |
+| Styling | Tailwind CSS 4 (CSS-first theme in `src/tailwind.css`) |
+| Docs & demos | Storybook 10 (Vite) |
+| Package manager | Yarn 4 (Corepack) |
 
 Details and supporting libraries: [Documentation/libraries.md](Documentation/libraries.md).
 
 ## Quick start
 
-**Requirements:** Prefer **Node 20 LTS** (see `.nvmrc`). With [nvm](https://github.com/nvm-sh/nvm), run `nvm use` in the project root. On Node 23+, dependency patches apply automatically after `npm install`.
+**Requirements:** **Node 24 LTS** (see `.nvmrc`) and **Yarn 4** via Corepack. With [nvm](https://github.com/nvm-sh/nvm), run `nvm use` in the project root, then `corepack enable`.
 
 ```bash
-npm install
-npm run storybook
+yarn install
+yarn storybook
 ```
 
 Storybook runs at **http://localhost:6006/**.
@@ -40,7 +41,7 @@ Storybook runs at **http://localhost:6006/**.
 To build a static Storybook site:
 
 ```bash
-npm run build-storybook
+yarn build-storybook
 ```
 
 Output is written to `storybook-static/`.
@@ -61,7 +62,7 @@ If macOS reports `EMFILE: too many open files`, raise the limit (`ulimit -n 1024
 | `Documentation/` | Project documentation |
 | `features/` | Historical staged plans (not runtime) |
 
-Imports use path aliases (configured in `tsconfig.json` and mirrored for Babel/Storybook webpack):
+Imports use path aliases (configured in `tsconfig.json` and mirrored in `.storybook/main.ts`):
 
 ```ts
 import Box from '@atoms/Box/Box';
@@ -81,7 +82,7 @@ An `@organisms/*` alias is reserved for future use. Full inventory and conventio
 - **Source of truth:** [`src/css/tokens.css`](src/css/tokens.css) (CSS variables as RGB channels)
 - **Tailwind:** theme colors map to those tokens; brand palette uses `pio-*` names
 - **Variants:** semantic `type` props (`default`, `red`, `yellow`, `green`) map to gray / coral / amber / teal families
-- **Dark mode:** `class` or `[data-mode="dark"]`
+- **Dark mode:** `[data-mode="dark"]` (the `dark:` variant)
 - **Fonts:** Lexend, Poppins, Playfair Display, Plus Jakarta Sans, JetBrains Mono
 
 Reference: [Design tokens & colors](Documentation/design-tokens-colors.md).

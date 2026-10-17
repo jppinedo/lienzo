@@ -1,11 +1,11 @@
 # Design tokens & colors
 
-The **source of truth** for color values is `src/css/tokens.css` (CSS variables). Tailwind utilities are mapped to those variables via [tailwind.config.js](../tailwind.config.js).
+The **source of truth** for color values is `src/css/tokens.css` (CSS variables). Tailwind utilities are mapped to those variables in the `@theme inline` block of [src/tailwind.css](../src/tailwind.css).
 
 ## How the token system works
 
 - **Token values (canonical)**: `src/css/tokens.css` defines colors as RGB channels, e.g. `--lz-pio-teal-black: 19 27 38;`.
-- **Tailwind utilities**: `tailwind.config.js` maps each Tailwind color name to the token using `rgb(var(--token) / <alpha-value>)` so utilities support opacity (e.g. `bg-pio-teal-black/80`).
+- **Tailwind utilities**: `src/tailwind.css` maps each color name with `--color-*: rgb(var(--lz-…))` so utilities support opacity (e.g. `bg-pio-teal-black/80`).
 - **Plain CSS (e.g. 3rd-party libs)**: component CSS can use the same tokens directly, e.g. `color: rgb(var(--lz-pio-teal-black));`.
 
 ## Component variant mapping
@@ -76,17 +76,17 @@ Not a control variant. Used for data series.
 - **Dark canvas**: `dark-canvas` (`#16161a`)
 - **Light canvas**: `light-canvas` (`#fafaf9`)
 
-These are used for full-page or app-level backgrounds and are listed in Tailwind’s `safelist` so they are always available (e.g. `dark:bg-dark-canvas`, `bg-light-canvas`).
+These are used for full-page or app-level backgrounds and are always generated (`@source inline` in `src/tailwind.css`): `dark:bg-dark-canvas`, `bg-light-canvas`.
 
 ## Dark mode
 
 Configured as:
 
-```js
-darkMode: ['class', '[data-mode="dark"]']
+```css
+@custom-variant dark (&:where([data-mode='dark'] *));
 ```
 
-Dark mode is active when the root element has the `dark` class or a `data-mode="dark"` attribute. In components, use Tailwind’s `dark:` variant (e.g. `dark:bg-gray-800`, `dark:text-blue-200`).
+Dark mode is active inside an element with `data-mode="dark"`. In components, use Tailwind’s `dark:` variant (e.g. `dark:bg-gray-800`, `dark:text-blue-200`).
 
 ## Extended theme (typography)
 

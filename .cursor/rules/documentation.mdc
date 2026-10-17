@@ -14,7 +14,7 @@ If you need to understand the project (architecture, components, design tokens, 
 Whenever you:
 
 - Add or change a **component** (atom or molecule): update [Documentation/component-structure.md](Documentation/component-structure.md) (list and one-line description). Create the file or add a subsection if it does not exist.
-- Add or change **colors / design tokens** (e.g. in `tailwind.config.js`): update [Documentation/design-tokens-colors.md](Documentation/design-tokens-colors.md).
+- Add or change **colors / design tokens** (e.g. in `src/tailwind.css`): update [Documentation/design-tokens-colors.md](Documentation/design-tokens-colors.md).
 - Install or remove a **library** (dependency): update [Documentation/libraries.md](Documentation/libraries.md).
 - Change **Storybook** (addons, story locations, build): update [Documentation/storybook.md](Documentation/storybook.md).
 - Add or change **assets** under `src/assets/`: update [Documentation/assets.md](Documentation/assets.md).
