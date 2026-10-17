@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import { DownloadCloud, CheckCircle, AlertCircle } from 'react-feather';
 import Input, { InputProps } from './Input';
 import Box from '@atoms/Box/Box';

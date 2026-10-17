@@ -57,7 +57,7 @@ const DottedBackground: React.FC<DottedBackgroundProps> = ({
             isHexColors,
           ),
         }
-  ) as CSSProperties;
+  ) as unknown as CSSProperties;
 
   return (
     <div

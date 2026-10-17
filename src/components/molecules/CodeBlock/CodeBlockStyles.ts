@@ -87,7 +87,7 @@ const prismSharedStyles: PrismTheme['styles'] = [
   },
   {
     types: ['keyword', 'operator', 'boolean'],
-    style: { color: 'rgb(var(--lz-pio-coral))', fontWeight: 600 },
+    style: { color: 'rgb(var(--lz-pio-coral))', fontWeight: '600' },
   },
   {
     types: ['string', 'attr-value', 'char', 'inserted'],

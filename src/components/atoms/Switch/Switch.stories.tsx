@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import { Moon, Sun } from 'react-feather';
 import Switch, { SwitchProps } from './Switch';
 import Label from '@atoms/Label/Label';

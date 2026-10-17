@@ -1,5 +1,5 @@
 import React from 'react';
-import { Canvas, Controls } from '@storybook/blocks';
+import { Canvas, Controls } from '@storybook/addon-docs/blocks';
 import Badge from '@atoms/Badge/Badge';
 import Card from '@atoms/Card/Card';
 import Title from '@atoms/Title/Title';

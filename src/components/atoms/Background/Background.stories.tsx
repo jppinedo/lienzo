@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import Background, { BackgroundProps } from './Background';
 import Title from '@atoms/Title/Title';
 import { Sun, Feather, Triangle, Grid } from 'react-feather';

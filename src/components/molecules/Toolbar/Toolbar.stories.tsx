@@ -1,6 +1,6 @@
 // Toolbar.stories.tsx
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import Toolbar, { ToolbarProps } from './Toolbar';
 import { Bell, Calendar, CheckCircle, FileText, User, Trash2 } from 'react-feather';
 import Button from '@atoms/Button/Button';

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
-import { useGlobals } from '@storybook/preview-api';
+import { Meta } from '@storybook/react-vite';
+import { useGlobals } from 'storybook/preview-api';
 import { Moon, Sun } from 'react-feather';
 import Switch from '@atoms/Switch/Switch';
 import CanvasStudio from './CanvasStudio';
