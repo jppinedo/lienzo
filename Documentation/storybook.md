@@ -16,20 +16,20 @@ The app opens at **http://localhost:6006**. For install and troubleshooting, see
 
 Stories are picked up automatically from:
 
-- **Welcome / intro**: [src/docs/index.mdx](../src/docs/index.mdx) — landing docs and design system intro
-- **Component stories**: Any `*.stories.tsx` or `*.mdx` under `src/components/` (e.g. `src/components/atoms/Button/Button.stories.tsx`)
+- **Introduction / Welcome** (first): [src/components/pages/Welcome/Welcome.stories.tsx](../src/components/pages/Welcome/Welcome.stories.tsx) — landing page (WelcomeHero + WelcomeFoundations). CSF story with `useGlobals` for theme; Docs disabled.
+- **Component stories**: Any `*.stories.tsx` or `*.mdx` under `src/` (e.g. `src/components/atoms/Button/Button.stories.tsx`)
 
 The exact globs are set in [.storybook/main.cjs](../.storybook/main.cjs):
 
 ```js
 stories: [
-  '../src/docs/index.mdx',
+  '../src/components/pages/Welcome/Welcome.stories.tsx',
   '../src/**/*.stories.tsx',
   '../src/**/*.mdx',
 ],
 ```
 
-The **Intro** story ([src/docs/intro.stories.tsx](../src/docs/intro.stories.tsx)) is the welcome screen that describes Atomic Design and Tailwind; it uses the Background atom and Lienzo logo.
+Listing Welcome stories first ensures Introduction opens when Storybook starts.
 
 ## Manager branding (sidebar logo)
 
@@ -51,9 +51,9 @@ Components appear under capitalized atomic-design folders. Set `title` on each s
 - `Templates/ComponentName` — layout shells (e.g. `Templates/Phone`)
 - `Pages/ComponentName` — filled page compositions (e.g. `Pages/WelcomeHero`, `Pages/WelcomeFoundations`, `Pages/CanvasStudio`)
 
-Pinned at the top (in order): **Welcome**, **Colors**, **Intro**. Then Atoms, Molecules, Organisms, Templates, Pages. Within each component, **Docs** is listed first, then variant stories. Sort order is configured in [.storybook/preview.ts](../.storybook/preview.ts).
+Pinned at the top: **Introduction** (CSF title `Introduction`, story `Welcome` → sidebar `Introduction / Welcome`). Then Atoms, Molecules, Organisms, Templates, Pages. Within each **atom / molecule / organism** that has Docs, **Docs** is listed first, then variant stories. Sort order is configured in [.storybook/preview.ts](../.storybook/preview.ts).
 
-Each component looks like:
+Prop-customizable components look like:
 
 ```
 Atoms
@@ -63,11 +63,23 @@ Atoms
     Tools
 ```
 
+Landing and pages:
+
+```
+Introduction
+  Welcome       ← CSF + useGlobals; no Docs / ComponentDocsPage
+Atoms
+  …
+Pages
+  WelcomeHero
+    LivePreview ← CSF gallery only; no Docs
+```
+
 ## Docs vs variant stories
 
-**Docs** (`ComponentName.mdx`) is the interactive reference for atoms, molecules, organisms, and templates. The contract (mandatory sections, Controls rules, Default vs variants) is documented in [Component Docs](component-docs.md).
+**Docs** (`ComponentName.mdx` + Live Preview Controls) is the interactive reference for **atoms, molecules, and organisms** only—components visitors customize via props. The contract is documented in [Component Docs](component-docs.md).
 
-**Pages are exempt:** page-level components (`Pages/…`) ship CSF stories only. Do not add `ComponentName.mdx` / `ComponentDocsPage` for a page unless it gains a meaningful Controls API. See [Component Docs — Scope: Pages are exempt](component-docs.md#scope-pages-are-exempt).
+**Pages and Introduction/Welcome are exempt:** do not add `ComponentDocsPage` or Docs MDX for them. Pages ship CSF gallery stories under `Pages/…`. The landing is [Welcome.stories.tsx](../src/components/pages/Welcome/Welcome.stories.tsx) (`title: 'Introduction'`, export `Welcome`) with theme via `useGlobals` / `updateGlobals` so `withThemeByDataAttribute` sets `data-mode`. See [Component Docs — Scope](component-docs.md#scope-who-gets-docs--live-preview).
 
 Every production Docs page **must** use **ComponentDocsPage** ([src/docs/ComponentDocsPage/ComponentDocsPage.tsx](../src/docs/ComponentDocsPage/ComponentDocsPage.tsx)). **Mandatory:** `title`, version `badge` (default `0.1.0`), `description`, `stories` (Live Preview on `stories.Default`), `useCases`, `props`, and `example`. **Variations** are required once distinct stories exist (may be temporarily empty). **Optional:** `breadcrumb`, `usage` (nice to have). Import via `@docs/ComponentDocsPage`. Do not hand-roll Docs layout. **[LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)** is the content-quality reference. Full contract: [Component Docs](component-docs.md).
 
@@ -81,14 +93,18 @@ Docs pages use the brand canvas: `pio-bg` in light mode (`dark-canvas` in dark m
 
 **Variant stories** (e.g. `Sizes`, `AllTypes`) are visible galleries. Set `parameters: { controls: { disable: true } }` on them. Optional Docs Variations tabs preview the same stories without Controls; they do not replace the sidebar. The bottom addon panel (Actions, Visual Tests, Interactions) is hidden by default via `showPanel: false` in [.storybook/manager.js](../.storybook/manager.js).
 
-Pattern per component (atoms / molecules / organisms / templates):
+Pattern per **atom / molecule / organism**:
 
 | File | Purpose |
 |------|---------|
-| `ComponentName.stories.tsx` | Hidden `Default` + visible variant stories; `title` uses `Atoms/` / `Molecules/` / `Organisms/` / `Templates/` |
+| `ComponentName.stories.tsx` | Hidden `Default` + visible variant stories; `title` uses `Atoms/` / `Molecules/` / `Organisms/` |
 | `ComponentName.mdx` | Docs page via `ComponentDocsPage` (see [Component Docs](component-docs.md)) |
 
+**Templates:** `ComponentName.stories.tsx` (`title` `Templates/…`). Docs MDX optional.
+
 **Pages:** `ComponentName.stories.tsx` only (`title` `Pages/…`). No Docs MDX.
+
+**Introduction / Welcome:** [Welcome.stories.tsx](../src/components/pages/Welcome/Welcome.stories.tsx) + [Welcome.tsx](../src/components/pages/Welcome/Welcome.tsx). No Docs MDX / `ComponentDocsPage`. Theme via `useGlobals` in the story function (same pattern as `Pages/WelcomeHero`).
 
 Example MDX (mandatory sections — see [Component Docs](component-docs.md) and [LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)):
 

@@ -3,7 +3,7 @@ const path = require('path');
 
 const config = {
   stories: [
-    '../src/docs/index.mdx',
+    '../src/components/pages/Welcome/Welcome.stories.tsx',
     '../src/**/*.stories.tsx',
     '../src/**/*.mdx',
   ],

@@ -132,4 +132,4 @@ Stitch `lienzo-*` names from the component-view mock map onto existing `pio-*` t
 - **In JS/TS**: Prefer Tailwind utility classes. When you need a runtime color value (e.g. canvas/chart library), read the computed CSS variable from the DOM (tokens are defined in `src/css/tokens.css`).
 - **In components**: Prefer Tailwind utility classes (e.g. `bg-pio-bg`, `text-pio-text`, `border-gray-300`).
 
-For a **visual reference** of the palette, open Storybook and go to the **Colors** story ([src/colors/colors.stories.tsx](../src/colors/colors.stories.tsx)).
+For a **visual reference** of the palette, open Storybook and go to **Welcome** (foundations section) or **Pages/WelcomeFoundations**.

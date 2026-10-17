@@ -5,7 +5,7 @@ export const heroMeshLayer =
   'absolute inset-0 pointer-events-none overflow-hidden -z-10';
 
 export const heroContent =
-  'max-w-6xl mx-auto px-8 pt-12 pb-16 md:py-20 lg:py-24 relative z-10';
+  'max-w-6xl !mx-auto px-8 pt-12 pb-16 md:py-20 lg:py-24 relative z-10';
 
 export const heroGrid =
   'grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center';
@@ -42,7 +42,7 @@ export const foundationBar =
   'w-full bg-white/70 backdrop-blur-md border-t border-pio-grid py-4 dark:bg-gray-900/70 dark:border-gray-700';
 
 export const foundationInner =
-  'max-w-6xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-4';
+  'max-w-6xl !mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-4';
 
 export const foundationLeft =
   'flex items-center gap-3 flex-wrap justify-center';

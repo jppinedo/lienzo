@@ -28,7 +28,7 @@ Overview of the main technologies and dependencies used in Lienzo. For full list
 | Library | Role |
 |---------|------|
 | **Recharts** | Charts; used by the **LineChart** molecule |
-| **react-feather** | Icon set; used in components (e.g. Label, Colors story) |
+| **react-feather** | Icon set; used in components (e.g. Label, Button, Welcome pages) |
 | **react-day-picker** (v9) | Calendar/date picker logic; used by the **Calendar** molecule (range and single selection) |
 | **date-fns** | Date formatting and utilities; used with react-day-picker and Calendar |
 | **prism-react-renderer** | Token highlighting inside **CodeBlock**; custom theme uses pio coral/teal/amber on `dark-canvas` |

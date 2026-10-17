@@ -36,14 +36,6 @@ const docsLinks = {
   onOpenCodeBlockDocs: openCodeBlockDocs,
 };
 
-export const Default = () => {
-  const { isDark, onThemeChange } = useStorybookTheme();
-  return (
-    <WelcomeFoundations isDark={isDark} onThemeChange={onThemeChange} {...docsLinks} />
-  );
-};
-Default.tags = ['!dev'];
-
 export const LivePreview = () => {
   const { isDark, onThemeChange } = useStorybookTheme();
   return (

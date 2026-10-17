@@ -1,16 +1,21 @@
 # Component Docs
 
-Every production **atom, molecule, organism, and template** has a Storybook **Docs** page: `ComponentName.mdx`, bound to that component’s CSF file (`ComponentName.stories.tsx`). Docs is the interactive reference—live instance, style-only Controls, and written guidance. Variant galleries remain sibling sidebar stories.
+Every production **atom, molecule, and organism** has a Storybook **Docs** page: `ComponentName.mdx`, bound to that component’s CSF file (`ComponentName.stories.tsx`). Docs is the interactive reference for **prop-customizable** UI—Live Preview with style-only Controls, plus written guidance. Variant galleries remain sibling sidebar stories.
 
-This document is the **source of truth** for Docs content, structure, and design. Use it when adding or enriching any component Docs page.
+This document is the **source of truth** for Docs content, structure, and design. Use it when adding or enriching any atom / molecule / organism Docs page.
 
-## Scope: Pages are exempt
+## Scope: who gets Docs + Live Preview
 
-**Pages** (`src/components/pages/`, Storybook title `Pages/…`) do **not** require a Docs page (`ComponentName.mdx` / `ComponentDocsPage`).
+| Tier | Docs (`ComponentDocsPage` + Live Preview)? | Notes |
+|------|--------------------------------------------|--------|
+| **Atoms** | **Required** | Prop-driven; Controls in Live Preview |
+| **Molecules** | **Required** | Same as atoms |
+| **Organisms** | **Required** | Same as atoms (when added) |
+| **Templates** | Optional | Layout shells; CSF stories. Existing Docs (e.g. Phone) may remain; do not treat as mandatory |
+| **Pages** | **No** | Composed surfaces; CSF gallery stories only. Never add Docs / Live Preview / `ComponentDocsPage` for a page |
+| **Introduction / Welcome** | **No** | Storybook landing (`title: 'Introduction'`, story `Welcome`). CSF + `useGlobals` only—no `ComponentDocsPage`. Do not add Docs MDX for this entry |
 
-Pages are composed, design-specific surfaces (often with few or no style-customizable props). Ship **CSF stories only**—visible galleries that demonstrate the page. Do not author a `ComponentDocsPage` MDX for a page unless there is a clear, intentional reason (e.g. a page that later gains a meaningful Controls API).
-
-This exception applies only to the **Pages** tier. Atoms, molecules, organisms, and templates still follow the full contract below.
+**Do not** create a Docs page or Docs/Live Preview Controls pair for pages or Introduction/Welcome. That pattern exists only so visitors can tweak props on reusable components.
 
 ## Mandatory template
 
@@ -257,7 +262,7 @@ Full Live Preview / Controls restyle notes: [Storybook](storybook.md).
 
 ## Authoring checklist (per component)
 
-Skip this checklist for **Pages** (see [Scope: Pages are exempt](#scope-pages-are-exempt)). For atoms, molecules, organisms, and templates:
+Skip this checklist for **Pages**, **Introduction/Welcome**, and optional template Docs (see [Scope](#scope-who-gets-docs--live-preview)). For atoms, molecules, and organisms:
 
 1. CSF: hidden `Default` with style-only `argTypes`; variant stories for distinct looks.
 2. MDX wraps only `ComponentDocsPage` (+ `Meta`, and `Canvas` if Variations have entries).
@@ -269,8 +274,8 @@ Skip this checklist for **Pages** (see [Scope: Pages are exempt](#scope-pages-ar
 
 ## Must not
 
-- For atoms / molecules / organisms / templates: skip `ComponentDocsPage` or bypass Live Preview with raw Canvas + Controls.
-- Build a Docs page for a **Page** solely to satisfy this contract (Pages are exempt).
+- For atoms / molecules / organisms: skip `ComponentDocsPage` or bypass Live Preview with raw Canvas + Controls.
+- Build a Docs page for a **Page** or **Introduction/Welcome** (those tiers are exempt; landing uses CSF + `useGlobals` only).
 - Omit the version badge, Overview, Props API, or code example (when Docs is required).
 - Expose JSX, functions, or unfriendly objects in Live Preview Controls.
 - Invent variations, props, or related-component links.

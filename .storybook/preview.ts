@@ -21,7 +21,7 @@ const preview: Preview = {
     },
     options: {
       storySort: (a, b) => {
-        const PINNED = ['Welcome', 'Colors', 'Intro'];
+        const PINNED = ['Introduction'];
         const TIERS = ['Atoms', 'Molecules', 'Organisms', 'Templates', 'Pages'];
 
         const aRoot = a.title?.split('/')[0] ?? '';

@@ -544,51 +544,49 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
 
         {/* Same tokens, in action */}
         <div className="space-y-6 pt-4">
-          <div className="space-y-2">
-            <div className="space-y-1">
-              <h3 className={sectionTitle}>Same tokens, in action</h3>
-              <p className={sectionSubtitle}>Change one prop and the whole component follows.</p>
-            </div>
-            <div className={docsLinkRow}>
-              <div className={docsLinkWrap}>
-                <Button
-                  label="Button docs"
-                  type="default"
-                  fill="ghost"
-                  size="sm"
-                  icon={<ExternalLink strokeWidth={2} />}
-                  iconPosition="right"
-                  onClick={() => onOpenButtonDocs?.()}
-                />
-              </div>
-              <div className={docsLinkWrap}>
-                <Button
-                  label="Switch docs"
-                  type="default"
-                  fill="ghost"
-                  size="sm"
-                  icon={<ExternalLink strokeWidth={2} />}
-                  iconPosition="right"
-                  onClick={() => onOpenSwitchDocs?.()}
-                />
-              </div>
-              <div className={docsLinkWrap}>
-                <Button
-                  label="Checkbox docs"
-                  type="default"
-                  fill="ghost"
-                  size="sm"
-                  icon={<ExternalLink strokeWidth={2} />}
-                  iconPosition="right"
-                  onClick={() => onOpenCheckboxDocs?.()}
-                />
-              </div>
-            </div>
+          <div className="space-y-1">
+            <h3 className={sectionTitle}>Same tokens, in action</h3>
+            <p className={sectionSubtitle}>Change one prop and the whole component follows.</p>
           </div>
           <div className={demoGrid}>
             {TYPE_DEMOS.map((demo) => (
               <TypeDemoCard key={demo.type} {...demo} />
             ))}
+          </div>
+          <div className={docsLinkRow}>
+            <div className={docsLinkWrap}>
+              <Button
+                label="Button docs"
+                type="default"
+                fill="ghost"
+                size="sm"
+                icon={<ExternalLink strokeWidth={2} />}
+                iconPosition="right"
+                onClick={() => onOpenButtonDocs?.()}
+              />
+            </div>
+            <div className={docsLinkWrap}>
+              <Button
+                label="Switch docs"
+                type="default"
+                fill="ghost"
+                size="sm"
+                icon={<ExternalLink strokeWidth={2} />}
+                iconPosition="right"
+                onClick={() => onOpenSwitchDocs?.()}
+              />
+            </div>
+            <div className={docsLinkWrap}>
+              <Button
+                label="Checkbox docs"
+                type="default"
+                fill="ghost"
+                size="sm"
+                icon={<ExternalLink strokeWidth={2} />}
+                iconPosition="right"
+                onClick={() => onOpenCheckboxDocs?.()}
+              />
+            </div>
           </div>
         </div>
 

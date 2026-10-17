@@ -41,19 +41,6 @@ export default {
   },
 } as Meta;
 
-export const Default = () => {
-  const [globals, updateGlobals] = useGlobals();
-  const isDark = (globals.theme as string) === 'dark';
-
-  return (
-    <CanvasStudioChrome
-      isDark={isDark}
-      onThemeChange={(active) => updateGlobals({ theme: active ? 'dark' : 'light' })}
-    />
-  );
-};
-Default.tags = ['!dev'];
-
 export const LivePreview = () => {
   const [globals, updateGlobals] = useGlobals();
   const isDark = (globals.theme as string) === 'dark';

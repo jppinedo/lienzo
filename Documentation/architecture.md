@@ -18,7 +18,7 @@
 | `assets/` | Static assets and React SVG components (e.g. logos, backgrounds) |
 | `colors/` | Re-export of Tailwind theme colors (see [src/colors/Colors.ts](../src/colors/Colors.ts)) |
 | `css/` | Global styles: [lienzo.css](../src/css/lienzo.css), `fullHeightCanvas.css` |
-| `docs/` | Storybook intro/welcome content and Docs infrastructure: [LivePreview](../src/docs/LivePreview/LivePreview.tsx), [ComponentDocsPage](../src/docs/ComponentDocsPage/ComponentDocsPage.tsx) (composable Docs page template) |
+| `docs/` | Storybook Docs infrastructure: [LivePreview](../src/docs/LivePreview/LivePreview.tsx), [ComponentDocsPage](../src/docs/ComponentDocsPage/ComponentDocsPage.tsx) (composable Docs page template) |
 | `interfaces/` | Shared TypeScript types (e.g. [sizes.ts](../src/interfaces/sizes.ts)) |
 
 ## TypeScript path aliases

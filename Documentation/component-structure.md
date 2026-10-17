@@ -8,7 +8,7 @@ Lienzo organizes UI into:
 - **Molecules**: Components composed from one or more atoms (e.g. Toolbar, Menu, Tabs, LineChart).
 - **Organisms**: Reserved (`@organisms/*`); no organism components yet.
 - **Templates**: Page-level layout shells with content slots (e.g. Phone with `children`).
-- **Pages**: Specific instances of templates populated with real design-system content (e.g. CanvasStudio, WelcomeHero).
+- **Pages**: Specific instances of templates populated with real design-system content (e.g. Welcome, WelcomeHero, WelcomeFoundations, CanvasStudio).
 
 ## Atoms
 
@@ -49,9 +49,10 @@ Lienzo organizes UI into:
 
 | Component | Description |
 |-----------|-------------|
-| **CanvasStudio** | Filled Phone preview composing Input (search), Card, LineChart, Button, Title, Label, and CircleSpinner. Used as the interactive mobile mock inside WelcomeHero. Standalone stories use a Light/Dark Switch that updates Storybook’s global theme (`useGlobals` / addon-themes). |
-| **WelcomeFoundations** | Welcome-page foundations section (`#welcome-foundations` / `WELCOME_FOUNDATIONS_ID`): color-token swatch families with click-to-copy, type demos (Button, Label, Switch, Checkbox, Input) with Docs links for Button / Switch / Checkbox, typography specimens and Title scale with Docs links for Title / CodeBlock, Title gradient gallery, and elevation tiles. Accepts `isDark` / `onThemeChange` plus optional Docs link callbacks. Stories wire theme to Storybook globals and Docs links via `linkTo`. |
-| **WelcomeHero** | Welcome-page hero section: large LienzoHorizontalLogo (no duplicate wordmark title), “Every interface starts on a canvas.” headline, product tagline, component/story/theme stats, copyable `git clone` and `yarn install` pills, scroll CTA to `#welcome-foundations`, Built with strip, and CanvasStudio. Accepts `isDark` / `onThemeChange`; stories wire those to Storybook’s global theme via `useGlobals` in the story function. Storybook theme-aware via `dark:` surfaces and Background `darkColors`; soft low-contrast dotted field. Uses Background, Title, Label, Button, Card, Switch, and CanvasStudio. LivePreview mounts WelcomeFoundations after the hero for the scroll target. |
+| **CanvasStudio** | Filled Phone preview composing Input (search), Card, LineChart, Button, Title, Label, and CircleSpinner. Used as the interactive mobile mock inside WelcomeHero. CSF gallery only (`Pages/CanvasStudio`)—no Docs MDX. Standalone stories use a Light/Dark Switch that updates Storybook’s global theme (`useGlobals` / addon-themes). |
+| **Welcome** | Official Storybook landing page. Composes WelcomeHero then WelcomeFoundations. Sidebar: `Introduction / Welcome` via CSF ([Welcome.stories.tsx](../src/components/pages/Welcome/Welcome.stories.tsx)); theme via `useGlobals`. No Docs MDX / `ComponentDocsPage`. |
+| **WelcomeFoundations** | Welcome-page foundations section (`#welcome-foundations` / `WELCOME_FOUNDATIONS_ID`): color-token swatch families with click-to-copy, type demos (Button, Label, Switch, Checkbox, Input) with Docs links for Button / Switch / Checkbox, typography specimens and Title scale with Docs links for Title / CodeBlock, Title gradient gallery, and elevation tiles. Accepts `isDark` / `onThemeChange` plus optional Docs link callbacks. CSF gallery only (`Pages/WelcomeFoundations`)—no Docs MDX. |
+| **WelcomeHero** | Welcome-page hero section: large LienzoHorizontalLogo (no duplicate wordmark title), “Every interface starts on a canvas.” headline, product tagline, component/story/theme stats, copyable `git clone` and `yarn install` pills, scroll CTA to `#welcome-foundations`, Built with strip, and CanvasStudio. Accepts `isDark` / `onThemeChange`; stories wire those to Storybook’s global theme via `useGlobals`. CSF gallery only (`Pages/WelcomeHero`)—no Docs MDX. |
 
 ## File conventions per component
 
@@ -62,8 +63,8 @@ Each component lives in its own folder under `atoms/`, `molecules/`, `templates/
 | `ComponentName.tsx` | React component and its props interface |
 | `ComponentNameStyles.ts` | (Optional) Tailwind class strings exported as objects (e.g. [BoxStyles.ts](../src/components/atoms/Box/BoxStyles.ts), [ButtonStyles.ts](../src/components/atoms/Button/ButtonStyles.ts)) |
 | `ComponentName.css` | (Optional) Component-specific CSS when Tailwind is not enough (e.g. [Button.css](../src/components/atoms/Button/Button.css)) |
-| `ComponentName.stories.tsx` | Storybook CSF stories. For atoms / molecules / organisms / templates: a hidden `Default` story for Docs (not listed in the sidebar), plus visible variant galleries. For **pages**: visible gallery stories only (no Docs `Default` required) |
-| `ComponentName.mdx` | Storybook Docs page via **`ComponentDocsPage`** (mandatory for atoms, molecules, organisms, templates). Required: title, version badge (default `0.1.0`), overview/use cases, Live Preview (style-only Controls), Variations (once stories exist), Props API, and a short code example. Optional: breadcrumb, usage/best practices. Design is owned by the template—do not restyle in MDX. See [Component Docs](component-docs.md). **Pages are exempt**—do not add `.mdx` / `ComponentDocsPage` for page-level components unless they gain a meaningful Controls API |
+| `ComponentName.stories.tsx` | Storybook CSF stories. For **atoms / molecules / organisms**: a hidden `Default` story for Docs (not listed in the sidebar), plus visible variant galleries. For **templates / pages**: visible gallery stories only (no Docs `Default` required). Landing: `title: 'Introduction'`, story `Welcome` |
+| `ComponentName.mdx` | Storybook Docs page via **`ComponentDocsPage`** — **mandatory only for atoms, molecules, and organisms** (prop-customizable components with Live Preview Controls). See [Component Docs](component-docs.md). **Pages and Introduction/Welcome are exempt**—do not add `ComponentDocsPage` for them |
 
 **Pattern**: Prefer Tailwind for styling. Use `*Styles.ts` to keep class names in one place. Use `.css` only when Tailwind cannot handle the case (e.g. keyframes, complex selectors). Many components use shared types from `@interfaces/sizes` (e.g. `RoundedSizes`).
 
@@ -74,8 +75,8 @@ Each component lives in its own folder under `atoms/`, `molecules/`, `templates/
 1. Create a folder under the matching tier (e.g. `src/components/atoms/MyAtom/`, `src/components/templates/Phone/`).
 2. Add `ComponentName.tsx` with the React component and its props interface.
 3. Add optional `ComponentNameStyles.ts` for Tailwind class strings and optional `ComponentName.css` if needed.
-4. Add `ComponentName.stories.tsx` so the component appears in Storybook. Set `title` to `Atoms/ComponentName`, `Molecules/ComponentName`, `Organisms/ComponentName`, `Templates/ComponentName`, or `Pages/ComponentName`. For atoms / molecules / organisms / templates, also add `ComponentName.mdx` using `ComponentDocsPage` and the contract in [Component Docs](component-docs.md) (reference: [LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)). **Pages: stories only**—skip `.mdx` / Docs. Also see [Storybook](storybook.md).
+4. Add `ComponentName.stories.tsx` so the component appears in Storybook. Set `title` to `Atoms/ComponentName`, `Molecules/ComponentName`, `Organisms/ComponentName`, `Templates/ComponentName`, or `Pages/ComponentName`. For **atoms / molecules / organisms only**, also add `ComponentName.mdx` using `ComponentDocsPage` and the contract in [Component Docs](component-docs.md) (reference: [LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)). **Templates / pages: stories only**—skip Docs. Landing stays `Introduction / Welcome` (CSF + `useGlobals`; no Docs). Also see [Storybook](storybook.md).
 5. Use path aliases for imports (e.g. `@atoms/MyAtom/MyAtom`, `@templates/Phone/Phone`, `@interfaces/sizes`).
 6. Use design tokens from the Tailwind theme where possible (see [Design tokens & colors](design-tokens-colors.md)).
 
-For component implementation patterns, see existing atoms (e.g. Box, Button), molecules (e.g. Toolbar), and the Phone template. For Docs pages (non-Pages tiers), follow [Component Docs](component-docs.md) and the LineChart reference.
+For component implementation patterns, see existing atoms (e.g. Box, Button), molecules (e.g. Toolbar), and the Phone template. For Docs pages (atoms / molecules / organisms), follow [Component Docs](component-docs.md) and the LineChart reference.

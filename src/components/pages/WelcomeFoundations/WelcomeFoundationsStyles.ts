@@ -1,7 +1,7 @@
 export const sectionRoot =
   'w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-8 bg-pio-bg/40 dark:bg-dark-canvas transition-colors duration-300';
 
-export const sectionInner = 'max-w-6xl mx-auto space-y-20';
+export const sectionInner = 'max-w-6xl !mx-auto space-y-20';
 
 export const headerRow =
   'flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-pio-grid dark:border-gray-700';
