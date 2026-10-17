@@ -1,0 +1,89 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import * as Stories from './WelcomeHero.stories';
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
+
+<Meta of={Stories} />
+
+export const exampleCode = `import WelcomeHero from '@pages/WelcomeHero/WelcomeHero';
+
+<WelcomeHero
+  isDark={false}
+  onThemeChange={(active) => {
+    /* Story wrappers: updateGlobals({ theme: active ? 'dark' : 'light' }) */
+  }}
+/>`;
+
+<ComponentDocsPage
+  title="WelcomeHero"
+  badge="0.1.0"
+  breadcrumb={['Pages', 'WelcomeHero']}
+  description="First section of the Lienzo welcome page: large LienzoHorizontalLogo, “Every interface starts on a canvas.” headline, product tagline highlighting the live playground, 20 Components / 60+ Live stories / 2 Themes stats, run-it-locally clone and yarn install commands, an Open the playground CTA (onOpenPlayground) plus a scroll CTA to #welcome-foundations, Built with strip, and the interactive CanvasStudio phone. The Light/Dark Switch drives Storybook’s global theme (same as the toolbar). Soft dotted Background with darkColors. Built from Background, Title, Label, Button, Card, Switch, Phone, and CanvasStudio."
+  stories={Stories}
+  useCases={{
+    cases: [
+      'Storybook preview of the welcome-page hero layout.',
+      'Show clone and yarn install commands for local setup.',
+      'Compose brand messaging beside the CanvasStudio phone showcase.',
+      'Drive Storybook light/dark theme from the Interactive Showcase Switch.',
+      'Scroll CTA targets #welcome-foundations for the colors and typography section.',
+      'Related: CanvasStudio fills the Phone template; later welcome sections can follow as sibling Pages.',
+    ],
+  }}
+  variations={[
+    {
+      id: 'live-preview',
+      label: 'Live preview',
+      canvas: <Canvas of={Stories.LivePreview} layout="fullscreen" />,
+      badge: 'Pattern: Welcome hero',
+      description: 'Full hero composition with dotted Background, get-started commands, scroll CTA, foundation strip, Storybook theme Switch, and a stub #welcome-foundations section.',
+      meta: [
+        {
+          label: 'Composition',
+          value: 'Background · Title · Button · Switch · CanvasStudio',
+          valueTone: 'prop',
+        },
+        {
+          label: 'Best For',
+          value: 'Welcome-page hero and design-system landing preview',
+        },
+      ],
+    },
+  ]}
+  props={{
+    interfaceName: 'WelcomeHeroProps',
+    lead: 'Fixed composition page. Stories wire isDark / onThemeChange to Storybook globals (useGlobals must stay in the story function).',
+    rows: [
+      {
+        name: 'isDark',
+        type: 'boolean',
+        default: 'false',
+        description: 'Reflects the active Storybook theme; drives the Interactive Showcase Switch.',
+      },
+      {
+        name: 'onThemeChange',
+        type: '(active: boolean) => void',
+        description: 'Called when the Switch toggles. Stories should call updateGlobals({ theme }).',
+      },
+      {
+        name: 'onOpenPlayground',
+        type: '() => void',
+        description: 'Called by the Open the playground button. Stories use linkTo to open a component Docs page.',
+      },
+    ],
+  }}
+  usage={{
+    whenToUse: [
+      'Storybook preview of the first welcome-page section.',
+      'Reference layout when wiring the production Welcome Docs page.',
+    ],
+    whenToAvoid: [
+      'Reusable product marketing pages outside this design-system showcase.',
+      'Phone-only demos — use CanvasStudio or the Phone template directly.',
+    ],
+  }}
+  example={{
+    code: exampleCode,
+    filename: 'WelcomeHero.example.tsx',
+    language: 'tsx',
+  }}
+/>

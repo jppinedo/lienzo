@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StoryFn, Meta } from '@storybook/react';
+import { Moon, Sun } from 'react-feather';
 import Switch, { SwitchProps } from './Switch';
 import Label from '@atoms/Label/Label';
 
@@ -17,6 +18,10 @@ export default {
     isActive: { control: 'boolean' },
     className: { control: false, table: { disable: true } },
     onChange: { control: false, table: { disable: true } },
+    offLabel: { control: 'text' },
+    onLabel: { control: 'text' },
+    offIcon: { control: false, table: { disable: true } },
+    onIcon: { control: false, table: { disable: true } },
   },
 } as Meta;
 
@@ -112,3 +117,63 @@ export const Types = () => {
   );
 };
 Types.parameters = { controls: { disable: true } };
+
+export const Segmented = () => {
+  const types: Array<NonNullable<SwitchProps['type']>> = [
+    'default',
+    'green',
+    'red',
+    'yellow',
+  ];
+  const [activeByType, setActiveByType] = useState<Record<string, boolean>>({
+    default: false,
+    green: true,
+    red: false,
+    yellow: true,
+  });
+  const [showcaseActive, setShowcaseActive] = useState(false);
+
+  return (
+    <div className="w-full min-h-[360px] flex flex-col items-center justify-center gap-8 p-6">
+      <div className="flex flex-col items-start gap-4">
+        {types.map((type) => (
+          <div key={type} className="flex items-center gap-3">
+            <Switch
+              size="md"
+              type={type}
+              isActive={activeByType[type]}
+              onChange={(next) =>
+                setActiveByType((prev) => ({ ...prev, [type]: next }))
+              }
+              offLabel="Light"
+              onLabel="Dark"
+              offIcon={<Sun strokeWidth={2} className="text-pio-amber" />}
+              onIcon={<Moon strokeWidth={2} />}
+            />
+            <Label text={type} type={type} />
+          </div>
+        ))}
+      </div>
+
+      <div className="inline-flex items-center gap-4 rounded-full bg-white border border-pio-grid px-4 py-2 shadow-sm dark:bg-gray-900 dark:border-gray-700">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-pio-coral shrink-0" aria-hidden />
+          <span className="text-[10px] font-bold uppercase tracking-wide text-pio-text font-jakarta dark:text-blue-200">
+            Interactive Showcase
+          </span>
+        </div>
+        <Switch
+          size="md"
+          type="default"
+          isActive={showcaseActive}
+          onChange={setShowcaseActive}
+          offLabel="Light"
+          onLabel="Dark"
+          offIcon={<Sun strokeWidth={2} className="text-pio-amber" />}
+          onIcon={<Moon strokeWidth={2} />}
+        />
+      </div>
+    </div>
+  );
+};
+Segmented.parameters = { controls: { disable: true } };

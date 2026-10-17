@@ -11,6 +11,20 @@
   background-color: var(--bg-dotted-fill);
 }
 
+/* Themeable dotted: light channels are the default; dark swaps under theme root */
+.bg-dotted--themeable {
+  --bg-dotted-fill: var(--bg-dotted-fill-light);
+  --bg-dotted-dot: var(--bg-dotted-dot-light);
+  --bg-dotted-vignette: var(--bg-dotted-vignette-light);
+}
+
+html[data-mode='dark'] .bg-dotted--themeable,
+.dark .bg-dotted--themeable {
+  --bg-dotted-fill: var(--bg-dotted-fill-dark);
+  --bg-dotted-dot: var(--bg-dotted-dot-dark);
+  --bg-dotted-vignette: var(--bg-dotted-vignette-dark);
+}
+
 .bg-dotted__pattern {
   position: absolute;
   inset: 0;

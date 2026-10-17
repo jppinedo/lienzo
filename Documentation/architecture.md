@@ -8,12 +8,13 @@
 - **`Documentation/`**: Project documentation (this folder)
 - **`features/`**: Staged feature specs (implementation plans split by step). These are not the public component Docs pages. Component Docs contract: [Documentation/component-docs.md](component-docs.md). Historical component-view sequence: [features/component_view_template/](../features/component_view_template/00-overview.md).
 - **`brand/`**: Design references (e.g. Stitch HTML/PNG) used as visual source, not runtime code
+- **`lienzo_welcome/`**: Stitch welcome-page export (HTML/DESIGN/PNG); design reference for Phone chrome and WelcomeHero (and future welcome sections), not runtime code
 
 ## `src/` folder structure
 
 | Folder | Purpose |
 |--------|---------|
-| `components/` | React components: atoms and molecules (and future organisms) |
+| `components/` | React components under `atoms/`, `molecules/`, `templates/`, `pages/` (and future `organisms/`) |
 | `assets/` | Static assets and React SVG components (e.g. logos, backgrounds) |
 | `colors/` | Re-export of Tailwind theme colors (see [src/colors/Colors.ts](../src/colors/Colors.ts)) |
 | `css/` | Global styles: [lienzo.css](../src/css/lienzo.css), `fullHeightCanvas.css` |
@@ -31,6 +32,8 @@ Imports use path aliases so you can avoid long relative paths. Configured in `ts
 | `@atoms/*` | `src/components/atoms/*` |
 | `@molecules/*` | `src/components/molecules/*` |
 | `@organisms/*` | `src/components/organisms/*` |
+| `@templates/*` | `src/components/templates/*` |
+| `@pages/*` | `src/components/pages/*` |
 | `@colors/*` | `src/colors/*` |
 | `@assets/*` | `src/assets/*` |
 | `@css/*` | `src/css/*` |

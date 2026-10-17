@@ -4,7 +4,7 @@ import { nextBackgroundSvgId } from './nextBackgroundSvgId';
 
 type GradientBackgroundProps = Omit<
   BackgroundProps,
-  'type' | 'vignette' | 'vignetteColor'
+  'type' | 'vignette' | 'vignetteColor' | 'darkColors' | 'darkVignetteColor'
 >;
 
 const GradientBackground: React.FC<GradientBackgroundProps> = ({

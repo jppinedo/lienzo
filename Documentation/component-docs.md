@@ -244,7 +244,7 @@ Full Live Preview / Controls restyle notes: [Storybook](storybook.md).
 | Hidden `Default` | Export used only by Docs; hide with `tags: ['!dev']` (plus manager filter). |
 | Style-only Controls | Every appearance-changing prop in Controls; hide JSX, functions, and unfriendly objects. |
 | Variant stories | Visible sidebar galleries; `parameters: { controls: { disable: true } }`. All distinct ones go into Variations. |
-| Title | `Atoms/Name`, `Molecules/Name`, or `Organisms/Name`. |
+| Title | `Atoms/Name`, `Molecules/Name`, `Organisms/Name`, `Templates/Name`, or `Pages/Name`. |
 | Sidebar | **Docs** first, then variants (configured in preview/manager). |
 
 ## Authoring checklist (per component)

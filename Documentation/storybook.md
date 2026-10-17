@@ -48,8 +48,10 @@ Components appear under capitalized atomic-design folders. Set `title` on each s
 - `Atoms/ComponentName` — atoms (e.g. `Atoms/Button`)
 - `Molecules/ComponentName` — molecules (e.g. `Molecules/Toolbar`)
 - `Organisms/ComponentName` — reserved for future organism components
+- `Templates/ComponentName` — layout shells (e.g. `Templates/Phone`)
+- `Pages/ComponentName` — filled page compositions (e.g. `Pages/WelcomeHero`, `Pages/CanvasStudio`)
 
-Pinned at the top (in order): **Welcome**, **Colors**, **Intro**. Then Atoms, Molecules, Organisms. Within each component, **Docs** is listed first, then variant stories. Sort order is configured in [.storybook/preview.ts](../.storybook/preview.ts).
+Pinned at the top (in order): **Welcome**, **Colors**, **Intro**. Then Atoms, Molecules, Organisms, Templates, Pages. Within each component, **Docs** is listed first, then variant stories. Sort order is configured in [.storybook/preview.ts](../.storybook/preview.ts).
 
 Each component looks like:
 
@@ -81,7 +83,7 @@ Pattern per component:
 
 | File | Purpose |
 |------|---------|
-| `ComponentName.stories.tsx` | Hidden `Default` + visible variant stories; `title` uses `Atoms/` / `Molecules/` / `Organisms/` |
+| `ComponentName.stories.tsx` | Hidden `Default` + visible variant stories; `title` uses `Atoms/` / `Molecules/` / `Organisms/` / `Templates/` / `Pages/` |
 | `ComponentName.mdx` | Docs page via `ComponentDocsPage` (see [Component Docs](component-docs.md)) |
 
 Example MDX (mandatory sections — see [Component Docs](component-docs.md) and [LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)):
