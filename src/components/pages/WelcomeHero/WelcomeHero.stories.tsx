@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
-import { useGlobals } from '@storybook/preview-api';
+import { Meta } from '@storybook/react-vite';
+import { useGlobals } from 'storybook/preview-api';
 import { linkTo } from '@storybook/addon-links';
 import WelcomeHero from './WelcomeHero';
 

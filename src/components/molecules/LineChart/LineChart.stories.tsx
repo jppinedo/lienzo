@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import LineChart, { LineChartProps, LineChartDataItem } from './LineChart';
 
 /** Pio chart series colors as CSS variables (tokens.css). */

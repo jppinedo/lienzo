@@ -34,8 +34,8 @@ export const buttonStyles = {
       xl: 'px-5 py-2 text-lg rounded-2xl',
     },
     tool: {
-      xs: 'text-[10px] py-1 px-1.5 rounded',
-      sm: 'text-xs py-1.5 px-2 rounded',
+      xs: 'text-[10px] py-1 px-1.5 rounded-sm',
+      sm: 'text-xs py-1.5 px-2 rounded-sm',
       md: 'text-xs py-2 px-3 rounded-md',
       lg: 'text-sm py-2.5 px-4 rounded-md',
       xl: 'text-base py-3 px-5 rounded-lg',

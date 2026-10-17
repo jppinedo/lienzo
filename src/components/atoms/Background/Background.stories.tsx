@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import Background, { BackgroundProps } from './Background';
 import Title from '@atoms/Title/Title';
 import { Sun, Feather, Triangle, Grid } from 'react-feather';
@@ -179,7 +179,7 @@ export const ExampleBackgroundTwo = () => (
           size="xl"
           fontFamily="playfair"
           thikness="bold"
-          className="!text-white"
+          className="text-white!"
         >
           Editorial Teal Serenity
         </Title>
@@ -214,7 +214,7 @@ export const ExampleBackgroundThree = () => (
           size="xl"
           fontFamily="playfair"
           thikness="bold"
-          className="!text-pio-bg"
+          className="text-pio-bg!"
         >
           Deep Studio Focus
         </Title>

@@ -30,8 +30,8 @@ const Button: React.FC<ButtonProps> = ({
   const styles = buttonStyles[type][fill];
 
   const getIconSized = (iconPx: string) => {
-    return React.isValidElement(icon) && !icon.props.size
-      ? cloneElement(icon as React.ReactElement<any>, { size: iconPx })
+    return React.isValidElement<{ size?: string | number }>(icon) && !icon.props.size
+      ? cloneElement(icon, { size: iconPx })
       : icon;
   }
 

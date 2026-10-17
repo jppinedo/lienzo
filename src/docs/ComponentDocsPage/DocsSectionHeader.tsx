@@ -18,7 +18,7 @@ const DocsSectionHeader: React.FC<DocsSectionHeaderProps> = ({
   <div className="space-y-1">
     <Title
       size="sm"
-      className="!text-xs"
+      className="text-xs!"
       uppercase
       dot
       dotTone={dotTone}

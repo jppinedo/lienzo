@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import Label, { LabelProps } from './Label';
 import { Archive, Camera, Clock, Gift } from 'react-feather';
 

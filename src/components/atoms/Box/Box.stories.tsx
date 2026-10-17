@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import Box, { BoxProps } from './Box';
 import Title from '@atoms/Title/Title';
 import Button from '../Button/Button';

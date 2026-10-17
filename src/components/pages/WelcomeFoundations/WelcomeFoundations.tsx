@@ -416,7 +416,7 @@ const TypeDemoCard: React.FC<(typeof TYPE_DEMOS)[number]> = ({
   const inputType = type === 'red' || type === 'green' ? type : 'default';
 
   return (
-    <Card shadow="card" radius="3xl" surface="white" className="!rounded-[24px] flex flex-col justify-between">
+    <Card shadow="card" radius="3xl" surface="white" className="rounded-[24px]! flex flex-col justify-between">
       <div className="space-y-5">
         <div className="flex items-center justify-between pb-3 border-b border-pio-border-subtle dark:border-gray-800">
           <span className={`${typePill} ${pillClass}`}>{`type="${type}"`}</span>
@@ -493,7 +493,7 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
               dot
               dotTone="coral"
               color="coral"
-              className="!text-[11px] !tracking-[0.08em]"
+              className="text-[11px]! tracking-[0.08em]!"
             >
               Foundations
             </Title>
@@ -501,7 +501,7 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
               size="xxxl"
               fontFamily="playfair"
               thikness="bold"
-              className="!text-3xl sm:!text-4xl lg:!text-[40px] !leading-tight lg:!leading-[48px]"
+              className="text-3xl! sm:text-4xl! lg:text-[40px]! leading-tight! lg:leading-[48px]!"
             >
               Every color has a job.
             </Title>
@@ -661,7 +661,7 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
                     </span>
                   </div>
                   <div
-                    className={`${specimenWatermark} font-jetbrains font-normal !text-[130px]`}
+                    className={`${specimenWatermark} font-jetbrains font-normal text-[130px]!`}
                     aria-hidden
                   >
                     {'{ }'}
@@ -682,7 +682,7 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
                 </div>
               </div>
 
-              <Card shadow="soft" radius="3xl" surface="white" className="!rounded-[24px]">
+              <Card shadow="soft" radius="3xl" surface="white" className="rounded-[24px]!">
                 <div className="flex justify-between items-center mb-4 pb-2 border-b border-pio-border-subtle dark:border-gray-800">
                   <span className="font-jakarta text-xs font-semibold uppercase tracking-wider text-pio-text-muted dark:text-blue-200/70">
                     Alternate Title Families
@@ -742,7 +742,7 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
               shadow="soft"
               radius="3xl"
               surface="white"
-              className="!rounded-[28px] flex flex-col justify-between"
+              className="rounded-[28px]! flex flex-col justify-between"
             >
               <div className="flex justify-between items-center pb-3 border-b border-pio-border-subtle dark:border-gray-800">
                 <span className="font-jakarta text-xs font-semibold uppercase tracking-wider text-pio-text-muted dark:text-blue-200/70">
@@ -757,7 +757,7 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
                       {size}{' '}
                       <span className="text-[10px] text-gray-400">{px}</span>
                     </span>
-                    <Title size={size} fontFamily="playfair" thikness="bold" className="!leading-none">
+                    <Title size={size} fontFamily="playfair" thikness="bold" className="leading-none!">
                       Canvas
                     </Title>
                   </div>
@@ -814,12 +814,12 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
                   fontFamily="jakarta"
                   thikness="bold"
                   gradient="amber-dawn"
-                  className="!text-4xl sm:!text-5xl lg:!text-6xl !tracking-tight"
+                  className="text-4xl! sm:text-5xl! lg:text-6xl! tracking-tight!"
                 >
                   Built to dazzle.
                 </Title>
               </div>
-              <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 px-4 py-2.5 rounded-full flex items-center gap-3 self-start md:self-auto">
+              <div className="bg-gray-800/80 backdrop-blur-xs border border-gray-700 px-4 py-2.5 rounded-full flex items-center gap-3 self-start md:self-auto">
                 <span className="font-jetbrains text-xs text-gray-300">gradient=&quot;amber-dawn&quot;</span>
                 <div className="flex items-center gap-1.5">
                   {['#8CC8BA', '#F5F5EB', '#F8B67A', '#F99280', '#E4ECE0'].map((c) => (
@@ -856,7 +856,7 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
                     fontFamily="jakarta"
                     thikness="bold"
                     gradient={item.gradient}
-                    className="!text-3xl sm:!text-[34px] !leading-snug"
+                    className="text-3xl! sm:text-[34px]! leading-snug!"
                   >
                     {item.name}
                   </Title>

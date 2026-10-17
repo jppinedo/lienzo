@@ -2,8 +2,8 @@
 
 ## Repository layout
 
-- **Root config**: `package.json`, `tailwind.config.js`, `tsconfig.json`, `.nvmrc`, `.gitignore`
-- **`.storybook/`**: Storybook configuration (main, preview, webpack, global CSS)
+- **Root config**: `package.json`, `.yarnrc.yml`, `tsconfig.json`, `eslint.config.mjs`, `.nvmrc`, `.gitignore`
+- **`.storybook/`**: Storybook configuration (`main.ts`, `preview.ts`, `manager.ts`, global CSS)
 - **`src/`**: All application source code (see below)
 - **`Documentation/`**: Project documentation (this folder)
 - **`features/`**: Staged feature specs (implementation plans split by step). These are not the public component Docs pages. Component Docs contract: [Documentation/component-docs.md](component-docs.md). Historical component-view sequence: [features/component_view_template/](../features/component_view_template/00-overview.md).
@@ -16,14 +16,14 @@
 |--------|---------|
 | `components/` | React components under `atoms/`, `molecules/`, `templates/`, `pages/` (and future `organisms/`) |
 | `assets/` | Static assets and React SVG components (e.g. logos, backgrounds) |
-| `colors/` | Re-export of Tailwind theme colors (see [src/colors/Colors.ts](../src/colors/Colors.ts)) |
-| `css/` | Global styles: [lienzo.css](../src/css/lienzo.css), `fullHeightCanvas.css` |
+| `colors/` | JS color strings for tokens (see [src/colors/Colors.ts](../src/colors/Colors.ts)) |
+| `css/` | Global styles: [tokens.css](../src/css/tokens.css), `fullHeightCanvas.css`. Tailwind entry is [src/tailwind.css](../src/tailwind.css) |
 | `docs/` | Storybook Docs infrastructure: [LivePreview](../src/docs/LivePreview/LivePreview.tsx), [ComponentDocsPage](../src/docs/ComponentDocsPage/ComponentDocsPage.tsx) (composable Docs page template) |
 | `interfaces/` | Shared TypeScript types (e.g. [sizes.ts](../src/interfaces/sizes.ts)) |
 
 ## TypeScript path aliases
 
-Imports use path aliases so you can avoid long relative paths. Configured in `tsconfig.json` (and mirrored in [.babelrc](../.babelrc) / [.storybook/webpack.config.js](../.storybook/webpack.config.js)):
+Imports use path aliases so you can avoid long relative paths. Configured in `tsconfig.json` and mirrored in [.storybook/main.ts](../.storybook/main.ts) (`viteFinal` `resolve.alias`, including MDX):
 
 | Alias | Resolves to |
 |-------|-------------|

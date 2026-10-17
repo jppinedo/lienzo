@@ -7,7 +7,7 @@ export const checkboxBase = [
   'items-center',
   'justify-center',
   'cursor-pointer',
-  'outline-none',
+  'outline-hidden',
   'border',
   'transition-colors',
   'duration-150',

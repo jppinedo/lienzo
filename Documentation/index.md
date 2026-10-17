@@ -4,7 +4,7 @@
 
 ## Quick start
 
-Clone the repo, then run `npm install` and `npm run storybook`. Storybook will be available at **http://localhost:6006**. For detailed setup and requirements, see [Getting started](getting-started.md).
+Clone the repo, then run `yarn install` and `yarn storybook`. Storybook will be available at **http://localhost:6006**. For detailed setup and requirements, see [Getting started](getting-started.md).
 
 ---
 

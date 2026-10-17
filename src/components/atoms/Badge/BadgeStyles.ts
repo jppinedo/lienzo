@@ -23,4 +23,4 @@ export const badgeDot = {
   amber: 'bg-pio-amber',
 } as const;
 
-export const badgeDotSize = 'w-1.5 h-1.5 rounded-full flex-shrink-0';
+export const badgeDotSize = 'w-1.5 h-1.5 rounded-full shrink-0';

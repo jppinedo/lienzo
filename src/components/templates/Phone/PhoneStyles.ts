@@ -58,7 +58,7 @@ export const phoneIsland = [
   'items-center',
   'justify-between',
   'gap-2',
-  'shadow-sm',
+  'shadow-xs',
 ].join(' ');
 
 export const phoneIslandLens = [

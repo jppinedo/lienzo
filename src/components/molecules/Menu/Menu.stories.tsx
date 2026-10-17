@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import Menu, { MenuProps } from './Menu';
 import { LabelProps } from '@components/atoms/Label/Label';
 import { Home, Inbox, MessageSquare, Settings, User } from 'react-feather';

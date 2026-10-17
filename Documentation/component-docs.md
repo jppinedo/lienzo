@@ -147,7 +147,7 @@ Omit the whole slot rather than writing generic filler.
 ## Skeleton (mandatory props)
 
 ```mdx
-import { Meta, Canvas } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
 import * as Stories from './ComponentName.stories';
 import { ComponentDocsPage } from '@docs/ComponentDocsPage';
 

@@ -20,7 +20,7 @@ export const breadcrumbNav = [
   'bg-white',
   'border',
   'border-pio-grid',
-  'shadow-sm',
+  'shadow-xs',
   'text-xs',
   'font-medium',
   'font-jakarta',
@@ -101,7 +101,7 @@ export const useCaseItem = 'flex items-start gap-3';
 
 export const useCaseIcon = [
   'mt-0.5',
-  'flex-shrink-0',
+  'shrink-0',
   'w-5',
   'h-5',
   'rounded-full',
@@ -114,7 +114,7 @@ export const useCaseIcon = [
 
 export const useCaseIconAlt = [
   'mt-0.5',
-  'flex-shrink-0',
+  'shrink-0',
   'w-5',
   'h-5',
   'rounded-full',
@@ -252,7 +252,7 @@ export const usageItem = 'flex items-start gap-2.5';
 
 export const usageDoIcon = [
   'mt-0.5',
-  'flex-shrink-0',
+  'shrink-0',
   'w-6',
   'h-6',
   'rounded-full',
@@ -265,7 +265,7 @@ export const usageDoIcon = [
 
 export const usageDontIcon = [
   'mt-0.5',
-  'flex-shrink-0',
+  'shrink-0',
   'w-6',
   'h-6',
   'rounded-full',

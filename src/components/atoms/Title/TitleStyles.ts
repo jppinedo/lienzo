@@ -50,8 +50,8 @@ export const titleStyles = {
     'deep-coral': 'lz-title-gradient-deep-coral',
   },
   dot: {
-    coral: 'w-2 h-2 rounded-full flex-shrink-0 bg-pio-coral',
-    teal: 'w-2 h-2 rounded-full flex-shrink-0 bg-pio-teal-dark',
-    amber: 'w-2 h-2 rounded-full flex-shrink-0 bg-pio-amber',
+    coral: 'w-2 h-2 rounded-full shrink-0 bg-pio-coral',
+    teal: 'w-2 h-2 rounded-full shrink-0 bg-pio-teal-dark',
+    amber: 'w-2 h-2 rounded-full shrink-0 bg-pio-amber',
   },
 } as const;

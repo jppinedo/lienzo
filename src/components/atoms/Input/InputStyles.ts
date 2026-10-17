@@ -2,8 +2,8 @@ import { RoundedSizes } from '@interfaces/sizes';
 
 export const inputRounded: Record<RoundedSizes, string> = {
   none: 'rounded-none',
-  default: 'rounded',
-  sm: 'rounded-sm',
+  default: 'rounded-sm',
+  sm: 'rounded-xs',
   md: 'rounded-md',
   lg: 'rounded-lg',
   full: 'rounded-full',
@@ -90,7 +90,7 @@ const InputStyles = {
   },
   label: 'text-gray-700 dark:text-blue-200',
   container: 'input-group flex items-center gap-2',
-  input: 'flex-grow bg-transparent py-2 outline-none min-w-0',
+  input: 'grow bg-transparent py-2 outline-hidden min-w-0',
 };
 
 export default InputStyles;

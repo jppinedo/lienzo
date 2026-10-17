@@ -9,7 +9,7 @@ export const tablistClass: Record<TabsVariant, string> = {
     'bg-white',
     'border',
     'border-pio-grid',
-    'shadow-sm',
+    'shadow-xs',
     'flex-wrap',
     'gap-1',
     'max-w-full',
@@ -39,12 +39,12 @@ export const tablistClass: Record<TabsVariant, string> = {
 
 export const tabItemClass: Record<TabsVariant, string> = {
   underline: 'relative',
-  pills: 'flex-shrink-0 list-none',
-  segmented: 'flex-shrink-0 list-none',
+  pills: 'shrink-0 list-none',
+  segmented: 'shrink-0 list-none',
 };
 
 const underlineButton =
-  'py-2 px-6 block outline-none opacity-80 hover:opacity-100 text-gray-900 dark:text-blue-200';
+  'py-2 px-6 block outline-hidden opacity-80 hover:opacity-100 text-gray-900 dark:text-blue-200';
 
 const pillsButton = {
   active:
@@ -75,7 +75,7 @@ const segmentedButton = {
     'font-bold',
     'font-jakarta',
     'bg-white',
-    'shadow-sm',
+    'shadow-xs',
     'text-pio-text',
     'text-center',
     'transition-all',

@@ -1,11 +1,11 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { StoryFn, Meta } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import Button, { ButtonProps } from './Button';
 import { Copy, Crop, Codepen, Codesandbox, Command, Trash2, Bold, Italic, Share2, Airplay, Save, Loader } from 'react-feather';
 
 /** Select keys for Live Preview; Storybook `mapping` turns them into icon elements. */
-const iconControlMap = {
+const iconControlMap: Record<string, React.ReactElement | null> = {
   None: null,
   Copy: <Copy />,
   Crop: <Crop />,
@@ -16,7 +16,7 @@ const iconControlMap = {
   Trash: <Trash2 />,
   Codepen: <Codepen />,
   Command: <Command />,
-} as const;
+};
 
 type IconControlKey = keyof typeof iconControlMap;
 
