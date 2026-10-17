@@ -1,9 +1,9 @@
 :root {
-  --border-color: theme('colors.white');
+  --border-color: rgb(var(--lz-white));
 }
 
 html[data-mode="dark"] {
-  --border-color: theme('colors.gray-700');
+  --border-color: rgb(var(--lz-gray-700));
 }
 
 .lz-menu-top {

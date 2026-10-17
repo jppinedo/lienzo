@@ -71,7 +71,7 @@ export const segmentedThumb = [
   'w-[calc(50%-2px)]',
   'rounded-full',
   'bg-white',
-  'shadow-sm',
+  'shadow-xs',
   'border',
   'border-pio-grid/60',
   'transition-transform',

@@ -5,7 +5,7 @@ export const heroMeshLayer =
   'absolute inset-0 pointer-events-none overflow-hidden -z-10';
 
 export const heroContent =
-  'max-w-6xl !mx-auto px-8 pt-12 pb-16 md:py-20 lg:py-24 relative z-10';
+  'max-w-6xl mx-auto! px-8 pt-12 pb-16 md:py-20 lg:py-24 relative z-10';
 
 export const heroGrid =
   'grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center';
@@ -20,10 +20,10 @@ export const phoneStage = 'relative w-full flex justify-center items-center py-2
 export const phoneFront = 'relative w-full flex justify-center';
 
 export const modeChrome =
-  'inline-flex items-center gap-4 rounded-full bg-white border border-pio-grid px-4 py-2 shadow-sm z-30 dark:bg-gray-900 dark:border-gray-600';
+  'inline-flex items-center gap-4 rounded-full bg-white border border-pio-grid px-4 py-2 shadow-xs z-30 dark:bg-gray-900 dark:border-gray-600';
 
 export const installPill =
-  'flex items-center gap-2 p-1.5 pr-3 !rounded-2xl !bg-pio-text !text-white max-w-md !border-white/10 shadow-lg dark:!bg-gray-800 dark:!border-gray-600';
+  'flex items-center gap-2 p-1.5 pr-3 rounded-2xl! bg-pio-text! text-white! max-w-md border-white/10! shadow-lg dark:bg-gray-800! dark:border-gray-600!';
 
 export const installIconWrap =
   'w-9 h-9 rounded-xl bg-[#292E2B] flex items-center justify-center text-[#58C4DC] shrink-0 dark:bg-gray-700 self-center';
@@ -36,13 +36,13 @@ export const installCopy =
 
 export const ctaRow = 'flex flex-wrap items-center gap-3 mt-2';
 
-export const pillButtonWrap = '[&_button]:!rounded-full [&_button]:!px-6 [&_button]:!h-11';
+export const pillButtonWrap = '[&_button]:rounded-full! [&_button]:px-6! [&_button]:h-11!';
 
 export const foundationBar =
   'w-full bg-white/70 backdrop-blur-md border-t border-pio-grid py-4 dark:bg-gray-900/70 dark:border-gray-700';
 
 export const foundationInner =
-  'max-w-6xl !mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-4';
+  'max-w-6xl mx-auto! px-8 flex flex-col md:flex-row items-center justify-between gap-4';
 
 export const foundationLeft =
   'flex items-center gap-3 flex-wrap justify-center';
@@ -57,7 +57,7 @@ export const depRow =
   'flex items-center gap-2 text-pio-text-muted font-jetbrains text-[11px] flex-wrap justify-center dark:text-blue-200/70';
 
 export const depChip =
-  'px-2 py-0.5 rounded bg-pio-bg-light dark:bg-gray-800 dark:text-blue-200';
+  'px-2 py-0.5 rounded-sm bg-pio-bg-light dark:bg-gray-800 dark:text-blue-200';
 
 export const heroTagline =
   'font-jakarta text-base md:text-lg text-pio-text max-w-lg leading-relaxed font-medium m-0 dark:text-blue-200';

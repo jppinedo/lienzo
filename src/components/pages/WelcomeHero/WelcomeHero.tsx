@@ -120,7 +120,7 @@ const WelcomeHero: React.FC<WelcomeHeroProps> = ({
         darkColors={['#16161a', '#1c1c22']}
         isHexColors
         vignette
-        className="w-full !h-auto min-h-[720px] [&_.bg-dotted__content]:!h-auto"
+        className="w-full h-auto! min-h-[720px] [&_.bg-dotted__content]:h-auto!"
       >
         <div className={heroMeshLayer} aria-hidden>
           <div
@@ -166,7 +166,7 @@ const WelcomeHero: React.FC<WelcomeHeroProps> = ({
                 size="xxxl"
                 thikness="regular"
                 fontFamily="playfair"
-                className="!italic !leading-tight"
+                className="italic! leading-tight!"
               >
                 Every interface starts on a canvas.
               </Title>
@@ -186,7 +186,7 @@ const WelcomeHero: React.FC<WelcomeHeroProps> = ({
                       thikness="bold"
                       fontFamily="jakarta"
                       color="coral"
-                      className="!text-[52px] !leading-none !tracking-tight"
+                      className="text-[52px]! leading-none! tracking-tight!"
                     >
                       {value}
                     </Title>
@@ -199,7 +199,7 @@ const WelcomeHero: React.FC<WelcomeHeroProps> = ({
                 <Label
                   text="RUN IT LOCALLY"
                   type="red"
-                  className="!uppercase !tracking-wider !text-[11px] !font-bold"
+                  className="uppercase! tracking-wider! text-[11px]! font-bold!"
                 />
                 <Card padded={false} radius="2xl" surface="transparent" shadow="none" className={installPill}>
                   <div className={installIconWrap}>
@@ -299,7 +299,7 @@ const WelcomeHero: React.FC<WelcomeHeroProps> = ({
                 React 18
               </span>
               <span className={stackPill}>
-                <span className="w-4 h-4 rounded bg-[#3178C6] text-white flex items-center justify-center font-bold text-[9px] leading-none">
+                <span className="w-4 h-4 rounded-sm bg-[#3178C6] text-white flex items-center justify-center font-bold text-[9px] leading-none">
                   TS
                 </span>
                 TypeScript 5
@@ -309,7 +309,7 @@ const WelcomeHero: React.FC<WelcomeHeroProps> = ({
                 Tailwind CSS
               </span>
               <span className={stackPill}>
-                <span className="w-3.5 h-3.5 rounded bg-pio-coral text-white font-bold flex items-center justify-center text-[10px]">
+                <span className="w-3.5 h-3.5 rounded-sm bg-pio-coral text-white font-bold flex items-center justify-center text-[10px]">
                   S
                 </span>
                 Storybook 8.1

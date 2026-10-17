@@ -42,7 +42,7 @@ export const codeBlockCopy = [
   'hover:text-pio-coral',
   'hover:border-pio-coral-opacity-20',
   'transition-all',
-  'flex-shrink-0',
+  'shrink-0',
   'dark:bg-gray-700',
   'dark:text-blue-200',
   'dark:border-gray-600',

@@ -3,10 +3,18 @@ const getItemBorder = (index: number) => (
   `${index === 0 ? '' : 'border-l border-gray-300 dark:border-gray-700'}`
 );
 
-export const toolbarStyles = (rounded?: string, ) => {
-  let roundedStyle = rounded === 'default' ? 'rounded' : `rounded-${rounded}`;
-  roundedStyle = !rounded || rounded === 'none' ? '' : roundedStyle;
-  const shadow = 'shadow-sm dark:shadow-none dark:border dark:border-gray-700';
+// Class names are the Tailwind v4 equivalents of the v3 radii for each public prop value.
+const toolbarRoundedClass: Record<string, string> = {
+  default: 'rounded-sm',
+  sm: 'rounded-xs',
+  md: 'rounded-md',
+  lg: 'rounded-lg',
+  full: 'rounded-full',
+};
+
+export const toolbarStyles = (rounded?: string) => {
+  const roundedStyle = !rounded || rounded === 'none' ? '' : (toolbarRoundedClass[rounded] ?? '');
+  const shadow = 'shadow-xs dark:shadow-none dark:border dark:border-gray-700';
 
   const baseStyles = {
     itemBorder: (index: number) => '',
@@ -23,7 +31,7 @@ export const toolbarItemStyles = (menuPosition: 'top' | 'bottom') => {
   const styles = {
     toolbarItem:`text-gray-700 dark:text-blue-200 cursor-pointer`,
     menuIcon: "ml-1",
-    menuContainer: `absolute z-10 inline-block outline-none ${paddingY} ${top}`,
+    menuContainer: `absolute z-10 inline-block outline-hidden ${paddingY} ${top}`,
     itemContainer: "py-2 px-1 flex items-center",
   };
 

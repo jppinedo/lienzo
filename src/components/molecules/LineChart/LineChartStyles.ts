@@ -19,7 +19,7 @@ export const legendDot = [
   'w-3',
   'shrink-0',
   'rounded-full',
-  'shadow-sm',
+  'shadow-xs',
 ].join(' ');
 
 export const legendLabel = [

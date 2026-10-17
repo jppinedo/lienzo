@@ -10,7 +10,7 @@ const CanvasStudioChrome: React.FC<{
   onThemeChange: (active: boolean) => void;
 }> = ({ isDark, onThemeChange }) => (
   <div className="flex flex-col items-center gap-4">
-    <div className="inline-flex items-center gap-4 rounded-full bg-white border border-pio-grid px-4 py-2 shadow-sm dark:bg-gray-900 dark:border-gray-700">
+    <div className="inline-flex items-center gap-4 rounded-full bg-white border border-pio-grid px-4 py-2 shadow-xs dark:bg-gray-900 dark:border-gray-700">
       <div className="flex items-center gap-2">
         <span className="w-2 h-2 rounded-full bg-pio-coral shrink-0" aria-hidden />
         <span className="text-[10px] font-bold uppercase tracking-wide text-pio-text font-jakarta dark:text-blue-200">

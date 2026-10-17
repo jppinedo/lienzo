@@ -52,12 +52,12 @@ const CanvasStudio: React.FC = () => (
     {/* In-app header */}
     <div className="flex items-center justify-between px-1 mt-0.5 shrink-0">
       <div className="flex flex-col gap-0.5">
-        <Label text="UI Showcase" className="!text-[11px]" />
+        <Label text="UI Showcase" className="text-[11px]!" />
         <Title
           size="sm"
           thikness="bold"
           fontFamily="jakarta"
-          className="!text-[16px] !leading-tight text-pio-text dark:text-blue-200"
+          className="text-[16px]! leading-tight! text-pio-text dark:text-blue-200"
         >
           Welcome, Developer!
         </Title>
@@ -65,7 +65,7 @@ const CanvasStudio: React.FC = () => (
       <button
         type="button"
         aria-label="Notifications"
-        className="w-8 h-8 rounded-full bg-white dark:bg-gray-800 border border-pio-grid dark:border-gray-600 shadow-sm flex items-center justify-center text-pio-text dark:text-blue-200"
+        className="w-8 h-8 rounded-full bg-white dark:bg-gray-800 border border-pio-grid dark:border-gray-600 shadow-xs flex items-center justify-center text-pio-text dark:text-blue-200"
         onClick={noop}
       >
         <Bell size={16} strokeWidth={2} />
@@ -88,7 +88,7 @@ const CanvasStudio: React.FC = () => (
         <span className="text-[11px] font-semibold text-pio-text dark:text-blue-200">
           Line chart
         </span>
-        <Label text="Active Spline" type="red" className="!text-[10px] font-mono font-bold" />
+        <Label text="Active Spline" type="red" className="text-[10px]! font-mono font-bold" />
       </div>
       <LineChart
         data={chartData}
@@ -136,18 +136,18 @@ const CanvasStudio: React.FC = () => (
           Button colors
         </span>
         <div className="flex gap-1">
-          <div className="flex-1 [&_button]:w-full [&_button]:!rounded-full">
+          <div className="flex-1 [&_button]:w-full [&_button]:rounded-full!">
             <Button label="Coral" size="xs" type="red" fill="solid" onClick={noop} />
           </div>
-          <div className="flex-1 [&_button]:w-full [&_button]:!rounded-full">
+          <div className="flex-1 [&_button]:w-full [&_button]:rounded-full!">
             <Button label="Teal" size="xs" type="green" fill="solid" onClick={noop} />
           </div>
         </div>
         <div className="flex gap-1">
-          <div className="flex-1 [&_button]:w-full [&_button]:!rounded-full">
+          <div className="flex-1 [&_button]:w-full [&_button]:rounded-full!">
             <Button label="Amber" size="xs" type="yellow" fill="solid" onClick={noop} />
           </div>
-          <div className="flex-1 [&_button]:w-full [&_button]:!rounded-full">
+          <div className="flex-1 [&_button]:w-full [&_button]:rounded-full!">
             <Button label="Gray" size="xs" type="default" fill="solid" onClick={noop} />
           </div>
         </div>
@@ -168,7 +168,7 @@ const CanvasStudio: React.FC = () => (
       radius="3xl"
       shadow="soft"
       surface="white"
-      className="!rounded-full mt-auto shrink-0 py-2.5 px-5 flex items-center justify-between"
+      className="rounded-full! mt-auto shrink-0 py-2.5 px-5 flex items-center justify-between"
     >
       <nav aria-label="App navigation" className="w-full flex items-center justify-between">
         <button
@@ -185,7 +185,7 @@ const CanvasStudio: React.FC = () => (
         <button
           type="button"
           aria-label="Upload"
-          className="w-7 h-7 rounded-full bg-pio-text dark:bg-white text-white dark:text-pio-text flex items-center justify-center shadow-sm"
+          className="w-7 h-7 rounded-full bg-pio-text dark:bg-white text-white dark:text-pio-text flex items-center justify-center shadow-xs"
           onClick={noop}
         >
           <ArrowUp size={14} strokeWidth={2.5} />
