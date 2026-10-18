@@ -103,7 +103,7 @@ const prismSharedStyles: PrismTheme['styles'] = [
   },
 ];
 
-/** Token colors on dark-canvas; contrast over Stitch span-color parity. */
+/** Token colors on dark-canvas; contrast-first syntax theme. */
 export const codeBlockPrismThemeDark: PrismTheme = {
   plain: {
     color: 'rgb(var(--lz-pio-teal-dark-pale))',

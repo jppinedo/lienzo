@@ -8,7 +8,7 @@ export interface DocsSectionHeaderProps {
   lead?: React.ReactNode;
 }
 
-/** Section header: color dot + uppercase eyebrow + Playfair h2 (Stitch: text-xs / text-2xl→3xl). */
+/** Section header: color dot + uppercase eyebrow + Playfair h2. */
 const DocsSectionHeader: React.FC<DocsSectionHeaderProps> = ({
   eyebrow,
   title,

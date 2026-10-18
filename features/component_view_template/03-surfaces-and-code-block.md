@@ -20,11 +20,11 @@ Ship reusable UI for Docs sections: elevated cards, pill badges, section eyebrow
 - Wiring CodeBlock into every component Docs page (stage 06–07)
 - Pill **Tabs** (stage 04)
 - Live Preview dual column (stage 05)
-- Full syntax-theme parity with the Stitch HTML span colors (good enough contrast on dark-canvas is enough)
+- Full syntax-theme parity with the mock HTML span colors (good enough contrast on dark-canvas is enough)
 
 ## Design mapping
 
-| Stitch | Primitive |
+| Design | Primitive |
 |--------|-----------|
 | White `rounded-3xl` bordered cards | Card surface |
 | Version chip, “Interactive”, “Pattern: …” pills | Badge |
@@ -40,8 +40,8 @@ Ship reusable UI for Docs sections: elevated cards, pill badges, section eyebrow
 
 ## Implementation notes
 
-1. **CodeBlock** API (minimum): `code: string`, optional `filename`, optional `language` for highlighting, `codeMode` (`dark` default | `light`) for the syntax pane only. Filename bar stays light and ignores the app theme. Copy writes `code` to clipboard and shows brief “Copied” state (see `code-copy-handler` in `code.html`).
-2. Highlighter: **prism-react-renderer** (direct dependency). Omit `language` for plain JetBrains Mono. Theme uses pio coral/teal/amber (not Stitch span-color parity). Prism inline `backgroundColor` is stripped so `codeMode` classes paint the pane.
+1. **CodeBlock** API (minimum): `code: string`, optional `filename`, optional `language` for highlighting, `codeMode` (`dark` default | `light`) for the syntax pane only. Filename bar stays light and ignores the app theme. Copy writes `code` to clipboard and shows brief “Copied” state (copy-to-clipboard handler).
+2. Highlighter: **prism-react-renderer** (direct dependency). Omit `language` for plain JetBrains Mono. Theme uses pio coral/teal/amber (not mock span-color parity). Prism inline `backgroundColor` is stripped so `codeMode` classes paint the pane.
 3. Keep primitives in `src/components/` (atom or molecule) with `*Styles.ts` as per [Documentation/component-structure.md](../../Documentation/component-structure.md).
 4. Tailwind `content` already includes `src/**`; new files are covered.
 5. Section eyebrows use **Title** (`uppercase`, `dot`, `dotTone`) plus a second Playfair Title. **Badge** is a separate pill atom.
@@ -49,7 +49,7 @@ Ship reusable UI for Docs sections: elevated cards, pill badges, section eyebrow
 ## Acceptance criteria
 
 - CodeBlock story: dark panel, optional filename, copy works in the browser.
-- Card/badge/section header are usable from React (or a single exported recipe) without copying Stitch HTML.
+- Card/badge/section header are usable from React (or a single exported recipe) without copying raw HTML mocks.
 - New files listed in [Documentation/component-structure.md](../../Documentation/component-structure.md).
 - No Docs template page yet.
 

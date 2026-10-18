@@ -43,7 +43,7 @@ Lienzo organizes UI into:
 
 | Component | Description |
 |-----------|-------------|
-| **Phone** | Mobile device-frame template: outer shell, Dynamic Island status bar, scrollable `children` slot, home indicator. Chrome ports the primary phone from the Stitch welcome hero (`lienzo_welcome/`). Content-agnostic. |
+| **Phone** | Mobile device-frame template: outer shell, Dynamic Island status bar, scrollable `children` slot, home indicator. Content-agnostic. |
 
 ## Pages
 

@@ -11,20 +11,14 @@ These files are **implementation specs**, not the public Storybook Docs template
 1. Read this overview (Docs contract + Live Preview matrix).
 2. Implement stages **01 → 07** in order. Later stages assume earlier ones are merged.
 3. Do not redesign the Storybook manager sidebar. Scope is the **Docs canvas** plus library primitives (tokens, fonts, Tabs, CodeBlock).
-4. The Stitch Area Chart page is the **visual ceiling**, not a mandatory layout for every atom.
-
-Sources of truth:
-
-- [brand/stitch component view/code.html](../../brand/stitch%20component%20view/code.html)
-- [brand/stitch component view/screen.png](../../brand/stitch%20component%20view/screen.png)
-- [brand/stitch component view/DESIGN.md](../../brand/stitch%20component%20view/DESIGN.md)
+4. The richest Docs page layout is the **visual ceiling**, not a mandatory layout for every atom.
 
 Current Docs pattern: [Documentation/storybook.md](../../Documentation/storybook.md). Example: [src/components/atoms/Button/Button.mdx](../../src/components/atoms/Button/Button.mdx).
 
-## Page anatomy (Stitch)
+## Page anatomy
 
-| Order | `data-purpose` in `code.html` | Role |
-|-------|-------------------------------|------|
+| Order | Section id / purpose | Role |
+|-------|----------------------|------|
 | 1 | `component-header` | Breadcrumb pill, serif title, version chip |
 | 2 | `component-overview` | Description + common use cases |
 | 3 | `live-preview-section` | Dual-column card: customization panel + live canvas |
@@ -40,7 +34,7 @@ Not every component Docs page includes all of these. See **Docs page contract** 
 
 A **component documentation file** is the Storybook **Docs** entry for a component (`ComponentName.mdx`), bound to that component’s CSF stories. It is the interactive reference: live instance, style-only Controls, and written guidance. Variant galleries remain sibling sidebar stories.
 
-The Stitch mock shows the richest page. Lienzo uses a **shared page type** (`ComponentDocsPage`).
+The richest Docs layout is the ceiling. Lienzo uses a **shared page type** (`ComponentDocsPage`).
 
 ## Live Preview: keep vs restyle vs leave
 
@@ -54,7 +48,7 @@ Today every Docs page is description + Canvas + Controls. That **interaction mod
 - Real-time args → live instance
 - Theme toolbar; `showPanel: false`
 
-### Restyle (same system, closer to the mock)
+### Restyle (same system, closer to the Docs target)
 
 - Dual-column card: Controls left, Canvas right
 - Card radius, borders, shadows, “Live Preview” heading + Interactive badge
@@ -108,4 +102,4 @@ Each `0N-*.md` uses:
 
 - A new Area Chart component
 - A Storybook manager/sidebar redesign
-- A requirement that every Docs page clone every Stitch section
+- A requirement that every Docs page clone every section from the richest layout

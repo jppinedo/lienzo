@@ -5,7 +5,7 @@
 
 ## Goal
 
-A composable Docs page wrapper that every `Component.mdx` can use. Always render **required** sections. Render **optional** sections only when the component passes content. Visual language follows Stitch for whatever is present. This is the draft of `Documentation/component-docs.md` (published in stage 07).
+A composable Docs page wrapper that every `Component.mdx` can use. Always render **required** sections. Render **optional** sections only when the component passes content. Visual language follows the Docs visual language for whatever is present. This is the draft of `Documentation/component-docs.md` (published in stage 07).
 
 ## In scope
 
@@ -24,7 +24,7 @@ A composable Docs page wrapper that every `Component.mdx` can use. Always render
 
 ## Design mapping
 
-| Stitch section | Template slot | Required? |
+| Target section | Template slot | Required? |
 |----------------|---------------|-----------|
 | `component-header` title | Title | Yes |
 | Header breadcrumb / version chip | `breadcrumb` / `badge` | No |

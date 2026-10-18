@@ -5,7 +5,7 @@
 
 ## Goal
 
-Restyle the required **Live Preview** block so it approaches the Stitch dual-column card while keeping Storybook `<Canvas>` + `<Controls>` as the interaction system.
+Restyle the required **Live Preview** block so it approaches the target dual-column card while keeping Storybook `<Canvas>` + `<Controls>` as the interaction system.
 
 ## In scope
 
@@ -26,7 +26,7 @@ Restyle the required **Live Preview** block so it approaches the Stitch dual-col
 
 ## Design mapping
 
-| Stitch `live-preview-section` | v1 |
+| Target `live-preview-section` | v1 |
 |------------------------------|----|
 | Dual-column card | CSS grid wrapper around blocks |
 | “Control Panel” + Reset | Restyle Controls; use Storybook reset if present |
@@ -82,4 +82,4 @@ LineChart **Default** Controls today ([LineChart.stories.tsx](../../src/componen
 
 ## Handoff
 
-Stage 06 always includes this Live Preview as a **required** section. Optional Stitch extras around it (helper caption) are template-level, not new Controls.
+Stage 06 always includes this Live Preview as a **required** section. Optional optional extras around it (helper caption) are template-level, not new Controls.

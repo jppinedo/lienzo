@@ -27,7 +27,7 @@ export const livePreviewGrid = [
 ].join(' ');
 
 /** Controls column — first in DOM so it stacks above Canvas on mobile.
- * Padding matches Stitch (`p-6 sm:p-7`); title + Controls share this inset. */
+ * Padding (`p-6 sm:p-7`); title + Controls share this inset. */
 export const livePreviewControls = [
   'live-preview__controls',
   'lg:col-span-4',

@@ -5,13 +5,13 @@
 
 ## Goal
 
-Evolve the Tabs molecule so Docs can use Stitch pill and segmented patterns, without breaking existing underline tabs.
+Evolve the Tabs molecule so Docs can use pill and segmented patterns, without breaking existing underline tabs.
 
 ## In scope
 
 - Variant API on Tabs (and TabButton as needed)
 - **Default:** current underline tablist (`border-b`, teal underline on active)
-- **Pills (Variations):** coral filled pill for active; muted text for inactive; wrap in a rounded-full track with border (Stitch `#variation-tabs-nav`)
+- **Pills (Variations):** coral filled pill for active; muted text for inactive; wrap in a rounded-full track with border (`#variation-tabs-nav`)
 - **Segmented:** white pill + shadow on a beige/`pio-bg-light` track (line style / time granularity in the mock)
 - Stories for the new variants; keep existing Tabs Docs/stories working
 - Keyboard/ARIA: retain `tablist` / `tab` / `tabpanel`
@@ -24,7 +24,7 @@ Evolve the Tabs molecule so Docs can use Stitch pill and segmented patterns, wit
 
 ## Design mapping
 
-| Stitch | Tabs variant |
+| Design | Tabs variant |
 |--------|----------------|
 | Variations tab bar (`bg-lienzo-coral` active) | `variant="pills"` (name can differ; document it) |
 | Line Style 3-up and Weekly/Monthly/Quarterly | `variant="segmented"` |

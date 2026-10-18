@@ -1,7 +1,7 @@
 /** Outer wrapper: legend above plot when enabled. */
 export const chartRoot = 'flex w-full flex-col gap-4';
 
-/** Stitch-style series legend: top-left row of colored dots + bold labels. */
+/** Series legend: top-left row of colored dots + bold labels. */
 export const legendList = [
   'm-0',
   'flex',

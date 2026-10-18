@@ -10,7 +10,7 @@
  *
  * Canvas uses layout="fullscreen" so Storybook does not add its own
  * padded ChildrenContainer. The white `live-preview__canvas` column is
- * the only surface that should pad (Stitch: single p-6/sm:p-8 inset).
+ * the only surface that should pad (single p-6/sm:p-8 inset).
  *
  * Widget restyle: warmer pio borders/radii/accents; flatten Storybook
  * drop shadows. Booleans stay True/False (not design-system Switch).
@@ -112,7 +112,7 @@ html[data-mode='dark'] .live-preview .docs-story,
   border: none !important;
 }
 
-/* Name cell → sentence-case control label (Stitch singular controls) */
+/* Name cell → sentence-case control label */
 .live-preview .docblock-argstable-body td:first-child {
   width: 38%;
   padding-right: 0.75rem !important;
@@ -148,7 +148,7 @@ html[data-mode='dark'] .live-preview .docs-story,
 }
 
 /* -------------------------------------------------------------------------
- * Control widgets (Stitch-inspired chrome on Storybook Controls)
+ * Control widgets (Docs chrome on Storybook Controls)
  * Emotion inline styles need !important; selectors are structural only.
  * ---------------------------------------------------------------------- */
 
@@ -199,7 +199,7 @@ html[data-mode='dark'] .live-preview .docs-story,
   box-shadow: none !important;
 }
 
-/* Boolean True/False — flatten shadows; warm segmented track (Stitch pills) */
+/* Boolean True/False — flatten shadows; warm segmented track */
 .live-preview .docblock-argstable-body label:has(input[role='switch']),
 .live-preview .docblock-argstable-body label:has(input[type='checkbox'][role='switch']) {
   display: inline-flex !important;

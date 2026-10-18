@@ -5,15 +5,15 @@
 
 ## Goal
 
-Make the **Docs page canvas** (not the manager chrome) read as the Stitch warm studio: background, ambient glows, heading hierarchy, selection color. Do not assemble header / overview / Live Preview sections yet.
+Make the **Docs page canvas** (not the manager chrome) read as the warm studio: background, ambient glows, heading hierarchy, selection color. Do not assemble header / overview / Live Preview sections yet.
 
 ## In scope
 
 - Docs background using mapped canvas tokens (`pio-bg` or `light-canvas`)
-- Ambient coral/teal mesh glows behind the Docs article (see `ambient-canvas` / `.glow-coral` / `.glow-teal` in `code.html`)
+- Ambient coral/teal mesh glows behind the Docs article (see ambient-canvas / glow-coral / glow-teal patterns)
 - MDX / Docs typography: Playfair for major headings, Jakarta for body
 - Text and selection colors from tokens
-- Light-mode Docs look; dark-mode Docs should remain usable (`data-mode="dark"`) without cloning the Stitch light mock
+- Light-mode Docs look; dark-mode Docs should remain usable (`data-mode="dark"`) without cloning the light-mode mock
 
 ## Out of scope
 
@@ -25,7 +25,7 @@ Make the **Docs page canvas** (not the manager chrome) read as the Stitch warm s
 
 ## Design mapping
 
-| Stitch | Docs canvas equivalent |
+| Design | Docs canvas equivalent |
 |--------|------------------------|
 | `body.bg-lienzo-bg` | `.sbdocs` / docs wrapper background |
 | Fixed glow divs | Pseudo-elements or decorative layers on the docs container; `pointer-events: none` |
@@ -41,7 +41,7 @@ Do not restyle the **story iframe** (`docs-story`) background to the marketing c
 - Global Storybook CSS: [.storybook/story-global.css](../../.storybook/story-global.css) (Lexend/Poppins, light/dark canvas on `html` and `.docs-story`)
 - Preview: [.storybook/preview.ts](../../.storybook/preview.ts) imports `src/tailwind.css` and `story-global.css`
 - Theme: `withThemeByDataAttribute` (`data-mode`)
-- Docs MDX uses default Storybook blocks (unstyled relative to Stitch)
+- Docs MDX uses default Storybook blocks (unstyled relative to the Docs target)
 
 ## Implementation notes
 

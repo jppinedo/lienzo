@@ -35,10 +35,10 @@
 
 **Optional — include**
 
-- Overview / use cases: 3–4 bullets that match a **line** chart (trends over time, comparing a small number of series)—not Area Chart volume-under-the-curve copy from Stitch
+- Overview / use cases: 3–4 bullets that match a **line** chart (trends over time, comparing a small number of series)—not Area Chart volume-under-the-curve copy from the mock
 - Variations: tabs for existing stories, e.g. ChartOnly, WithBox, WithAlternatingDotColors (labels in product language)
 - Props API: document real `LineChartProps` (`data`, `series`, `xAxisKey`, `height`, `showGrid`, `showTooltip`, `width`, `yAxisDomain`, etc.), including props hidden from Controls
-- Usage: when a line chart is appropriate vs when to prefer another visualization; do not paste Stitch Area Chart do/don’t
+- Usage: when a line chart is appropriate vs when to prefer another visualization; do not paste Area Chart mock do/don’t
 - Code example: CodeBlock with a **LineChart** snippet using the same sample shape as stories (not `@lienzo/core` AreaChart)
 
 **Optional — omit**
@@ -99,4 +99,4 @@ Update `storybook.md` “Docs vs variant stories” and the example MDX to the t
 
 ## Handoff
 
-Feature complete for v1. Further Stitch fidelity (custom Controls, copy-from-args, manager chrome) is out of this sequence.
+Feature complete for v1. Further design fidelity (custom Controls, copy-from-args, manager chrome) is out of this sequence.

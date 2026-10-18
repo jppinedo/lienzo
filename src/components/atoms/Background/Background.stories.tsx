@@ -6,7 +6,7 @@ import { Sun, Feather, Triangle, Grid } from 'react-feather';
 import Button from '@atoms/Button/Button';
 
 /**
- * Hex mirrors of pio / stitch brand stops used in gradient demos.
+ * Hex mirrors of pio brand stops used in gradient demos.
  * Values track the intended palette (pio-bg, pio-amber, pio-coral, teals, charcoal).
  */
 const PIO = {

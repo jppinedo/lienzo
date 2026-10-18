@@ -2,8 +2,7 @@ export type SwitchSize = 'sm' | 'md' | 'lg';
 export type SwitchType = 'default' | 'red' | 'green' | 'yellow';
 
 /**
- * Thumb inset matches stitch `code.html`:
- * `after:top-[2px] after:left-[2px] after:h-4 after:w-4` on an `h-5 w-9` track.
+ * Thumb inset: `after:top-[2px] after:left-[2px] after:h-4 after:w-4` on an `h-5 w-9` track.
  * Same 2px gap is applied at every size so the white circle sits inside the track.
  */
 export const switchSize: Record<
@@ -27,7 +26,7 @@ export const switchSize: Record<
   },
 };
 
-/** Off track — warm structural border wash (stitch `bg-lienzo-border`). */
+/** Off track — warm structural border wash. */
 export const switchOff = 'bg-pio-grid dark:bg-gray-600';
 
 export const switchOn: Record<SwitchType, string> = {

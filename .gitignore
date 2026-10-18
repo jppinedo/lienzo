@@ -44,6 +44,7 @@ Thumbs.db
 
 # Local-only (not published to the repo)
 brand/
+lienzo_welcome/
 .cursor/rules/no-agent-testing.mdc
 
 # Yarn 4
