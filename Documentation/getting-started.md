@@ -53,6 +53,20 @@ yarn build-storybook
 
 Output is written to the `storybook-static/` folder.
 
+## Deploy (GitHub Actions → Hostgator FTP)
+
+On every push to `main`, [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) runs `yarn verify`, then uploads `storybook-static/` to Hostgator via FTP.
+
+Required repository secrets:
+
+| Secret | Purpose |
+|--------|---------|
+| `FTP_URL` | FTP host (e.g. `ftp.example.com` or `ftp://ftp.example.com`) |
+| `FTP_USERNAME` | FTP username |
+| `FTP_PASSWORD` | FTP password |
+
+Remote path is `server-dir: /lienzo/` (change in the workflow if the Hostgator folder differs). Only the built Storybook is uploaded (`local-dir: ./storybook-static/`); source, `node_modules`, `.git`, `.github`, and `.cursor` are not deployed.
+
 ## Troubleshooting
 
 ### "Too many open files" on macOS
