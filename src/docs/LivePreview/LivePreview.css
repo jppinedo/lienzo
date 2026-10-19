@@ -172,6 +172,14 @@ html[data-mode='dark'] .live-preview .docs-story,
   min-height: 2rem;
 }
 
+/* Room for the native chevron; truncate before the arrow */
+.live-preview .docblock-argstable-body select {
+  padding-right: 2rem !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
 .live-preview .docblock-argstable-body input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):not([type='file']):focus,
 .live-preview .docblock-argstable-body select:focus,
 .live-preview .docblock-argstable-body textarea:focus {
