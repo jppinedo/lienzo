@@ -229,7 +229,7 @@ Docs design is not optional per page. Using `ComponentDocsPage` + Live Preview a
 
 ### Live Preview card
 
-- Controls left (~4/12), Canvas right (~8/12) on wide viewports; Controls stack above Canvas on small screens.
+- Controls left (~3/12), Canvas right (~9/12) on wide viewports; Controls stack above Canvas on small screens.
 - Style-affecting Controls only (see above). Prefer readable labels via `argTypes.name`.
 - Canvas: `sourceState="none"`, `layout="fullscreen"`; no Docs “Show code” toggle.
 - Optional `livePreviewHelperText` / `livePreviewCaption` on `ComponentDocsPage`.

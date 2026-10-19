@@ -60,7 +60,8 @@ export const toolbarItemStyles = (menuPosition: 'top' | 'bottom') => {
       'outline-hidden',
       paddingY,
     ].join(' '),
-    itemContainer: 'py-2 px-1 flex items-center whitespace-nowrap',
+    itemContainer:
+      'toolbar__item-inner py-2 px-1 flex items-center whitespace-nowrap',
   };
 
   return styles;

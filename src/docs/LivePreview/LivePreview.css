@@ -342,3 +342,19 @@ html[data-mode='dark'] .live-preview .docblock-argstable-body label:has(input[ro
 html[data-mode='dark'] .live-preview .docblock-argstable-body input[type='range'] {
   background: rgb(var(--lz-gray-700)) !important;
 }
+
+/* -------------------------------------------------------------------------
+ * Toolbar in Docs Live Preview only — tighter chrome so items fit ~1280 px
+ * without changing Toolbar's default sizing in Canvas stories / apps.
+ * ---------------------------------------------------------------------- */
+.live-preview .toolbar .toolbar__item-inner {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+}
+
+.live-preview .toolbar .toolbar__item-inner > button {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}

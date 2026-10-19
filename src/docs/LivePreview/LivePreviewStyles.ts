@@ -30,7 +30,7 @@ export const livePreviewGrid = [
  * Padding (`p-6 sm:p-7`); title + Controls share this inset. */
 export const livePreviewControls = [
   'live-preview__controls',
-  'lg:col-span-4',
+  'lg:col-span-3',
   'min-w-0',
   'lg:h-full',
   'p-6',
@@ -71,7 +71,7 @@ export const livePreviewControlsLabel = [
 /** Preview column — single padded surface; story content is vertically centered. */
 export const livePreviewCanvas = [
   'live-preview__canvas',
-  'lg:col-span-8',
+  'lg:col-span-9',
   'min-w-0',
   'lg:h-full',
   'p-6',
