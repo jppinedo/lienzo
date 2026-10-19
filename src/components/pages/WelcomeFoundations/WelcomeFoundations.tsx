@@ -322,7 +322,7 @@ const GRADIENTS: {
     name: 'Studio Teal',
     subtitle: 'Atmospheric',
     gradient: 'studio-teal',
-    dots: ['#F5F2EC', '#3A7D76', '#2F6D68'],
+    dots: ['#7BA8A2', '#3A7D76', '#2F6D68'],
     propClass: 'text-pio-teal-dark dark:text-pio-teal-dark-pale',
   },
   {
@@ -845,7 +845,7 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
                   <span
                     className={`font-jakarta text-xs block mb-1 ${
                       item.darkCard
-                        ? 'text-gray-400'
+                        ? 'text-gray-300'
                         : 'text-pio-text-muted dark:text-blue-200/70'
                     }`}
                   >

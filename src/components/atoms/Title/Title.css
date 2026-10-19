@@ -17,6 +17,11 @@
   color: #1f2421;
 }
 
+html[data-mode='dark'] .lz-title-gradient-charcoal-depth,
+html.dark .lz-title-gradient-charcoal-depth {
+  color: #c5cdc8;
+}
+
 /* Coral Ember — pio-coral-hover → pio-amber */
 .lz-title-gradient-coral-ember {
   color: rgb(var(--lz-pio-coral-hover));
@@ -49,7 +54,8 @@
   }
 
   .lz-title-gradient-studio-teal {
-    background-image: linear-gradient(to right, #f5f2ec, #3a7d76, #2f6d68);
+    /* First stop darkened vs cream so large titles stay readable on white cards */
+    background-image: linear-gradient(to right, #7ba8a2, #3a7d76, #2f6d68);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -58,6 +64,16 @@
 
   .lz-title-gradient-charcoal-depth {
     background-image: linear-gradient(to right, #1f2421, #30312f, #296863);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Lighter charcoal stops for dark surfaces (gray-900 / dark canvas) */
+  html[data-mode='dark'] .lz-title-gradient-charcoal-depth,
+  html.dark .lz-title-gradient-charcoal-depth {
+    background-image: linear-gradient(to right, #c5cdc8, #8a9a95, #4a9e96);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
