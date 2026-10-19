@@ -16,35 +16,50 @@ export const toolbarStyles = (rounded?: string) => {
 
   const baseStyles = {
     itemBorder: getItemBorder,
+    /** Outer shell: overflow visible so portaled menus are not required for stacking context alone. */
     toolbar: [
       'toolbar',
-      'flex',
-      'flex-nowrap',
+      'relative',
       'max-w-full',
       'min-w-0',
-      'overflow-x-auto',
       'bg-white',
       'dark:bg-gray-900',
-      'relative',
       'px-1',
       roundedStyle,
       shadow,
     ]
       .filter(Boolean)
       .join(' '),
+    /** Inner scroller: horizontal overflow only; menus must not be descendants of this node. */
+    toolbarScroll: [
+      'toolbar__scroll',
+      'flex',
+      'flex-nowrap',
+      'max-w-full',
+      'min-w-0',
+      'overflow-x-auto',
+      'list-none',
+      'm-0',
+      'p-0',
+    ].join(' '),
   };
 
   return baseStyles;
 };
 
 export const toolbarItemStyles = (menuPosition: 'top' | 'bottom') => {
-  const top = menuPosition === 'top' ? 'lz-menu-top' : '';
   const paddingY = menuPosition === 'top' ? 'pb-2' : 'pt-2';
 
   const styles = {
     toolbarItem: 'text-gray-700 dark:text-blue-200 cursor-pointer shrink-0',
     menuIcon: 'ml-1 shrink-0',
-    menuContainer: `absolute z-10 inline-block outline-hidden ${paddingY} ${top}`,
+    menuContainer: [
+      'fixed',
+      'z-50',
+      'inline-block',
+      'outline-hidden',
+      paddingY,
+    ].join(' '),
     itemContainer: 'py-2 px-1 flex items-center whitespace-nowrap',
   };
 
