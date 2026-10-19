@@ -22,7 +22,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
   return (
     <ul className={styles.toolbar}>
       {items.map((item, index) => (
-        <li className={`${styles.itemBorder(index)} ${styles}`} key={index}>
+        <li className={`shrink-0 ${styles.itemBorder(index)}`} key={index}>
           <ToolbarItem 
             item={item}
             open={item.id === openItem} 

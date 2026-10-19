@@ -24,7 +24,9 @@ export default {
 } as Meta;
 
 const Template: StoryFn<ToolbarProps> = (args) => (
-  <div className={`flex ${args.menuPosition === 'top' ? 'items-center h-screen' : ''}`}>
+  <div
+    className={`flex w-full min-w-0 max-w-full ${args.menuPosition === 'top' ? 'items-center h-screen' : ''}`}
+  >
     <Toolbar {...args} />
   </div>
 );

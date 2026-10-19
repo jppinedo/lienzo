@@ -36,8 +36,8 @@ Lienzo organizes UI into:
 | **CodeBlock** | Code panel: light filename bar, copy-to-clipboard, JetBrains Mono; `codeMode` (`dark` default, `light`) styles only the syntax pane and ignores the app theme; optional `language` highlighting via prism-react-renderer |
 | **LineChart** | Line chart built with Recharts; configurable series, curve type, grid, top-left legend (dot + bold label), tooltip, dots, and reference lines; pio series colors |
 | **Menu** | Menu component (dropdown/list) |
-| **Tabs** | Tabbed navigation (`tablist` / `tab` / `tabpanel`); variants `underline` (default), `pills` (coral active pill), `segmented` (white chip on beige track); only the active panel is mounted |
-| **Toolbar** | Horizontal toolbar of items (buttons or labels); supports menus |
+| **Tabs** | Tabbed navigation (`tablist` / `tab` / `tabpanel`); variants `underline` (default), `pills` (coral active pill), `segmented` (white chip on beige track); tab strip scrolls horizontally when tabs exceed the container; only the active panel is mounted |
+| **Toolbar** | Horizontal toolbar of items (buttons or labels); scrolls horizontally when items exceed the container; supports menus |
 
 ## Templates
 
