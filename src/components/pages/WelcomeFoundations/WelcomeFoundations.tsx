@@ -322,7 +322,7 @@ const GRADIENTS: {
     name: 'Studio Teal',
     subtitle: 'Atmospheric',
     gradient: 'studio-teal',
-    dots: ['#7BA8A2', '#3A7D76', '#2F6D68'],
+    dots: ['#628E88', '#3A7D76', '#2F6D68'],
     propClass: 'text-pio-teal-dark dark:text-pio-teal-dark-pale',
   },
   {
@@ -336,14 +336,14 @@ const GRADIENTS: {
     name: 'Coral Ember',
     subtitle: 'Vibrant Warmth',
     gradient: 'coral-ember',
-    dots: ['#E87676', '#F4A460'],
+    dots: ['#E05A5A', '#C87840'],
     propClass: 'text-pio-coral',
   },
   {
     name: 'Teal Mist',
     subtitle: 'Soft Contrast',
     gradient: 'teal-mist',
-    dots: ['#3A7A70', '#D6E8E2'],
+    dots: ['#3A7A70', '#5C8C84'],
     propClass: 'text-pio-teal-dark dark:text-pio-teal-dark-pale',
   },
   {
@@ -846,7 +846,7 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
                     className={`font-jakarta text-xs block mb-1 ${
                       item.darkCard
                         ? 'text-gray-300'
-                        : 'text-pio-text-muted dark:text-blue-200/70'
+                        : 'text-pio-text-muted dark:text-blue-200'
                     }`}
                   >
                     {item.subtitle}
@@ -875,7 +875,11 @@ const WelcomeFoundations: React.FC<WelcomeFoundationsProps> = ({
                     {item.dots.map((c) => (
                       <span
                         key={c}
-                        className="w-2 h-2 rounded-full"
+                        className={
+                          item.gradient === 'charcoal-depth'
+                            ? 'w-2 h-2 rounded-full ring-1 ring-gray-300 dark:ring-white/40'
+                            : 'w-2 h-2 rounded-full'
+                        }
                         style={{ background: c }}
                         aria-hidden
                       />
