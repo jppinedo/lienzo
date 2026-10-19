@@ -32,7 +32,7 @@ Lienzo organizes UI into:
 
 | Component | Description |
 |-----------|-------------|
-| **Calendar** | Date picker with single or range selection; Lienzo-styled wrapper around React DayPicker |
+| **Calendar** | Date picker with single or range selection; header shows the visible month/year; optional `caption` is a small title above that row; Lienzo-styled wrapper around React DayPicker |
 | **CodeBlock** | Code panel: light filename bar, copy-to-clipboard, JetBrains Mono; `codeMode` (`dark` default, `light`) styles only the syntax pane and ignores the app theme; optional `language` highlighting via prism-react-renderer |
 | **LineChart** | Line chart built with Recharts; configurable series, curve type, grid, top-left legend (dot + bold label), tooltip, dots, and reference lines; pio series colors |
 | **Menu** | Menu component (dropdown/list) |

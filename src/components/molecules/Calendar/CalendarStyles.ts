@@ -36,6 +36,7 @@ export const calendarClassNames: Partial<
     'justify-center',
     'gap-2',
     'pb-3',
+    'min-w-0',
   ].join(' '),
 
   [UI.CaptionLabel]: [

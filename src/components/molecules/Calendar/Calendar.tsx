@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import {
   DayPicker,
+  UI,
   type DateRange,
   type DayPickerProps,
 } from 'react-day-picker';
@@ -18,7 +19,10 @@ export interface CalendarProps {
   onSelect?: (value: Date | DateRange | undefined) => void;
   /** Initial month to display */
   defaultMonth?: Date;
-  /** Title shown in the caption (e.g. "Calendar"). Defaults to "Calendar". */
+  /**
+   * Optional small title shown above the month/year row.
+   * Does not replace the visible month label (e.g. "June 2025").
+   */
   caption?: string;
   /** Extra class name for the root element */
   className?: string;
@@ -49,6 +53,11 @@ function LienzoChevron(
   return null;
 }
 
+type MonthCaptionProps = React.ComponentPropsWithoutRef<'div'> & {
+  calendarMonth: { date: Date };
+  displayIndex: number;
+};
+
 const Calendar: React.FC<CalendarProps> = ({
   mode = 'single',
   selected,
@@ -74,9 +83,34 @@ const Calendar: React.FC<CalendarProps> = ({
     [onSelect]
   );
 
-  const captionLabel = caption ?? 'Calendar';
-  const formatCaption = useCallback(() => captionLabel, [captionLabel]);
-  const formatters = { formatCaption };
+  const MonthCaption = useCallback(
+    ({ children, calendarMonth: _calendarMonth, displayIndex: _displayIndex, className: captionClassName, ...divProps }: MonthCaptionProps) => (
+      <div className={captionClassName} {...divProps}>
+        {caption ? (
+          <span className="rdp-caption_title block w-full text-center text-xs font-lexend font-regular text-pio-text-muted dark:text-blue-200/70 mb-1">
+            {caption}
+          </span>
+        ) : null}
+        {children}
+      </div>
+    ),
+    [caption]
+  );
+
+  const components = {
+    Chevron: LienzoChevron,
+    MonthCaption,
+  };
+
+  const classNames = {
+    ...calendarClassNames,
+    [UI.MonthCaption]: [
+      calendarClassNames[UI.MonthCaption],
+      caption ? 'flex-col gap-0' : '',
+    ]
+      .filter(Boolean)
+      .join(' '),
+  };
 
   if (mode === 'range') {
     return (
@@ -85,11 +119,8 @@ const Calendar: React.FC<CalendarProps> = ({
         selected={selected as DateRange | undefined}
         onSelect={handleSelectRange}
         defaultMonth={defaultMonth}
-        classNames={calendarClassNames}
-        components={{
-          Chevron: LienzoChevron,
-        }}
-        formatters={formatters}
+        classNames={classNames}
+        components={components}
         showOutsideDays={showOutsideDays}
         animate={animate}
         disabled={disabled}
@@ -106,11 +137,8 @@ const Calendar: React.FC<CalendarProps> = ({
       selected={selected as Date | undefined}
       onSelect={handleSelectSingle}
       defaultMonth={defaultMonth}
-      classNames={calendarClassNames}
-      components={{
-        Chevron: LienzoChevron,
-      }}
-      formatters={formatters}
+      classNames={classNames}
+      components={components}
       showOutsideDays={showOutsideDays}
       animate={animate}
       disabled={disabled}
