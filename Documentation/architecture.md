@@ -6,7 +6,6 @@
 - **`.storybook/`**: Storybook configuration (`main.ts`, `preview.ts`, `manager.ts`, global CSS)
 - **`src/`**: All application source code (see below)
 - **`Documentation/`**: Project documentation (this folder)
-- **`features/`**: Staged feature specs (implementation plans split by step). These are not the public component Docs pages. Component Docs contract: [Documentation/component-docs.md](component-docs.md). Historical component-view sequence: [features/component_view_template/](../features/component_view_template/00-overview.md).
 
 ## `src/` folder structure
 

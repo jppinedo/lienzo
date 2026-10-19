@@ -24,6 +24,7 @@ pnpm-debug.log*
 # Environment and secrets
 .env
 .env.*
+.env*.local
 !.env.example
 
 # Test / coverage
@@ -34,6 +35,7 @@ coverage/
 .DS_Store
 Thumbs.db
 .idea/
+.vscode/
 *.swp
 *.swo
 *~
@@ -43,8 +45,6 @@ Thumbs.db
 .stylelintcache
 
 # Local-only (not published to the repo)
-brand/
-lienzo_welcome/
 .cursor/rules/no-agent-testing.mdc
 
 # Yarn 4
@@ -58,3 +58,7 @@ lienzo_welcome/
 
 # Yarn only — do not commit an npm lockfile
 package-lock.json
+
+# Archives
+*.zip
+*.tgz

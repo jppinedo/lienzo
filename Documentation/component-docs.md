@@ -59,7 +59,7 @@ Never invent props, variants, or behaviors. Prefer omitting Usage over filler co
 | 6 | Usage & best practices | `usage?` | No | `usage-and-props-specification` |
 | 7 | Code example | `example` | Yes | (same section block as usage when both present) |
 
-Runtime design is implemented by the template + [.storybook/story-global.css](../.storybook/story-global.css). Do not paste raw HTML mocks into MDX.
+Runtime design is implemented by the template + [.storybook/story-global.css](../.storybook/story-global.css). Build Docs pages with the template, not raw HTML.
 
 ## Mandatory sections
 
@@ -290,4 +290,3 @@ Skip this checklist for **Pages**, **Introduction/Welcome**, and optional templa
 - Component folders and file conventions: [Component structure](component-structure.md)
 - Tokens and fonts: [Design tokens & colors](design-tokens-colors.md)
 - Docs infrastructure paths: [Architecture](architecture.md)
-- Historical staged specs (not the public contract): [features/component_view_template/](../features/component_view_template/00-overview.md)

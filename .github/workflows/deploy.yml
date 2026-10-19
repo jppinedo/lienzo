@@ -5,6 +5,13 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-storybook
+  cancel-in-progress: false
+
 jobs:
   deploy:
     name: Verify and deploy
@@ -42,10 +49,11 @@ jobs:
             echo "::error::FTP_URL secret is empty or invalid after normalization."
             exit 1
           fi
+          echo "::add-mask::$host"
           echo "host=$host" >> "$GITHUB_OUTPUT"
 
       - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@8a24039354ee91000cb948cb4a1dbdf1a1b94a3c # v4.3.4
         with:
           server: ${{ steps.ftp.outputs.host }}
           username: ${{ secrets.FTP_USERNAME }}

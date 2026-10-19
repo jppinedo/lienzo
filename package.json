@@ -1,8 +1,8 @@
 {
   "name": "lienzo",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "A warm, editorial React and TypeScript design system with a live playground for every component.",
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -11,8 +11,16 @@
     "verify": "yarn typecheck && yarn lint && yarn build-storybook"
   },
   "keywords": [],
-  "author": "",
+  "author": "Juan Pablo Pinedo <juanpablo@pinedo.cl>",
   "license": "MIT",
+  "homepage": "https://lienzo.pinedo.cl",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jppinedo/lienzo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jppinedo/lienzo/issues"
+  },
   "engines": {
     "node": ">=24"
   },

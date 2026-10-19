@@ -20,6 +20,5 @@ Clone the repo, then run `yarn install` and `yarn storybook`. Storybook will be 
 | [Libraries](libraries.md) | React, TypeScript, Tailwind, Storybook, Recharts, react-feather |
 | [Storybook](storybook.md) | Running Storybook, story locations, addons, and build |
 | [Assets](assets.md) | `src/assets/`, SVG components, and `@assets` usage |
-| [Feature specs](../features/component_view_template/00-overview.md) | Historical staged plans under `features/` (not runtime). Component Docs contract: [Component Docs](component-docs.md) |
 
 Start with **Getting started** to run the project, then **Architecture** and **Component structure** to understand how the codebase is organized.

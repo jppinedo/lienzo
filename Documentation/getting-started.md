@@ -65,7 +65,7 @@ Required repository secrets:
 | `FTP_USERNAME` | FTP username |
 | `FTP_PASSWORD` | FTP password |
 
-Remote path is `server-dir: /lienzo/` (change in the workflow if the Hostgator folder differs). Only the built Storybook is uploaded (`local-dir: ./storybook-static/`); source, `node_modules`, `.git`, `.github`, and `.cursor` are not deployed.
+Remote path is `server-dir: ./` (change in the workflow if the Hostgator folder differs). Only the built Storybook is uploaded (`local-dir: ./storybook-static/`); source, `node_modules`, `.git`, `.github`, and `.cursor` are not deployed.
 
 ## Troubleshooting
 

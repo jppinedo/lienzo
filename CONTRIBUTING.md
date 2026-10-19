@@ -121,7 +121,6 @@ Other important folders and files:
 | `src/interfaces/` | Shared TypeScript types (for example `sizes.ts`) |
 | `.storybook/` | Storybook config (`main.ts`, `preview.ts`, `manager.ts`, `story-global.css`) |
 | `Documentation/` | Project documentation. Please read it! |
-| `features/` | Old planning notes. Not runtime code. |
 | `.cursor/` | Optional settings for the Cursor editor. You can ignore this folder. |
 
 **Recommended reading order:** [Getting started](Documentation/getting-started.md) → [Architecture](Documentation/architecture.md) → [Component structure](Documentation/component-structure.md) → [Component Docs](Documentation/component-docs.md).
