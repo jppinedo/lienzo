@@ -1,18 +1,28 @@
 export type TabsVariant = 'underline' | 'pills' | 'segmented';
 
 export const tablistClass: Record<TabsVariant, string> = {
-  underline: 'border-b border-gray-300 flex dark:border-gray-700',
+  underline: [
+    'border-b',
+    'border-gray-300',
+    'flex',
+    'flex-nowrap',
+    'max-w-full',
+    'min-w-0',
+    'overflow-x-auto',
+    'dark:border-gray-700',
+  ].join(' '),
   pills: [
     'inline-flex',
+    'flex-nowrap',
     'p-1.5',
     'rounded-full',
     'bg-white',
     'border',
     'border-pio-grid',
     'shadow-xs',
-    'flex-wrap',
     'gap-1',
     'max-w-full',
+    'min-w-0',
     'overflow-x-auto',
     'list-none',
     'm-0',
@@ -21,14 +31,15 @@ export const tablistClass: Record<TabsVariant, string> = {
   ].join(' '),
   segmented: [
     'inline-flex',
+    'flex-nowrap',
     'p-1',
     'rounded-full',
     'bg-pio-bg-light',
     'border',
     'border-pio-grid',
-    'flex-wrap',
     'gap-1',
     'max-w-full',
+    'min-w-0',
     'overflow-x-auto',
     'list-none',
     'm-0',
@@ -38,17 +49,17 @@ export const tablistClass: Record<TabsVariant, string> = {
 };
 
 export const tabItemClass: Record<TabsVariant, string> = {
-  underline: 'relative',
+  underline: 'relative shrink-0',
   pills: 'shrink-0 list-none',
   segmented: 'shrink-0 list-none',
 };
 
 const underlineButton =
-  'py-2 px-6 block outline-hidden opacity-80 hover:opacity-100 text-gray-900 dark:text-blue-200';
+  'py-2 px-6 block outline-hidden opacity-80 hover:opacity-100 whitespace-nowrap text-gray-900 dark:text-blue-200';
 
 const pillsButton = {
   active:
-    'px-4 py-2 rounded-full text-xs font-semibold font-jakarta transition-all duration-200 bg-pio-coral text-white shadow-md',
+    'px-4 py-2 rounded-full text-xs font-semibold font-jakarta whitespace-nowrap transition-all duration-200 bg-pio-coral text-white shadow-md',
   inactive: [
     'px-4',
     'py-2',
@@ -56,6 +67,7 @@ const pillsButton = {
     'text-xs',
     'font-semibold',
     'font-jakarta',
+    'whitespace-nowrap',
     'text-pio-text-muted',
     'hover:text-pio-text',
     'hover:bg-pio-border-subtle',
@@ -74,6 +86,7 @@ const segmentedButton = {
     'text-xs',
     'font-bold',
     'font-jakarta',
+    'whitespace-nowrap',
     'bg-white',
     'shadow-xs',
     'text-pio-text',
@@ -90,6 +103,7 @@ const segmentedButton = {
     'text-xs',
     'font-medium',
     'font-jakarta',
+    'whitespace-nowrap',
     'text-pio-stone',
     'hover:text-pio-text',
     'text-center',

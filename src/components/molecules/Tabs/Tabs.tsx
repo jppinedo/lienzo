@@ -28,8 +28,8 @@ const TabSystem: React.FC<TabSystemProps> = ({
   }
 
   return (
-    <div className="w-full">
-      <nav>
+    <div className="w-full min-w-0 max-w-full">
+      <nav className="min-w-0 max-w-full">
         <ul role="tablist" className={tablistClass[variant]}>
           {tabs.map((tab: TabType) => (
             <TabButton
