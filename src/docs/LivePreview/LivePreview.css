@@ -295,6 +295,10 @@ html[data-mode='dark'] .live-preview .docs-story,
   color: rgb(var(--lz-pio-text));
 }
 
+html[data-mode='dark'] .live-preview .docblock-argstable-body td:last-child label:has(input[type='radio']) {
+  color: rgb(var(--lz-blue-200));
+}
+
 html[data-mode='dark'] .live-preview .docblock-argstable-body tr {
   border-bottom-color: rgb(var(--lz-gray-700));
 }
