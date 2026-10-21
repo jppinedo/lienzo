@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Highlight, type Language } from 'prism-react-renderer';
 import { Copy } from 'react-feather';
-import Card from '@atoms/Card/Card';
+import Card from '../../atoms/Card/Card';
 import {
   codeBlockBar,
   codeBlockBarMeta,

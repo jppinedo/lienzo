@@ -1,5 +1,5 @@
 import React, { cloneElement, useState } from 'react';
-import { RoundedSizes } from '@interfaces/sizes';
+import { RoundedSizes } from '../../../interfaces/sizes';
 import InputStyles, { inputRounded } from './InputStyles';
 
 export interface InputProps {

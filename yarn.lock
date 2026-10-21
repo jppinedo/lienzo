@@ -40,7 +40,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.24.4, @babel/core@npm:^7.28.0":
+"@babel/core@npm:^7.24.4, @babel/core@npm:^7.28.0, @babel/core@npm:^7.29.0":
   version: 7.29.7
   resolution: "@babel/core@npm:7.29.7"
   dependencies:
@@ -119,6 +119,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/helper-plugin-utils@npm:^7.29.7":
+  version: 7.29.7
+  resolution: "@babel/helper-plugin-utils@npm:7.29.7"
+  checksum: 10c0/380477a06133274a2759f9355929cb60a95e8b8fee624a1ae1fa349e1d1645b89daca456f72833f6d1062bffa12ee4271c5bf0cc5a61c0166cdc24c7591e2408
+  languageName: node
+  linkType: hard
+
 "@babel/helper-string-parser@npm:^7.24.1":
   version: 7.24.1
   resolution: "@babel/helper-string-parser@npm:7.24.1"
@@ -193,6 +200,28 @@ __metadata:
   bin:
     parser: ./bin/babel-parser.js
   checksum: 10c0/171b16eb4527cdbbb72cb98710f91acb22356e2c40196ba3b7a1b84efa8c55d0b0992f399c8c675c3e17f67fd133676c5c4118e5f20db243f427c8b29b0c3f40
+  languageName: node
+  linkType: hard
+
+"@babel/plugin-transform-react-jsx-self@npm:^7.27.1":
+  version: 7.29.7
+  resolution: "@babel/plugin-transform-react-jsx-self@npm:7.29.7"
+  dependencies:
+    "@babel/helper-plugin-utils": "npm:^7.29.7"
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 10c0/288995f0fd0d61ab740a315fb56c8255eb87dd4a4ac2ac7d0fdd4ce173c3878200141e80da2db0e598c7b2a71e74e604afdbb4c8e14ae6e0527ce0b6294c03da
+  languageName: node
+  linkType: hard
+
+"@babel/plugin-transform-react-jsx-source@npm:^7.27.1":
+  version: 7.29.7
+  resolution: "@babel/plugin-transform-react-jsx-source@npm:7.29.7"
+  dependencies:
+    "@babel/helper-plugin-utils": "npm:^7.29.7"
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 10c0/a121899631e6d99b9e1b276acf736dbb77948a31f8eeeae67b89c8a4ab0f05e51ba64544baa06c286a2b9944f227244e15aac464e2313d286d0511fe51e27975
   languageName: node
   linkType: hard
 
@@ -836,6 +865,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jppinedo/lienzo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@jppinedo/lienzo@workspace:."
+  dependencies:
+    "@chromatic-com/storybook": "npm:^5.5.1"
+    "@eslint-react/eslint-plugin": "npm:^5.26.7"
+    "@eslint/js": "npm:^10.0.1"
+    "@storybook/addon-a11y": "npm:^10.6.2"
+    "@storybook/addon-docs": "npm:^10.6.2"
+    "@storybook/addon-links": "npm:^10.6.2"
+    "@storybook/addon-mcp": "npm:^10.6.2"
+    "@storybook/addon-themes": "npm:^10.6.2"
+    "@storybook/react-vite": "npm:^10.6.2"
+    "@tailwindcss/vite": "npm:^4.3.3"
+    "@types/node": "npm:^24.19.2"
+    "@types/react": "npm:^19.3.0"
+    "@types/react-dom": "npm:^19.3.0"
+    "@vitejs/plugin-react": "npm:^5.1.0"
+    eslint: "npm:^10.12.0"
+    eslint-plugin-jsx-a11y-x: "npm:^0.2.0"
+    eslint-plugin-react-hooks: "npm:^7.1.1"
+    eslint-plugin-storybook: "npm:^10.6.2"
+    globals: "npm:^17.13.0"
+    prism-react-renderer: "npm:^2.4.1"
+    react: "npm:^19.3.1"
+    react-day-picker: "npm:^10.0.2"
+    react-dom: "npm:^19.3.1"
+    react-feather: "npm:^2.0.10"
+    react-is: "npm:^19.3.1"
+    recharts: "npm:^3.10.1"
+    storybook: "npm:^10.6.2"
+    tailwindcss: "npm:^4.3.3"
+    typescript: "npm:^6.0.3"
+    typescript-eslint: "npm:^8.71.2"
+    vite: "npm:^8.3.4"
+  peerDependencies:
+    react: ^19.0.0
+    react-dom: ^19.0.0
+    tailwindcss: ^4.0.0
+  languageName: unknown
+  linkType: soft
+
 "@jridgewell/gen-mapping@npm:^0.3.12":
   version: 0.3.13
   resolution: "@jridgewell/gen-mapping@npm:0.3.13"
@@ -1384,6 +1455,13 @@ __metadata:
   version: 1.2.14
   resolution: "@rolldown/binding-win32-x64-msvc@npm:1.2.14"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@rolldown/pluginutils@npm:1.0.0-rc.3":
+  version: 1.0.0-rc.3
+  resolution: "@rolldown/pluginutils@npm:1.0.0-rc.3"
+  checksum: 10c0/3928b6282a30f307d1b075d2f217180ae173ea9e00638ce46ab65f089bd5f7a0b2c488ae1ce530f509387793c656a2910337c4cd68fa9d37d7e439365989e699
   languageName: node
   linkType: hard
 
@@ -2227,6 +2305,22 @@ __metadata:
   peerDependencies:
     valibot: ^1.5.0
   checksum: 10c0/8206940f4b892a34c2d78448541de926234bd97741ad72f4b75ce22bbe56172e46492d02efaf71d75cfc71cec6fa0c55d2edbd977aa4fd2cb2dc236f87005c04
+  languageName: node
+  linkType: hard
+
+"@vitejs/plugin-react@npm:^5.1.0":
+  version: 5.2.0
+  resolution: "@vitejs/plugin-react@npm:5.2.0"
+  dependencies:
+    "@babel/core": "npm:^7.29.0"
+    "@babel/plugin-transform-react-jsx-self": "npm:^7.27.1"
+    "@babel/plugin-transform-react-jsx-source": "npm:^7.27.1"
+    "@rolldown/pluginutils": "npm:1.0.0-rc.3"
+    "@types/babel__core": "npm:^7.20.5"
+    react-refresh: "npm:^0.18.0"
+  peerDependencies:
+    vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+  checksum: 10c0/bac0a409e71eee954a05bc41580411c369bd5f9ef0586a1f9743fba76ad6603c437d93d407d230780015361f93d1592c55e53314813cded6369c36d3c1e8edbf
   languageName: node
   linkType: hard
 
@@ -4097,43 +4191,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lienzo@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "lienzo@workspace:."
-  dependencies:
-    "@chromatic-com/storybook": "npm:^5.5.1"
-    "@eslint-react/eslint-plugin": "npm:^5.26.7"
-    "@eslint/js": "npm:^10.0.1"
-    "@storybook/addon-a11y": "npm:^10.6.2"
-    "@storybook/addon-docs": "npm:^10.6.2"
-    "@storybook/addon-links": "npm:^10.6.2"
-    "@storybook/addon-mcp": "npm:^10.6.2"
-    "@storybook/addon-themes": "npm:^10.6.2"
-    "@storybook/react-vite": "npm:^10.6.2"
-    "@tailwindcss/vite": "npm:^4.3.3"
-    "@types/node": "npm:^24.19.2"
-    "@types/react": "npm:^19.3.0"
-    "@types/react-dom": "npm:^19.3.0"
-    eslint: "npm:^10.12.0"
-    eslint-plugin-jsx-a11y-x: "npm:^0.2.0"
-    eslint-plugin-react-hooks: "npm:^7.1.1"
-    eslint-plugin-storybook: "npm:^10.6.2"
-    globals: "npm:^17.13.0"
-    prism-react-renderer: "npm:^2.4.1"
-    react: "npm:^19.3.1"
-    react-day-picker: "npm:^10.0.2"
-    react-dom: "npm:^19.3.1"
-    react-feather: "npm:^2.0.10"
-    react-is: "npm:^19.3.1"
-    recharts: "npm:^3.10.1"
-    storybook: "npm:^10.6.2"
-    tailwindcss: "npm:^4.3.3"
-    typescript: "npm:^6.0.3"
-    typescript-eslint: "npm:^8.71.2"
-    vite: "npm:^8.3.4"
-  languageName: unknown
-  linkType: soft
-
 "lightningcss-android-arm64@npm:1.32.0":
   version: 1.32.0
   resolution: "lightningcss-android-arm64@npm:1.32.0"
@@ -5038,6 +5095,13 @@ __metadata:
     redux:
       optional: true
   checksum: 10c0/00d485f9d9219ca1507b4d30dde5f6ff8fb68ba642458f742e0ec83af052f89e65cd668249b99299e1053cc6ad3d2d8ac6cb89e2f70d2ac5585ae0d7fa0ef259
+  languageName: node
+  linkType: hard
+
+"react-refresh@npm:^0.18.0":
+  version: 0.18.0
+  resolution: "react-refresh@npm:0.18.0"
+  checksum: 10c0/34a262f7fd803433a534f50deb27a148112a81adcae440c7d1cbae7ef14d21ea8f2b3d783e858cb7698968183b77755a38b4d4b5b1d79b4f4689c2f6d358fff2
   languageName: node
   linkType: hard
 

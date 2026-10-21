@@ -123,13 +123,90 @@ yarn storybook   # opens http://localhost:6006
 <summary>More commands and troubleshooting</summary>
 
 ```bash
+yarn build             # library → dist/ (JS + .d.ts + component CSS)
 yarn build-storybook   # static build in storybook-static/
-yarn verify            # typecheck + lint + build, the same check CI runs
+yarn verify            # typecheck + lint + library build + Storybook build (same as CI)
 ```
 
 On macOS, if you see `EMFILE: too many open files`, run `ulimit -n 10240` and start Storybook again. More in [Getting started](Documentation/getting-started.md).
 
 </details>
+
+## Using Lienzo in your app
+
+Package name: **`@jppinedo/lienzo`**. It is not on npm yet; use a local Yarn portal (or path) link until the first publish.
+
+### 1. Link the package (Yarn 4)
+
+In your app’s `package.json`:
+
+```json
+{
+  "dependencies": {
+    "@jppinedo/lienzo": "portal:../lienzo"
+  }
+}
+```
+
+Adjust the relative path to your Lienzo checkout, then run `yarn install`.
+
+Vite resolves the package `development` condition to `src/index.ts` during `vite` / `vite dev`, so edits in Lienzo hot-reload in the app. Production builds resolve to `dist/` — run `yarn build` in Lienzo before a production consumer build if you are not using the development condition.
+
+### 2. Tailwind CSS 4
+
+In your app’s CSS entry (with `@tailwindcss/vite` or the Tailwind PostCSS plugin):
+
+```css
+@import 'tailwindcss';
+@import '@jppinedo/lienzo/theme.css';
+
+/* Scan Lienzo for utility class names (portal → package root; published → node_modules). */
+@source '../node_modules/@jppinedo/lienzo/src';
+```
+
+With a `portal:` link, Yarn places the package under `node_modules/@jppinedo/lienzo`, so the `@source` path above still works. Import component CSS when you need keyframes / non-Tailwind rules from the built bundle:
+
+```ts
+import '@jppinedo/lienzo/style.css';
+```
+
+(Only required for production/`dist` consumers; in development, component CSS is pulled in via source imports.)
+
+### 3. Import components
+
+```tsx
+import { Button, Title } from '@jppinedo/lienzo';
+
+export function Example() {
+  return (
+    <>
+      <Title size="xl" fontFamily="playfair">
+        Hello
+      </Title>
+      <Button label="Save" onClick={() => {}} />
+    </>
+  );
+}
+```
+
+### 4. Deduplicate React
+
+`react` and `react-dom` are peer dependencies. Your app must provide a single React 19 tree. If you see invalid hook call / multiple React copies with a portal link, dedupe in the app’s Vite config:
+
+```ts
+import { defineConfig } from 'vite';
+import path from 'node:path';
+
+export default defineConfig({
+  resolve: {
+    dedupe: ['react', 'react-dom'],
+    alias: {
+      react: path.resolve('node_modules/react'),
+      'react-dom': path.resolve('node_modules/react-dom'),
+    },
+  },
+});
+```
 
 ## Come build it with me
 
@@ -142,7 +219,7 @@ Lienzo is young, which means your pull request matters here. You won't be fixing
 New to open source? That's welcome too. Your first PR can be here.
 
 > [!NOTE]
-> Lienzo is in early development (v0.1.0) and isn't published to npm yet. Explore it in the [live playground](https://lienzo.pinedo.cl) or run it locally.
+> Lienzo is in early development (v0.1.0) as `@jppinedo/lienzo`. It isn't published to npm yet — use a Yarn `portal:` link (see above), explore the [live playground](https://lienzo.pinedo.cl), or run Storybook locally.
 
 ## License
 

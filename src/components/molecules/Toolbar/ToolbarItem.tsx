@@ -1,7 +1,7 @@
 // ToolbarItem.tsx
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import Menu, { MenuProps } from '@components/molecules/Menu/Menu';
+import Menu, { MenuProps } from '../Menu/Menu';
 import { ChevronDown } from 'react-feather';
 import { toolbarItemStyles } from './ToolbarStyles';
 

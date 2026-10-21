@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react';
-import Label, { LabelProps } from '@components/atoms/Label/Label';
+import Label, { LabelProps } from '../../atoms/Label/Label';
 import { MenuStyles } from './MenuStyles';
 import './Menu.css';
 
