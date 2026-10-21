@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ToolbarItem, { ToolbarItemType } from './ToolbarItem';
 import { toolbarStyles } from './ToolbarStyles';
-import { RoundedSizes } from '@interfaces/sizes';
+import { RoundedSizes } from '../../../interfaces/sizes';
 
 export interface ToolbarProps {
   items: ToolbarItemType[];

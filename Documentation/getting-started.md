@@ -41,11 +41,19 @@ yarn lint
 yarn verify
 ```
 
-`yarn typecheck` runs `tsc --noEmit`. `yarn lint` runs ESLint (existing issues are warnings). `yarn verify` runs typecheck, lint, and `yarn build-storybook`.
+`yarn typecheck` runs `tsc --noEmit`. `yarn lint` runs ESLint (existing issues are warnings). `yarn verify` runs typecheck, lint, `yarn build` (library), and `yarn build-storybook`.
 
 ## Build
 
-To build the static Storybook for deployment:
+### Library (`@jppinedo/lienzo`)
+
+```bash
+yarn build
+```
+
+Produces `dist/` with ESM JavaScript, rolled-up type declarations (`index.d.ts`), and component CSS (`lienzo.css`). See the README section **Using Lienzo in your app** for consuming the package locally via Yarn `portal:`.
+
+### Storybook (static site)
 
 ```bash
 yarn build-storybook

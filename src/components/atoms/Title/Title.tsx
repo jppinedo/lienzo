@@ -1,6 +1,6 @@
 import React from 'react';
 import { titleStyles } from './TitleStyles';
-import type SizesTypes from '@interfaces/sizes';
+import type SizesTypes from '../../../interfaces/sizes';
 import './Title.css';
 
 export interface TitleProps {

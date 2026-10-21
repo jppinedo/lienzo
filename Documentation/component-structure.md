@@ -76,7 +76,8 @@ Each component lives in its own folder under `atoms/`, `molecules/`, `templates/
 2. Add `ComponentName.tsx` with the React component and its props interface.
 3. Add optional `ComponentNameStyles.ts` for Tailwind class strings and optional `ComponentName.css` if needed.
 4. Add `ComponentName.stories.tsx` so the component appears in Storybook. Set `title` to `Atoms/ComponentName`, `Molecules/ComponentName`, `Organisms/ComponentName`, `Templates/ComponentName`, or `Pages/ComponentName`. For **atoms / molecules / organisms only**, also add `ComponentName.mdx` using `ComponentDocsPage` and the contract in [Component Docs](component-docs.md) (reference: [LineChart.mdx](../src/components/molecules/LineChart/LineChart.mdx)). **Templates / pages: stories only**—skip Docs. Landing stays `Introduction / Welcome` (CSF + `useGlobals`; no Docs). Also see [Storybook](storybook.md).
-5. Use path aliases for imports (e.g. `@atoms/MyAtom/MyAtom`, `@templates/Phone/Phone`, `@interfaces/sizes`).
+5. Prefer relative imports inside public library components (`atoms` / `molecules` / `templates`) so portal consumers resolve source without Lienzo path aliases. Path aliases remain fine for Storybook pages and Docs helpers.
 6. Use design tokens from the Tailwind theme where possible (see [Design tokens & colors](design-tokens-colors.md)).
+7. If the component is part of the public package API, re-export it (and its props types) from [`src/index.ts`](../src/index.ts).
 
 For component implementation patterns, see existing atoms (e.g. Box, Button), molecules (e.g. Toolbar), and the Phone template. For Docs pages (atoms / molecules / organisms), follow [Component Docs](component-docs.md) and the LineChart reference.

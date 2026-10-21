@@ -9,7 +9,7 @@ import globals from 'globals';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
-  globalIgnores(['storybook-static/', 'node_modules/', '.yarn/']),
+  globalIgnores(['storybook-static/', 'dist/', 'node_modules/', '.yarn/']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [

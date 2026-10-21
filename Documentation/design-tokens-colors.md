@@ -1,11 +1,11 @@
 # Design tokens & colors
 
-The **source of truth** for color values is `src/css/tokens.css` (CSS variables). Tailwind utilities are mapped to those variables in the `@theme inline` block of [src/tailwind.css](../src/tailwind.css).
+The **source of truth** for color values is `src/css/tokens.css` (CSS variables). Tailwind utilities are mapped to those variables in the `@theme inline` block of [src/theme.css](../src/theme.css). Storybook loads the same theme via [src/tailwind.css](../src/tailwind.css). Consuming apps import `@jppinedo/lienzo/theme.css`.
 
 ## How the token system works
 
 - **Token values (canonical)**: `src/css/tokens.css` defines colors as RGB channels, e.g. `--lz-pio-teal-black: 19 27 38;`.
-- **Tailwind utilities**: `src/tailwind.css` maps each color name with `--color-*: rgb(var(--lz-…))` so utilities support opacity (e.g. `bg-pio-teal-black/80`).
+- **Tailwind utilities**: `src/theme.css` maps each color name with `--color-*: rgb(var(--lz-…))` so utilities support opacity (e.g. `bg-pio-teal-black/80`).
 - **Plain CSS (e.g. 3rd-party libs)**: component CSS can use the same tokens directly, e.g. `color: rgb(var(--lz-pio-teal-black));`.
 
 ## Component variant mapping

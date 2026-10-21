@@ -1,4 +1,4 @@
-import { RoundedSizes } from '@interfaces/sizes';
+import { RoundedSizes } from '../../../interfaces/sizes';
 
 export const inputRounded: Record<RoundedSizes, string> = {
   none: 'rounded-none',

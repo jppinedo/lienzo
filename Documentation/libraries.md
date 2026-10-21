@@ -8,11 +8,12 @@ Overview of the main technologies and dependencies used in Lienzo. For full list
 |---------|------|
 | **React 19** | UI library; component-based rendering |
 | **TypeScript 6** | Typing and path aliases (`strict` is off) |
-| **Tailwind CSS 4** | Utility-first styling; theme lives in `src/tailwind.css` (`@theme`) |
+| **Tailwind CSS 4** | Utility-first styling; consumable theme in `src/theme.css` (`@theme`); Storybook entry in `src/tailwind.css` |
 
 ## Styling & build
 
-- **Vite** — Bundles Storybook (`@storybook/react-vite` and `@tailwindcss/vite`).
+- **Vite** — Library build (`vite.config.ts`, `yarn build` → `dist/` JS + CSS) and Storybook (`@storybook/react-vite`, `@tailwindcss/vite`). Type declarations via `tsc -p tsconfig.build.json`.
+- **Peers** — `react`, `react-dom` (^19) and `tailwindcss` (^4) are `peerDependencies` (also listed as `devDependencies` for Storybook).
 - **Google Fonts** — CSS `@import` in [.storybook/story-global.css](../.storybook/story-global.css) (not an npm package): Lexend and Poppins for Title, plus Playfair Display, Plus Jakarta Sans, and JetBrains Mono for Docs type. See [Design tokens & colors](design-tokens-colors.md).
 
 ## Storybook
