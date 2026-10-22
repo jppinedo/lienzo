@@ -38,6 +38,7 @@ Lienzo organizes UI into:
 | **Menu** | Menu component (dropdown/list) |
 | **Tabs** | Tabbed navigation (`tablist` / `tab` / `tabpanel`); variants `underline` (default), `pills` (coral active pill), `segmented` (white chip on beige track); tab strip scrolls horizontally when tabs exceed the container; only the active panel is mounted |
 | **Toolbar** | Horizontal toolbar of items (buttons or labels); scrolls horizontally when items exceed the container; supports menus |
+| **WeekCalendar** | Week view with day columns and event cards; optional hour grid and timed placement, or stacked lists when hours are off; tones map to pio palette tokens; supports visible-day subsets and dark mode |
 
 ## Templates
 

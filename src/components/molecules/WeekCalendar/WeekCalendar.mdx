@@ -1,0 +1,270 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './WeekCalendar.stories';
+import { ComponentDocsPage } from '@docs/ComponentDocsPage';
+
+<Meta of={Stories} />
+
+export const exampleCode = `import WeekCalendar from '@molecules/WeekCalendar/WeekCalendar';
+
+const weekStart = new Date(2025, 9, 13);
+const today = new Date(2025, 9, 15, 10, 30);
+
+<WeekCalendar
+  weekStart={weekStart}
+  today={today}
+  showHours={false}
+  events={[
+    {
+      id: '1',
+      date: weekStart,
+      title: 'Morning brief',
+      subtitle: 'Ops',
+      tone: 'teal',
+    },
+  ]}
+/>`;
+
+<ComponentDocsPage
+  title="WeekCalendar"
+  badge="0.1.0"
+  breadcrumb={['Molecules', 'WeekCalendar']}
+  description="Week view with day columns and event cards. Supports timed placement with an hour grid, or a simple stacked list when hours are off. Generic content model—titles, subtitles, and bodies accept strings or JSX."
+  stories={Stories}
+  useCases={{
+    cases: [
+      'Weekly schedules with timed blocks and an hour gutter.',
+      'Compact day lists without hours (stacked cards per column).',
+      'Working-week or custom visible-day sets (e.g. Mon–Fri).',
+      'Rich card content with Lienzo atoms such as Badge or Label.',
+    ],
+  }}
+  variations={[
+    {
+      id: 'with-hours',
+      label: 'With hours',
+      canvas: <Canvas of={Stories.WithHours} layout="fullscreen" />,
+      badge: 'Pattern: Timed grid',
+      description:
+        'Full week with hour gutter, hour lines, overlapping side-by-side cards, and today accent.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: 'showHours · hourRange · today',
+          valueTone: 'prop',
+        },
+        {
+          label: 'Best For',
+          value: 'Schedules, bookings, time-blocked weeks',
+        },
+      ],
+    },
+    {
+      id: 'without-hours',
+      label: 'Without hours',
+      canvas: <Canvas of={Stories.WithoutHours} layout="fullscreen" />,
+      badge: 'Pattern: Day lists',
+      description:
+        'Cards stack vertically in each day; start/end times are ignored for layout.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: 'showHours={false}',
+          valueTone: 'prop',
+        },
+        {
+          label: 'Best For',
+          value: 'Agenda-style weeks, short item lists per day',
+        },
+      ],
+    },
+    {
+      id: 'working-days',
+      label: 'Working days',
+      canvas: <Canvas of={Stories.WorkingDays} layout="fullscreen" />,
+      badge: 'Pattern: Visible days',
+      description:
+        'Monday–Friday columns, plus a custom Mon/Wed/Fri list example.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: 'visibleDays={[1,2,3,4,5]}',
+          valueTone: 'prop',
+        },
+      ],
+    },
+    {
+      id: 'sunday-start',
+      label: 'Sunday start',
+      canvas: <Canvas of={Stories.SundayStart} layout="fullscreen" />,
+      description: 'Week columns ordered with Sunday first.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: 'weekStartsOn={0}',
+          valueTone: 'prop',
+        },
+      ],
+    },
+    {
+      id: 'rich-content',
+      label: 'Rich content',
+      canvas: <Canvas of={Stories.RichContent} layout="fullscreen" />,
+      badge: 'Pattern: JSX slots',
+      description:
+        'Subtitle and body accept JSX—avatars, Badge, and Label inside cards.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: 'subtitle · body as ReactNode',
+          valueTone: 'prop',
+        },
+      ],
+    },
+    {
+      id: 'muted-status',
+      label: 'Muted / status',
+      canvas: <Canvas of={Stories.MutedStatus} layout="fullscreen" />,
+      badge: 'Pattern: Muted tone',
+      description:
+        'Muted cards use a desaturated fill with a diagonal stripe and optional status band.',
+      meta: [
+        {
+          label: 'Component Props',
+          value: "tone='muted' · status",
+          valueTone: 'prop',
+        },
+      ],
+    },
+    {
+      id: 'dark-mode',
+      label: 'Dark mode',
+      canvas: <Canvas of={Stories.DarkMode} layout="fullscreen" />,
+      description: 'Same timed week under data-mode="dark" tokens.',
+      meta: [
+        {
+          label: 'Best For',
+          value: 'Verifying contrast and surfaces in dark theme',
+        },
+      ],
+    },
+  ]}
+  props={{
+    interfaceName: 'WeekCalendarProps',
+    lead: 'Runtime props for WeekCalendar. Event shape: WeekCalendarEvent.',
+    rows: [
+      {
+        name: 'weekStart',
+        type: 'Date',
+        description:
+          'Any date in the week to display. Normalized to the week start using weekStartsOn.',
+      },
+      {
+        name: 'visibleDays',
+        type: 'Weekday[]',
+        defaultValue: '[0, 1, 2, 3, 4, 5, 6]',
+        description:
+          'Weekdays to show as columns (0 = Sunday … 6 = Saturday). Column order follows weekStartsOn.',
+      },
+      {
+        name: 'weekStartsOn',
+        type: '0 | 1',
+        defaultValue: '1',
+        description: '0 = Sunday, 1 = Monday.',
+      },
+      {
+        name: 'events',
+        type: 'WeekCalendarEvent[]',
+        description:
+          'Events to place. Hidden-day events are omitted (dev warning).',
+      },
+      {
+        name: 'showHours',
+        type: 'boolean',
+        defaultValue: 'true',
+        description:
+          'When true, timed events are positioned on an hour grid; when false, cards stack per day.',
+      },
+      {
+        name: 'hourRange',
+        type: '[number, number]',
+        defaultValue: '[6, 22]',
+        description: 'Inclusive start hour and exclusive end hour when showHours is true.',
+      },
+      {
+        name: 'today',
+        type: 'Date',
+        defaultValue: 'new Date()',
+        description:
+          'Overrides “today” for accent styling and the current-time indicator (useful in tests and stories).',
+      },
+      {
+        name: 'renderEvent',
+        type: '(event: WeekCalendarEvent) => React.ReactNode',
+        description: 'Optional full override for event card rendering.',
+      },
+      {
+        name: 'className',
+        type: 'string',
+        description: 'Optional class on the root surface.',
+      },
+      {
+        name: 'WeekCalendarEvent.id',
+        type: 'string',
+        description: 'Stable event id.',
+      },
+      {
+        name: 'WeekCalendarEvent.date',
+        type: 'Date | string',
+        description: 'Day the event belongs to.',
+      },
+      {
+        name: 'WeekCalendarEvent.start / end',
+        type: "string ('HH:mm')",
+        description:
+          'Optional times used for placement when showHours is true.',
+      },
+      {
+        name: 'WeekCalendarEvent.title',
+        type: 'React.ReactNode',
+        description: 'Required card title (string or JSX).',
+      },
+      {
+        name: 'WeekCalendarEvent.subtitle / body',
+        type: 'React.ReactNode',
+        description: 'Optional secondary and body content.',
+      },
+      {
+        name: 'WeekCalendarEvent.tone',
+        type: "'coral' | 'teal' | 'amber' | 'neutral' | 'muted'",
+        defaultValue: "'neutral'",
+        description: 'Card color mapped to Lienzo palette tokens.',
+      },
+      {
+        name: 'WeekCalendarEvent.status',
+        type: 'React.ReactNode',
+        description: 'Optional bottom band; shown on the muted tone.',
+      },
+      {
+        name: 'WeekCalendarEvent.onClick',
+        type: '() => void',
+        description: 'When set, the card renders as a focusable button.',
+      },
+    ],
+  }}
+  usage={{
+    whenToUse: [
+      'Presenting a week of items in day columns.',
+      'showHours for schedules; showHours={false} for simple per-day lists.',
+      'visibleDays to hide weekends or show a custom subset.',
+    ],
+    whenToAvoid: [
+      'Picking a single date—use Calendar.',
+      'Month grids or multi-week planners—not covered by this component.',
+    ],
+  }}
+  example={{
+    code: exampleCode,
+    filename: 'WeekCalendar.example.tsx',
+    language: 'tsx',
+  }}
+/>
