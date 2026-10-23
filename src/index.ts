@@ -73,9 +73,22 @@ export { default as Toolbar } from './components/molecules/Toolbar/Toolbar';
 export type { ToolbarProps } from './components/molecules/Toolbar/Toolbar';
 export type { ToolbarItemType } from './components/molecules/Toolbar/ToolbarItem';
 
+export { default as WeekCalendar } from './components/molecules/WeekCalendar/WeekCalendar';
+export type {
+  CalendarLayout,
+  WeekCalendarEvent,
+  WeekCalendarEventTone,
+  WeekCalendarProps,
+  Weekday,
+} from './components/molecules/WeekCalendar/WeekCalendar';
+
 // Templates
 export { default as Phone } from './components/templates/Phone/Phone';
 export type { PhoneProps } from './components/templates/Phone/Phone';
+
+// Hooks
+export { useContainerWidth } from './hooks/useContainerWidth';
+export { useControllableState } from './hooks/useControllableState';
 
 // Shared types
 export type { RoundedSizes } from './interfaces/sizes';

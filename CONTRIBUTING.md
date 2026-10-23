@@ -119,6 +119,7 @@ Other important folders and files:
 | `src/tailwind.css` | Tailwind 4 setup. The `@theme inline` block maps Tailwind color names (`pio-*`, `gray-*`, …) to the tokens, and also defines fonts, shadows, and the `dark:` variant. There is no `tailwind.config.js`. |
 | `src/docs/` | Storybook Docs infrastructure: `ComponentDocsPage`, `LivePreview` |
 | `src/interfaces/` | Shared TypeScript types (for example `sizes.ts`) |
+| `src/hooks/` | Shared React hooks (for example `useContainerWidth`, `useControllableState`) |
 | `.storybook/` | Storybook config (`main.ts`, `preview.ts`, `manager.ts`, `story-global.css`) |
 | `Documentation/` | Project documentation. Please read it! |
 | `.cursor/` | Optional settings for the Cursor editor. You can ignore this folder. |
