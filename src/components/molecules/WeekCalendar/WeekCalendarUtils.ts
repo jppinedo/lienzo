@@ -68,6 +68,43 @@ export function accessibleDayLabel(date: Date): string {
   return `${FULL_WEEKDAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 }
 
+const SHORT_MONTHS = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+] as const;
+
+export function weekdayLetter(date: Date): string {
+  return SHORT_WEEKDAYS[date.getDay()].charAt(0);
+}
+
+export function formatMonthYear(date: Date): string {
+  return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+}
+
+/** e.g. "Wednesday, Oct 15" */
+export function formatLongDay(date: Date): string {
+  return `${FULL_WEEKDAYS[date.getDay()]}, ${SHORT_MONTHS[date.getMonth()]} ${date.getDate()}`;
+}
+
+/** e.g. "Mon 19" */
+export function formatShortDayHeader(date: Date): string {
+  return `${shortWeekdayName(date)} ${date.getDate()}`;
+}
+
+export function dayKey(date: Date): string {
+  return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+}
+
 /** Visible day columns in week order set by `weekStartsOn`. */
 export function getVisibleDates(
   weekStart: Date,
@@ -111,6 +148,17 @@ export function formatHourLabel(hour: number): string {
   const suffix = h < 12 ? 'AM' : 'PM';
   const twelve = h % 12 === 0 ? 12 : h % 12;
   return `${twelve} ${suffix}`;
+}
+
+/** Format "HH:mm" / "H:mm" for display, e.g. "10:00 AM" (minutes always shown). */
+export function formatTimeLabel(time?: string): string | null {
+  const minutes = parseTimeToMinutes(time);
+  if (minutes == null) return null;
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  const suffix = h < 12 ? 'AM' : 'PM';
+  const twelve = h % 12 === 0 ? 12 : h % 12;
+  return `${twelve}:${String(m).padStart(2, '0')} ${suffix}`;
 }
 
 /**

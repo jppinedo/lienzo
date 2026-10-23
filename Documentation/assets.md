@@ -12,6 +12,7 @@ All shared static assets and React asset components live under **[src/assets/](.
 | **LienzoHorizontalLogo.tsx** | React component that renders the horizontal Lienzo lockup (icon left, wordmark right at half icon height, vertically centered, with a gap between mark and text). Supports `variant`: `default` (dark mark) or `onDark` (light mark for dark backgrounds) |
 | **lienzo_logo.svg** | Static SVG file of the logo |
 | **SquaresBackground.tsx** | React component that renders a squares-pattern background |
+| **placeholders/faces/100/** | Square placeholder portrait JPGs (`avatar-01.jpg` …) for Storybook demos (e.g. WeekCalendar rich content facepiles) |
 
 ## Usage
 

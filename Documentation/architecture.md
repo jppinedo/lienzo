@@ -18,6 +18,7 @@
 | `css/` | Global styles: [tokens.css](../src/css/tokens.css), `fullHeightCanvas.css`. Consumable theme is [src/theme.css](../src/theme.css); Storybook Tailwind entry is [src/tailwind.css](../src/tailwind.css) |
 | `docs/` | Storybook Docs infrastructure: [LivePreview](../src/docs/LivePreview/LivePreview.tsx), [ComponentDocsPage](../src/docs/ComponentDocsPage/ComponentDocsPage.tsx) (composable Docs page template) |
 | `interfaces/` | Shared TypeScript types (e.g. [sizes.ts](../src/interfaces/sizes.ts)) |
+| `hooks/` | Shared React hooks (e.g. [useContainerWidth](../src/hooks/useContainerWidth.ts), [useControllableState](../src/hooks/useControllableState.ts)) |
 
 ## TypeScript path aliases
 
@@ -26,6 +27,7 @@ Imports use path aliases so you can avoid long relative paths. Configured in `ts
 | Alias | Resolves to |
 |-------|-------------|
 | `@interfaces/*` | `src/interfaces/*` |
+| `@hooks/*` | `src/hooks/*` |
 | `@components/*` | `src/components/*` |
 | `@atoms/*` | `src/components/atoms/*` |
 | `@molecules/*` | `src/components/molecules/*` |

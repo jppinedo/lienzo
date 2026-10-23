@@ -1,157 +1,70 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useContainerWidth } from '../../../hooks/useContainerWidth';
+import { useControllableState } from '../../../hooks/useControllableState';
+import { WeekCalendarAgendaView } from './WeekCalendarAgendaView';
+import { WeekCalendarDayView } from './WeekCalendarDayView';
+import { WeekCalendarWeekView } from './WeekCalendarWeekView';
 import {
-  COLUMN_MIN_WIDTH_PX,
+  DEFAULT_AUTO_BREAKPOINT,
   DEFAULT_HOUR_RANGE,
   DEFAULT_VISIBLE_DAYS,
-  GUTTER_WIDTH_PX,
   HOUR_HEIGHT_PX,
-  MIN_EVENT_HEIGHT_PX,
-  eventCardBase,
-  eventCardBody,
-  eventCardInner,
-  eventCardInteractive,
-  eventCardStatus,
-  eventCardSubtitle,
-  eventCardTimed,
-  eventCardTitle,
-  eventCardTone,
-  weekCalendarAllDayStack,
-  weekCalendarBody,
-  weekCalendarDayColumn,
-  weekCalendarDayColumnToday,
-  weekCalendarDayHeader,
-  weekCalendarDayHeaderLabel,
-  weekCalendarDayHeaderLabelToday,
-  weekCalendarDayHeaderNumber,
-  weekCalendarDayHeaderNumberToday,
-  weekCalendarGutter,
-  weekCalendarGutterSpacer,
-  weekCalendarHeader,
-  weekCalendarHourGrid,
-  weekCalendarHourLabel,
-  weekCalendarHourLine,
-  weekCalendarInner,
-  weekCalendarListStack,
-  weekCalendarNowLine,
-  weekCalendarNowMarker,
   weekCalendarRoot,
-  weekCalendarScroll,
-  weekCalendarTodayAccentBar,
-  type WeekCalendarEventTone,
+  weekCalendarRootClip,
 } from './WeekCalendarStyles';
 import {
-  accessibleDayLabel,
-  clampTimeToRange,
-  durationToHeightPx,
-  formatHourLabel,
+  cx,
+  type CalendarLayout,
+  type DayBuckets,
+  type ResolvedTimedEvent,
+  type WeekCalendarEvent,
+  type WeekCalendarProps,
+} from './WeekCalendarTypes';
+import {
+  dayKey,
   getVisibleDates,
   isSameDay,
-  layoutTimedEvents,
   minutesToOffsetPx,
   parseEventDate,
   parseTimeToMinutes,
-  shortWeekdayName,
-  type Weekday,
 } from './WeekCalendarUtils';
 import './WeekCalendar.css';
 
-export type { Weekday, WeekCalendarEventTone };
+export type {
+  CalendarLayout,
+  WeekCalendarEvent,
+  WeekCalendarProps,
+} from './WeekCalendarTypes';
+export type { Weekday } from './WeekCalendarUtils';
+export type { WeekCalendarEventTone } from './WeekCalendarStyles';
 
-export type WeekCalendarEvent = {
-  id: string;
-  date: Date | string;
-  start?: string;
-  end?: string;
-  title: React.ReactNode;
-  subtitle?: React.ReactNode;
-  body?: React.ReactNode;
-  tone?: WeekCalendarEventTone;
-  status?: React.ReactNode;
-  onClick?: () => void;
-};
-
-export type WeekCalendarProps = {
-  weekStart: Date;
-  visibleDays?: Weekday[];
-  weekStartsOn?: 0 | 1;
-  events: WeekCalendarEvent[];
-  showHours?: boolean;
-  hourRange?: [number, number];
-  today?: Date;
-  renderEvent?: (event: WeekCalendarEvent) => React.ReactNode;
-  className?: string;
-};
-
-type ResolvedTimedEvent = {
-  event: WeekCalendarEvent;
-  startMin: number;
-  endMin: number;
-};
-
-type DayBuckets = {
-  allDay: WeekCalendarEvent[];
-  timed: ResolvedTimedEvent[];
-};
-
-function cx(...parts: Array<string | false | null | undefined>): string {
-  return parts.filter(Boolean).join(' ');
+function resolveMobileLayout(
+  mobileLayout: WeekCalendarProps['mobileLayout'],
+  showHours: boolean
+): Exclude<CalendarLayout, 'week'> {
+  return mobileLayout ?? (showHours ? 'day' : 'agenda');
 }
 
-function dayKey(date: Date): string {
-  return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+function resolveLayout(
+  layoutProp: CalendarLayout | 'auto',
+  isNarrow: boolean | null,
+  mobile: Exclude<CalendarLayout, 'week'>,
+  initialLayout: CalendarLayout
+): CalendarLayout {
+  if (layoutProp !== 'auto') return layoutProp;
+  if (isNarrow === null) return initialLayout;
+  return isNarrow ? mobile : 'week';
 }
 
-function EventCard({
-  event,
-  className,
-  style,
-}: {
-  event: WeekCalendarEvent;
-  className?: string;
-  style?: React.CSSProperties;
-}) {
-  const tone: WeekCalendarEventTone = event.tone ?? 'neutral';
-  const interactive = typeof event.onClick === 'function';
-  const classes = cx(
-    eventCardBase,
-    eventCardTone[tone],
-    interactive && eventCardInteractive,
-    className
-  );
+function defaultSelectedFromDays(days: Date[], today: Date): Date {
+  const todayInView = days.find((d) => isSameDay(d, today));
+  return todayInView ?? days[0] ?? today;
+}
 
-  const content = (
-    <div className={eventCardInner}>
-      {event.subtitle != null && (
-        <div className={eventCardSubtitle}>{event.subtitle}</div>
-      )}
-      <div className={eventCardTitle}>{event.title}</div>
-      {event.body != null && (
-        <div className={eventCardBody}>{event.body}</div>
-      )}
-      {tone === 'muted' && event.status != null && (
-        <div className={eventCardStatus}>{event.status}</div>
-      )}
-    </div>
-  );
-
-  if (interactive) {
-    return (
-      <button
-        type="button"
-        className={classes}
-        style={style}
-        onClick={event.onClick}
-      >
-        {content}
-      </button>
-    );
-  }
-
-  return (
-    <div className={classes} style={style}>
-      {content}
-    </div>
-  );
+function clampToVisibleDays(date: Date, days: Date[]): Date {
+  if (days.length === 0) return date;
+  const match = days.find((d) => isSameDay(d, date));
+  return match ?? days[0];
 }
 
 const WeekCalendar: React.FC<WeekCalendarProps> = ({
@@ -164,7 +77,22 @@ const WeekCalendar: React.FC<WeekCalendarProps> = ({
   today: todayProp,
   renderEvent,
   className,
+  layout: layoutProp = 'auto',
+  mobileLayout: mobileLayoutProp,
+  autoBreakpoint = DEFAULT_AUTO_BREAKPOINT,
+  initialLayout: initialLayoutProp,
+  onLayoutChange,
+  onWeekStartChange,
+  selectedDate: selectedDateProp,
+  defaultSelectedDate,
+  onSelectedDateChange,
+  showSwipeHint = true,
+  hideEmptyDays = false,
+  emptyDayLabel,
 }) => {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const isNarrow = useContainerWidth(rootRef, autoBreakpoint);
+
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
@@ -180,16 +108,56 @@ const WeekCalendar: React.FC<WeekCalendarProps> = ({
     [todayProp, now]
   );
 
+  const days = useMemo(
+    () => getVisibleDates(weekStart, weekStartsOn, visibleDays),
+    [weekStart, weekStartsOn, visibleDays]
+  );
+
+  const mobileLayout = resolveMobileLayout(mobileLayoutProp, showHours);
+  const initialLayout = initialLayoutProp ?? mobileLayout;
+  const resolvedLayout = resolveLayout(
+    layoutProp,
+    isNarrow,
+    mobileLayout,
+    initialLayout
+  );
+
+  const prevLayoutRef = useRef<CalendarLayout | null>(null);
+  useEffect(() => {
+    if (prevLayoutRef.current === resolvedLayout) return;
+    prevLayoutRef.current = resolvedLayout;
+    onLayoutChange?.(resolvedLayout);
+  }, [resolvedLayout, onLayoutChange]);
+
+  const selectedDefault = useMemo(() => {
+    if (defaultSelectedDate != null) {
+      return clampToVisibleDays(parseEventDate(defaultSelectedDate), days);
+    }
+    return defaultSelectedFromDays(days, today);
+  }, [defaultSelectedDate, days, today]);
+
+  const [selectedDate, setSelectedDate] = useControllableState<Date>({
+    value:
+      selectedDateProp != null
+        ? clampToVisibleDays(parseEventDate(selectedDateProp), days)
+        : undefined,
+    defaultValue: selectedDefault,
+    onChange: onSelectedDateChange,
+  });
+
+  // Keep selection inside the visible week when days change.
+  useEffect(() => {
+    const clamped = clampToVisibleDays(selectedDate, days);
+    if (!isSameDay(clamped, selectedDate)) {
+      setSelectedDate(clamped);
+    }
+  }, [days, selectedDate, setSelectedDate]);
+
   const [rangeStart, rangeEnd] = hourRange;
   const safeRangeStart = Math.min(Math.max(0, rangeStart), 23);
   const safeRangeEnd = Math.min(24, Math.max(safeRangeStart + 1, rangeEnd));
   const hourCount = safeRangeEnd - safeRangeStart;
   const gridHeight = hourCount * HOUR_HEIGHT_PX;
-
-  const days = useMemo(
-    () => getVisibleDates(weekStart, weekStartsOn, visibleDays),
-    [weekStart, weekStartsOn, visibleDays]
-  );
 
   const visibleDayKeys = useMemo(() => new Set(days.map(dayKey)), [days]);
 
@@ -253,7 +221,6 @@ const WeekCalendar: React.FC<WeekCalendarProps> = ({
 
   const showNowIndicator =
     showHours &&
-    days.some((d) => isSameDay(d, today)) &&
     indicatorMinutes >= safeRangeStart * 60 &&
     indicatorMinutes <= safeRangeEnd * 60;
 
@@ -263,264 +230,66 @@ const WeekCalendar: React.FC<WeekCalendarProps> = ({
     HOUR_HEIGHT_PX
   );
 
-  const columnTemplate = showHours
-    ? `${GUTTER_WIDTH_PX}px repeat(${days.length}, minmax(${COLUMN_MIN_WIDTH_PX}px, 1fr))`
-    : `repeat(${days.length}, minmax(${COLUMN_MIN_WIDTH_PX}px, 1fr))`;
-
-  const renderCard = (
-    event: WeekCalendarEvent,
-    extraClassName?: string,
-    style?: React.CSSProperties
-  ) => {
-    if (renderEvent) {
-      return (
-        <div key={event.id} className={extraClassName} style={style}>
-          {renderEvent(event)}
-        </div>
-      );
-    }
-    return (
-      <EventCard
-        key={event.id}
-        event={event}
-        className={extraClassName}
-        style={style}
-      />
-    );
-  };
-
-  const renderTimedGrid = (day: Date) => {
-    const buckets = bucketsByDay.get(dayKey(day)) ?? { allDay: [], timed: [] };
-    const layout = layoutTimedEvents(
-      buckets.timed.map((t) => ({
-        id: t.event.id,
-        startMin: t.startMin,
-        endMin: t.endMin,
-      }))
-    );
-    const isToday = isSameDay(day, today);
-
-    return (
-      <div className={weekCalendarHourGrid} style={{ height: gridHeight }}>
-        {hours.map((hour) => (
-          <div
-            key={hour}
-            className={weekCalendarHourLine}
-            style={{ top: (hour - safeRangeStart) * HOUR_HEIGHT_PX }}
-            aria-hidden="true"
-          />
-        ))}
-        {buckets.timed.map(({ event, startMin, endMin }) => {
-          const clampedStart = clampTimeToRange(
-            startMin,
-            safeRangeStart,
-            safeRangeEnd
-          );
-          const clampedEnd = clampTimeToRange(
-            endMin,
-            safeRangeStart,
-            safeRangeEnd
-          );
-          if (
-            clampedEnd <= safeRangeStart * 60 ||
-            clampedStart >= safeRangeEnd * 60
-          ) {
-            return null;
-          }
-          const top = minutesToOffsetPx(
-            clampedStart,
-            safeRangeStart,
-            HOUR_HEIGHT_PX
-          );
-          const height = durationToHeightPx(
-            clampedStart,
-            clampedEnd,
-            HOUR_HEIGHT_PX,
-            MIN_EVENT_HEIGHT_PX
-          );
-          const slot = layout.get(event.id) ?? { column: 0, columnCount: 1 };
-          const widthPct = 100 / slot.columnCount;
-          const leftPct = slot.column * widthPct;
-          const gapPx = 2;
-
-          return renderCard(event, eventCardTimed, {
-            top,
-            height,
-            left: `calc(${leftPct}% + ${gapPx}px)`,
-            width: `calc(${widthPct}% - ${gapPx * 2}px)`,
-          });
-        })}
-        {isToday && showNowIndicator && (
-          <div
-            className={weekCalendarNowLine}
-            style={{ top: nowOffset }}
-            aria-hidden="true"
-          >
-            <span className={weekCalendarNowMarker} />
-          </div>
-        )}
-      </div>
-    );
-  };
+  const weekShowNow =
+    showNowIndicator && days.some((d) => isSameDay(d, today));
 
   return (
-    <div className={cx(weekCalendarRoot, className)}>
-      <div className={weekCalendarScroll}>
-        <div
-          className={weekCalendarInner}
-          style={{
-            minWidth: showHours
-              ? GUTTER_WIDTH_PX + days.length * COLUMN_MIN_WIDTH_PX
-              : days.length * COLUMN_MIN_WIDTH_PX,
-          }}
-        >
-          <div
-            className={weekCalendarHeader}
-            style={{ gridTemplateColumns: columnTemplate }}
-          >
-            {showHours && (
-              <div className={weekCalendarGutterSpacer} aria-hidden="true" />
-            )}
-            {days.map((day) => {
-              const isToday = isSameDay(day, today);
-              return (
-                <div
-                  key={`header-${dayKey(day)}`}
-                  className={cx(
-                    weekCalendarDayHeader,
-                    isToday && weekCalendarDayColumnToday
-                  )}
-                >
-                  {isToday && (
-                    <span
-                      className={weekCalendarTodayAccentBar}
-                      aria-hidden="true"
-                    />
-                  )}
-                  <span
-                    className={cx(
-                      weekCalendarDayHeaderLabel,
-                      isToday && weekCalendarDayHeaderLabelToday
-                    )}
-                  >
-                    {shortWeekdayName(day)}
-                  </span>
-                  <span
-                    className={cx(
-                      weekCalendarDayHeaderNumber,
-                      isToday && weekCalendarDayHeaderNumberToday
-                    )}
-                  >
-                    {day.getDate()}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-
-          {showHours ? (
-            <>
-              <div
-                className={weekCalendarBody}
-                style={{ gridTemplateColumns: columnTemplate }}
-              >
-                <div className={weekCalendarGutter} aria-hidden="true" />
-                {days.map((day) => {
-                  const isToday = isSameDay(day, today);
-                  const allDay =
-                    bucketsByDay.get(dayKey(day))?.allDay ?? [];
-                  return (
-                    <section
-                      key={`allday-${dayKey(day)}`}
-                      className={cx(
-                        weekCalendarDayColumn,
-                        isToday && weekCalendarDayColumnToday
-                      )}
-                      aria-label={`${accessibleDayLabel(day)} all-day`}
-                    >
-                      <div className={weekCalendarAllDayStack}>
-                        {allDay.map((event) => renderCard(event))}
-                      </div>
-                    </section>
-                  );
-                })}
-              </div>
-
-              <div
-                className={weekCalendarBody}
-                style={{ gridTemplateColumns: columnTemplate }}
-              >
-                <div className={weekCalendarGutter} aria-hidden="true">
-                  <div
-                    className={weekCalendarHourGrid}
-                    style={{ height: gridHeight }}
-                  >
-                    {hours.map((hour) => {
-                      const top = (hour - safeRangeStart) * HOUR_HEIGHT_PX;
-                      return (
-                        <span
-                          key={hour}
-                          className={weekCalendarHourLabel}
-                          style={{
-                            top: hour === safeRangeStart ? top + 2 : top,
-                            transform:
-                              hour === safeRangeStart
-                                ? undefined
-                                : 'translateY(-50%)',
-                          }}
-                        >
-                          {formatHourLabel(hour)}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
-                {days.map((day) => {
-                  const isToday = isSameDay(day, today);
-                  return (
-                    <section
-                      key={`hours-${dayKey(day)}`}
-                      className={cx(
-                        weekCalendarDayColumn,
-                        isToday && weekCalendarDayColumnToday
-                      )}
-                      aria-label={accessibleDayLabel(day)}
-                      aria-current={isToday ? 'date' : undefined}
-                    >
-                      {renderTimedGrid(day)}
-                    </section>
-                  );
-                })}
-              </div>
-            </>
-          ) : (
-            <div
-              className={weekCalendarBody}
-              style={{ gridTemplateColumns: columnTemplate }}
-            >
-              {days.map((day) => {
-                const isToday = isSameDay(day, today);
-                const dayEvents = eventsByDay.get(dayKey(day)) ?? [];
-                return (
-                  <section
-                    key={dayKey(day)}
-                    className={cx(
-                      weekCalendarDayColumn,
-                      isToday && weekCalendarDayColumnToday
-                    )}
-                    aria-label={accessibleDayLabel(day)}
-                    aria-current={isToday ? 'date' : undefined}
-                  >
-                    <div className={weekCalendarListStack}>
-                      {dayEvents.map((event) => renderCard(event))}
-                    </div>
-                  </section>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </div>
+    <div
+      ref={rootRef}
+      className={cx(
+        weekCalendarRoot,
+        resolvedLayout === 'week' && weekCalendarRootClip,
+        className
+      )}
+      data-layout={resolvedLayout}
+    >
+      {resolvedLayout === 'week' && (
+        <WeekCalendarWeekView
+          days={days}
+          today={today}
+          showHours={showHours}
+          hours={hours}
+          safeRangeStart={safeRangeStart}
+          safeRangeEnd={safeRangeEnd}
+          gridHeight={gridHeight}
+          showNowIndicator={weekShowNow}
+          nowOffset={nowOffset}
+          eventsByDay={eventsByDay}
+          bucketsByDay={bucketsByDay}
+          renderEvent={renderEvent}
+        />
+      )}
+      {resolvedLayout === 'day' && (
+        <WeekCalendarDayView
+          days={days}
+          weekStart={weekStart}
+          selectedDate={selectedDate}
+          onSelectedDateChange={setSelectedDate}
+          onWeekStartChange={onWeekStartChange}
+          today={today}
+          showHours={showHours}
+          showSwipeHint={showSwipeHint}
+          hours={hours}
+          safeRangeStart={safeRangeStart}
+          safeRangeEnd={safeRangeEnd}
+          gridHeight={gridHeight}
+          showNowIndicator={showNowIndicator}
+          nowOffset={nowOffset}
+          eventsByDay={eventsByDay}
+          bucketsByDay={bucketsByDay}
+          renderEvent={renderEvent}
+        />
+      )}
+      {resolvedLayout === 'agenda' && (
+        <WeekCalendarAgendaView
+          days={days}
+          today={today}
+          eventsByDay={eventsByDay}
+          hideEmptyDays={hideEmptyDays}
+          emptyDayLabel={emptyDayLabel}
+          renderEvent={renderEvent}
+        />
+      )}
     </div>
   );
 };

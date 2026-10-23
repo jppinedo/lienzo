@@ -8,6 +8,7 @@ const src = (p: string) => fileURLToPath(new URL(`../src/${p}`, import.meta.url)
 // Vite's resolve.tsconfigPaths because MDX files are not matched by tsconfig "include".
 const aliases = {
   '@interfaces': src('interfaces'),
+  '@hooks': src('hooks'),
   '@components': src('components'),
   '@atoms': src('components/atoms'),
   '@molecules': src('components/molecules'),

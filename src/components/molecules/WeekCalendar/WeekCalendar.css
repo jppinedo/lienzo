@@ -27,3 +27,7 @@
 [data-mode='dark'] .week-calendar__gutter {
   box-shadow: 4px 0 12px -8px rgb(var(--lz-black) / 0.35);
 }
+
+.week-calendar-day__grid {
+  touch-action: pan-y;
+}

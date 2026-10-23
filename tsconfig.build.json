@@ -13,7 +13,8 @@
     "src/components/atoms/**/*",
     "src/components/molecules/**/*",
     "src/components/templates/**/*",
-    "src/interfaces/**/*"
+    "src/interfaces/**/*",
+    "src/hooks/**/*"
   ],
   "exclude": [
     "**/*.stories.tsx",

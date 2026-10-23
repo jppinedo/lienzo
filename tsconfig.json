@@ -7,6 +7,7 @@
     "esModuleInterop": true,
     "paths": {
       "@interfaces/*": ["./src/interfaces/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@components/*": ["./src/components/*"],
       "@atoms/*": ["./src/components/atoms/*"],
       "@molecules/*": ["./src/components/molecules/*"],

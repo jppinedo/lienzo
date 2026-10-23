@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Badge from '../../atoms/Badge/Badge';
-import Label from '../../atoms/Label/Label';
+import { Clock } from 'react-feather';
+import face01 from '../../../assets/placeholders/faces/100/avatar-01.jpg';
+import face02 from '../../../assets/placeholders/faces/100/avatar-02.jpg';
+import face03 from '../../../assets/placeholders/faces/100/avatar-03.jpg';
+import face04 from '../../../assets/placeholders/faces/100/avatar-04.jpg';
+import face05 from '../../../assets/placeholders/faces/100/avatar-05.jpg';
+import face06 from '../../../assets/placeholders/faces/100/avatar-06.jpg';
+import face07 from '../../../assets/placeholders/faces/100/avatar-07.jpg';
+import face08 from '../../../assets/placeholders/faces/100/avatar-08.jpg';
+import face09 from '../../../assets/placeholders/faces/100/avatar-09.jpg';
+import face10 from '../../../assets/placeholders/faces/100/avatar-10.jpg';
 import WeekCalendar, {
   type WeekCalendarEvent,
   type WeekCalendarProps,
 } from './WeekCalendar';
+import { formatTimeLabel } from './WeekCalendarUtils';
 
 /** Fixed Wednesday in the story week so current-day styling stays stable. */
 const STORY_TODAY = new Date(2025, 9, 15, 10, 30, 0);
@@ -124,7 +134,59 @@ const timedEvents: WeekCalendarEvent[] = [
   },
 ];
 
-const listEvents: WeekCalendarEvent[] = [
+const agendaEvents: WeekCalendarEvent[] = [
+  {
+    id: 'a-mon-1',
+    date: day(0),
+    start: '09:30',
+    title: 'Earnings open',
+    subtitle: 'Pre-market',
+    meta: 'BMO',
+    tone: 'teal',
+  },
+  {
+    id: 'a-mon-2',
+    date: day(0),
+    start: '14:00',
+    title: 'Analyst call',
+    meta: 'AMC',
+    tone: 'coral',
+  },
+  {
+    id: 'a-wed-1',
+    date: day(2),
+    start: '10:00',
+    title: 'Product demo',
+    subtitle: 'Live',
+    meta: 'BMO',
+    tone: 'coral',
+  },
+  {
+    id: 'a-wed-2',
+    date: day(2),
+    title: 'Office hours',
+    subtitle: 'All day',
+    tone: 'neutral',
+  },
+  {
+    id: 'a-thu-1',
+    date: day(3),
+    start: '11:00',
+    title: 'Sprint planning',
+    meta: 'AMC',
+    tone: 'teal',
+  },
+  {
+    id: 'a-fri-1',
+    date: day(4),
+    start: '15:00',
+    title: 'Weekly wrap',
+    subtitle: 'Summary',
+    tone: 'amber',
+  },
+];
+
+const listEventsThreeDays: WeekCalendarEvent[] = [
   {
     id: 'l-mon-1',
     date: day(0),
@@ -173,20 +235,62 @@ const listEvents: WeekCalendarEvent[] = [
     tone: 'muted',
     status: 'Pending',
   },
-  {
-    id: 'l-thu-1',
-    date: day(3),
-    title: 'Workshop prep',
-    tone: 'amber',
-  },
-  {
-    id: 'l-fri-1',
-    date: day(4),
-    title: 'Weekly wrap',
-    subtitle: 'Summary',
-    tone: 'neutral',
-  },
 ];
+
+function Facepile({
+  faces,
+  extra = 0,
+}: {
+  faces: string[];
+  extra?: number;
+}) {
+  return (
+    <div className="mt-2 flex items-center">
+      <div className="flex items-center">
+        {faces.map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="h-7 w-7 rounded-full object-cover border-2 border-white dark:border-gray-900"
+            style={{ marginLeft: index === 0 ? 0 : -8 }}
+          />
+        ))}
+      </div>
+      {extra > 0 && (
+        <span className="ml-1.5 text-xs font-medium text-pio-text-muted dark:text-blue-200/70">
+          +{extra}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function RichEventBody({
+  start,
+  end,
+  faces,
+  extra = 0,
+}: {
+  start: string;
+  end: string;
+  faces: string[];
+  extra?: number;
+}) {
+  const startLabel = formatTimeLabel(start);
+  const endLabel = formatTimeLabel(end);
+  return (
+    <div className="flex flex-col gap-0.5">
+      <div className="inline-flex items-center gap-1.5 text-[11px] font-regular text-pio-text-muted dark:text-blue-200/70">
+        <Clock size={12} aria-hidden="true" />
+        <span>
+          {startLabel} – {endLabel}
+        </span>
+      </div>
+      <Facepile faces={faces} extra={extra} />
+    </div>
+  );
+}
 
 const meta: Meta<typeof WeekCalendar> = {
   title: 'Molecules/WeekCalendar',
@@ -205,6 +309,11 @@ const meta: Meta<typeof WeekCalendar> = {
       control: 'radio',
       options: [0, 1],
     },
+    layout: {
+      name: 'Layout',
+      control: 'select',
+      options: ['auto', 'week', 'day', 'agenda'],
+    },
     weekStart: { control: false, table: { disable: true } },
     events: { control: false, table: { disable: true } },
     visibleDays: { control: false, table: { disable: true } },
@@ -212,6 +321,17 @@ const meta: Meta<typeof WeekCalendar> = {
     today: { control: false, table: { disable: true } },
     renderEvent: { control: false, table: { disable: true } },
     className: { control: false, table: { disable: true } },
+    selectedDate: { control: false, table: { disable: true } },
+    defaultSelectedDate: { control: false, table: { disable: true } },
+    onSelectedDateChange: { control: false, table: { disable: true } },
+    onWeekStartChange: { control: false, table: { disable: true } },
+    onLayoutChange: { control: false, table: { disable: true } },
+    mobileLayout: { control: false, table: { disable: true } },
+    autoBreakpoint: { control: false, table: { disable: true } },
+    initialLayout: { control: false, table: { disable: true } },
+    showSwipeHint: { control: false, table: { disable: true } },
+    hideEmptyDays: { control: false, table: { disable: true } },
+    emptyDayLabel: { control: false, table: { disable: true } },
   },
 };
 export default meta;
@@ -225,6 +345,7 @@ const baseArgs: WeekCalendarProps = {
   showHours: true,
   weekStartsOn: 1,
   hourRange: [6, 22],
+  layout: 'week',
 };
 
 export const Default: Story = {
@@ -232,60 +353,56 @@ export const Default: Story = {
   tags: ['!dev'],
 };
 
-export const WithHours: Story = {
-  args: { ...baseArgs },
+function DayViewDemo() {
+  const [weekStart, setWeekStart] = useState(STORY_WEEK_START);
+  return (
+    <div className="max-w-md mx-auto">
+      <WeekCalendar
+        weekStart={weekStart}
+        onWeekStartChange={setWeekStart}
+        today={STORY_TODAY}
+        events={timedEvents}
+        showHours
+        hourRange={[6, 22]}
+        layout="day"
+        defaultSelectedDate={STORY_TODAY}
+      />
+    </div>
+  );
+}
+
+export const DayView: Story = {
   parameters: { controls: { disable: true } },
+  render: () => <DayViewDemo />,
 };
 
-export const WithoutHours: Story = {
-  args: {
-    ...baseArgs,
-    showHours: false,
-    events: listEvents,
-  },
-  parameters: { controls: { disable: true } },
-};
-
-export const WorkingDays: Story = {
+export const AgendaView: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
-    <div className="flex flex-col gap-8">
-      <div>
-        <p className="mb-3 text-sm font-jakarta text-pio-text-muted dark:text-blue-200/70">
-          Monday–Friday
-        </p>
-        <WeekCalendar
-          weekStart={STORY_WEEK_START}
-          today={STORY_TODAY}
-          events={timedEvents}
-          visibleDays={[1, 2, 3, 4, 5]}
-          showHours
-          hourRange={[6, 22]}
-        />
-      </div>
-      <div>
-        <p className="mb-3 text-sm font-jakarta text-pio-text-muted dark:text-blue-200/70">
-          Custom set: Mon / Wed / Fri
-        </p>
-        <WeekCalendar
-          weekStart={STORY_WEEK_START}
-          today={STORY_TODAY}
-          events={listEvents}
-          visibleDays={[1, 3, 5]}
-          showHours={false}
-        />
-      </div>
+    <div className="max-w-md mx-auto">
+      <WeekCalendar
+        weekStart={STORY_WEEK_START}
+        today={STORY_TODAY}
+        events={agendaEvents}
+        showHours={false}
+        layout="agenda"
+      />
     </div>
   ),
 };
 
-export const SundayStart: Story = {
-  args: {
-    ...baseArgs,
-    weekStartsOn: 0,
-    weekStart: new Date(2025, 9, 12),
-  },
+export const WithoutHours: Story = {
   parameters: { controls: { disable: true } },
+  render: () => (
+    <WeekCalendar
+      weekStart={STORY_WEEK_START}
+      today={STORY_TODAY}
+      events={listEventsThreeDays}
+      visibleDays={[1, 2, 3]}
+      showHours={false}
+      layout="week"
+    />
+  ),
 };
 
 export const RichContent: Story = {
@@ -294,37 +411,51 @@ export const RichContent: Story = {
     const events: WeekCalendarEvent[] = [
       {
         id: 'rich-1',
-        date: day(2),
-        title: 'Design critique',
-        subtitle: (
-          <span className="inline-flex items-center gap-1.5">
-            <span
-              className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-pio-coral text-[10px] font-bold text-white"
-              aria-hidden="true"
-            >
-              JP
-            </span>
-            <span>Host</span>
-          </span>
-        ),
-        body: <Badge label="Workshop" tone="coral" dot />,
+        date: day(0),
+        start: '09:45',
+        end: '10:45',
+        title: 'Standup Meeting – NovaBoard Team',
         tone: 'coral',
+        body: (
+          <RichEventBody
+            start="09:45"
+            end="10:45"
+            faces={[face01, face02, face03, face04, face05]}
+            extra={5}
+          />
+        ),
       },
       {
         id: 'rich-2',
-        date: day(2),
-        title: 'Writing pass',
-        subtitle: <Label text="Docs" />,
-        body: <Badge label="In progress" tone="teal" />,
+        date: day(1),
+        start: '11:00',
+        end: '12:30',
+        title: 'Design critique',
         tone: 'teal',
+        body: (
+          <RichEventBody
+            start="11:00"
+            end="12:30"
+            faces={[face06, face07, face08, face09]}
+            extra={2}
+          />
+        ),
       },
       {
         id: 'rich-3',
-        date: day(3),
-        title: 'Launch prep',
-        subtitle: 'Milestones',
-        body: <Badge label="Amber path" tone="amber" dot />,
+        date: day(2),
+        start: '14:00',
+        end: '15:00',
+        title: 'Launch prep workshop',
         tone: 'amber',
+        body: (
+          <RichEventBody
+            start="14:00"
+            end="15:00"
+            faces={[face10, face01, face03]}
+            extra={8}
+          />
+        ),
       },
     ];
 
@@ -333,60 +464,10 @@ export const RichContent: Story = {
         weekStart={STORY_WEEK_START}
         today={STORY_TODAY}
         events={events}
-        visibleDays={[1, 2, 3, 4, 5]}
+        visibleDays={[1, 2, 3]}
         showHours={false}
+        layout="week"
       />
     );
-  },
-};
-
-export const MutedStatus: Story = {
-  parameters: { controls: { disable: true } },
-  render: () => (
-    <WeekCalendar
-      weekStart={STORY_WEEK_START}
-      today={STORY_TODAY}
-      showHours={false}
-      visibleDays={[1, 2, 3]}
-      events={[
-        {
-          id: 'muted-1',
-          date: day(0),
-          title: 'Hold for review',
-          subtitle: 'Queue',
-          body: 'Waiting on external feedback',
-          tone: 'muted',
-          status: 'Pending',
-        },
-        {
-          id: 'muted-2',
-          date: day(1),
-          title: 'Paused initiative',
-          subtitle: 'Backlog',
-          tone: 'muted',
-          status: 'On hold',
-        },
-        {
-          id: 'active-1',
-          date: day(2),
-          title: 'Active session',
-          subtitle: 'Today',
-          tone: 'teal',
-        },
-      ]}
-    />
-  ),
-};
-
-export const DarkMode: Story = {
-  args: {
-    ...baseArgs,
-    events: timedEvents,
-  },
-  parameters: {
-    controls: { disable: true },
-  },
-  globals: {
-    theme: 'dark',
   },
 };
